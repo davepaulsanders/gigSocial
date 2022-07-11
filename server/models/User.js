@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, default: mongoose } = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const userSchema = new Schema(
@@ -49,7 +49,10 @@ userSchema.pre("save", async function (next) {
 
   next();
 });
-
+userSchema.post("findOneAndDelete", async (user) => {
+  // must use mongoose.model, requiring at top of file creates a circular dependancy
+  await mongoose.model("Setlist").deleteMany({ username: user.username });
+});
 // compare the incoming password with the hashed password
 userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);

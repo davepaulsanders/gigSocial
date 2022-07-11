@@ -33,17 +33,13 @@ setListSchema.post("save", async (setlist, next) => {
   );
   next();
 });
-setListSchema.post(
-  "findOneAndDelete",
-  async (setlist) => {
-    await User.findOneAndUpdate(
-      { username: setlist.setListCreator },
-      { $pull: { setlists: setlist._id } },
-      { new: true }
-    );
-
-  }
-);
+setListSchema.post("findOneAndDelete", async (setlist) => {
+  await User.findOneAndUpdate(
+    { username: setlist.setListCreator },
+    { $pull: { setlists: setlist._id } },
+    { new: true }
+  );
+});
 
 const Setlist = model("Setlist", setListSchema);
 

@@ -35,14 +35,18 @@ db.once("open", async () => {
       { $push: { songs: songInfo._id } },
       { new: true }
     );
-       
-       // setListCreator must be passed for middleware to delete from user as well
-    await Setlist.findOneAndDelete({
-      _id: setListInfo._id,
-      setListCreator: setListInfo.setListCreator,
-    });
-  
 
+    // setListCreator must be passed for middleware to delete from user as well
+    // await Setlist.findOneAndDelete({
+    //   _id: setListInfo._id,
+    //   setListCreator: setListInfo.setListCreator,
+    // });
+
+    //await User.findOneAndDelete({ username: "davepsandy" });
+
+    const songTest = await Setlist.findOne({ setListCreator: "davepsandy" });
+
+    console.log(songTest);
     console.log("all done!");
     process.exit(0);
   } catch (err) {

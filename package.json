@@ -1,0 +1,22 @@
+{
+  "name": "gigsocial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davepaulsanders/gigSocial.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davepaulsanders/gigSocial/issues"
+  },
+  "homepage": "https://github.com/davepaulsanders/gigSocial#readme",
+  "devDependencies": {
+    "concurrently": "^7.2.2"
+  }
+}

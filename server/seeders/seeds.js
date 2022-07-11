@@ -6,19 +6,20 @@ db.once("open", async () => {
     await User.deleteMany({});
     await Setlist.deleteMany({});
     await Song.deleteMany({});
-    await User.create({
+
+    const userInfo = await User.create({
       username: "davepsandy",
       email: "davepsandy@gmail.com",
       password: "123456",
     });
 
-    await Setlist.create({
+    const setListInfo = await Setlist.create({
       setListName: "Setlist 1",
       setListCreator: "davepsandy",
       likes: 0,
     });
 
-    await Song.create({
+    const songInfo = await Song.create({
       songTitle: "Chandelier",
       artist: "Sia",
       image:
@@ -29,6 +30,11 @@ db.once("open", async () => {
         "<div id='rg_embed_link_378195' class='rg_embed_link' data-song-id='378195'>Read <a href='https://genius.com/Sia-chandelier-lyrics'>“Chandelier” by Sia</a> on Genius</div> <script crossorigin src='//genius.com/songs/378195/embed.js'></script>",
     });
 
+    await Setlist.findOneAndUpdate(
+      { _id: setListInfo._id },
+      { $push: { songs: songInfo._id } },
+      { new: true }
+    );
     console.log("all done!");
     process.exit(0);
   } catch (err) {

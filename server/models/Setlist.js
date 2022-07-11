@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-
+const User = require("./User");
 const setListSchema = new Schema({
   setListName: {
     type: String,
@@ -24,6 +24,15 @@ const setListSchema = new Schema({
 
 // add created at and updated at
 setListSchema.set("timestamps", true);
+
+setListSchema.post("save", async (setlist) => {
+  console.log(setlist);
+  await User.findOneAndUpdate(
+    { username: setlist.setListCreator },
+    { $push: { setlists: setlist._id } },
+    { new: true }
+  );
+});
 
 const Setlist = model("Setlist", setListSchema);
 

@@ -8,19 +8,29 @@ db.once("open", async () => {
     await Song.deleteMany({});
     await Comment.deleteMany({});
 
-    const userInfo = await User.create({
+    const userInfo1 = await User.create({
       username: "davepsandy",
       email: "davepsandy@gmail.com",
       password: "123456",
     });
+    const userInfo2 = await User.create({
+      username: "margenice",
+      email: "margenice@gmail.com",
+      password: "123456",
+    });
 
-    const setListInfo = await Setlist.create({
+    const setListInfo1 = await Setlist.create({
       setListName: "Setlist 1",
       setListCreator: "davepsandy",
       likes: 0,
     });
+    const setListInfo2 = await Setlist.create({
+      setListName: "Setlist 2",
+      setListCreator: "margenice",
+      likes: 4,
+    });
 
-    const songInfo = await Song.create({
+    const songInfo1 = await Song.create({
       songTitle: "Chandelier",
       artist: "Sia",
       image:
@@ -30,37 +40,58 @@ db.once("open", async () => {
       embed:
         "<div id='rg_embed_link_378195' class='rg_embed_link' data-song-id='378195'>Read <a href='https://genius.com/Sia-chandelier-lyrics'>“Chandelier” by Sia</a> on Genius</div> <script crossorigin src='//genius.com/songs/378195/embed.js'></script>",
     });
+    const songInfo2 = await Song.create({
+      songTitle: "Raining Blood",
+      artist: "Slayer",
+      image:
+        "https://images.genius.com/692b8f35d1308861874470985e78790d.300x300x1.png",
+      lyrics: "https://genius.com/Slayer-raining-blood-lyrics",
+      bpm: 190,
+      embed: "none",
+    });
 
     await Setlist.findOneAndUpdate(
-      { _id: setListInfo._id },
-      { $push: { songs: songInfo._id } },
+      { _id: setListInfo1._id },
+      { $push: { songs: songInfo1._id } },
+      { new: true }
+    );
+    await Setlist.findOneAndUpdate(
+      { _id: setListInfo1._id },
+      { $push: { songs: songInfo2._id } },
+      { new: true }
+    );
+    await Setlist.findOneAndUpdate(
+      { _id: setListInfo2._id },
+      { $push: { songs: songInfo1._id } },
+      { new: true }
+    );
+    await Setlist.findOneAndUpdate(
+      { _id: setListInfo2._id },
+      { $push: { songs: songInfo2._id } },
       { new: true }
     );
 
-    const commentInfo = await Comment.create({
+    const commentInfo1 = await Comment.create({
       commentText: "This is a test comment",
-      username: "davepsandy",
-      setList: setListInfo._id,
+      username: userInfo1.username,
+      setList: setListInfo1._id,
+    });
+    const commentInfo2 = await Comment.create({
+      commentText: "This is also a test comment",
+      username: userInfo1.username,
+      setList: setListInfo1._id,
+    });
+    const commentInfo3 = await Comment.create({
+      commentText: "Yet another comment",
+      username: userInfo2.username,
+      setList: setListInfo2._id,
+    });
+    const commentInfo4 = await Comment.create({
+      commentText: "This is also a test comment",
+      username: userInfo2.username,
+      setList: setListInfo2._id,
     });
 
-    //await Comment.findOneAndDelete({_id: commentInfo._id})
-    // await Setlist.findOneAndUpdate(
-    //     { _id: setListInfo._id },
-    //     { $pull: { songs: songInfo._id } },
-    //     { new: true }
-    //   );
-    // setListCreator must be passed for middleware to delete from user as well
-    // await Setlist.findOneAndDelete({
-    //   _id: setListInfo._id,
-    //   setListCreator: setListInfo.setListCreator,
-    // });
-
-    //await User.findOneAndDelete({ username: "davepsandy" });
-
-    const setListTest = await Setlist.findOne({ setListCreator: "davepsandy" });
-    const userTest = await User.findOne({ username: "davepsandy" });
-
-    console.log(setListTest, userTest);
     console.log("all done!");
     process.exit(0);
   } catch (err) {

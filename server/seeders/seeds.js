@@ -38,11 +38,13 @@ db.once("open", async () => {
       { new: true }
     );
 
-    await Comment.create({
+    const commentInfo = await Comment.create({
       commentText: "This is a test comment",
       username: "davepsandy",
       setList: setListInfo._id,
     });
+
+    //await Comment.findOneAndDelete({_id: commentInfo._id})
     // await Setlist.findOneAndUpdate(
     //     { _id: setListInfo._id },
     //     { $pull: { songs: songInfo._id } },

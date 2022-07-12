@@ -28,6 +28,19 @@ commentSchema.post("save", async (comment) => {
   );
 });
 
+commentSchema.post("findOneAndDelete", async (comment) => {
+  await mongoose.model("User").findOneAndUpdate(
+    { username: comment.username },
+    { $pull: { comments: comment._id } },
+    { new: true }
+  );
+  await mongoose.model("Setlist").findOneAndUpdate(
+    { username: comment.username },
+    { $pull: { comments: comment._id } },
+    { new: true }
+  );
+});
+
 const Comment = model("Comment", commentSchema);
 
 module.exports = Comment;

@@ -45,7 +45,6 @@ const resolvers = {
       try {
         // create setlist
         const setlist = await Setlist.create(args);
-        console.log(setlist);
         return setlist;
       } catch (err) {
         console.log(err);
@@ -73,6 +72,17 @@ const resolvers = {
         { $pull: { songs: { _id } } }
       );
       return song;
+    },
+    deleteSetlist: async (parent, { _id, setListCreator }) => {
+      const setlist = await Setlist.findOneAndDelete({ _id });
+
+      await User.findOneAndUpdate(
+        { username: setListCreator },
+        { $pull: { setlists: setlist._id } },
+        { new: true }
+      );
+
+      return setlist;
     },
   },
 };

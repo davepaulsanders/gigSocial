@@ -31,18 +31,10 @@ const setListSchema = new Schema({
 // add created at and updated at
 setListSchema.set("timestamps", true);
 
-setListSchema.post("save", async (setlist, next) => {
+setListSchema.post("save", async (setlist) => {
   await User.findOneAndUpdate(
     { username: setlist.setListCreator },
     { $push: { setlists: setlist._id } },
-    { new: true }
-  );
-  next();
-});
-setListSchema.post("findOneAndDelete", async (setlist) => {
-  await User.findOneAndUpdate(
-    { username: setlist.setListCreator },
-    { $pull: { setlists: setlist._id } },
     { new: true }
   );
 });

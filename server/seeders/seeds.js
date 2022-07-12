@@ -31,11 +31,11 @@ db.once("open", async () => {
         "<div id='rg_embed_link_378195' class='rg_embed_link' data-song-id='378195'>Read <a href='https://genius.com/Sia-chandelier-lyrics'>“Chandelier” by Sia</a> on Genius</div> <script crossorigin src='//genius.com/songs/378195/embed.js'></script>",
     });
 
-    // await Setlist.findOneAndUpdate(
-    //   { _id: setListInfo._id },
-    //   { $push: { songs: songInfo._id } },
-    //   { new: true }
-    // );
+    await Setlist.findOneAndUpdate(
+      { _id: setListInfo._id },
+      { $push: { songs: songInfo._id } },
+      { new: true }
+    );
 
     const commentInfo = await Comment.create({
       commentText: "This is a test comment",

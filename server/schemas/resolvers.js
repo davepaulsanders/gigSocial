@@ -37,6 +37,17 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    addSetlist: async (parent, args) => {
+
+        try {
+            const setlist = await Setlist.create(args);
+            console.log(setlist)
+            return setlist;
+
+        } catch (err) {
+            console.log(err)
+        }
+    },
   },
 };
 

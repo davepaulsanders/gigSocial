@@ -42,6 +42,9 @@ const typeDefs = gql`
       user(_id: ID!): User
       getSetlist(_id: ID): Setlist
   }
+  type Mutation {
+    addUser(username: String!, email: String!, password: String!): Auth
+  }
 `;
 
 module.exports = typeDefs;

@@ -39,10 +39,11 @@ const typeDefs = gql`
     user: User
   }
   type Query {
-      user(_id: ID!): User
-      getSetlist(_id: ID): Setlist
+    user(_id: ID!): User
+    getSetlist(_id: ID): Setlist
   }
   type Mutation {
+    login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
   }
 `;

@@ -1,5 +1,6 @@
 const { User, Setlist } = require("../models");
 const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require("apollo-server-express");
 
 const resolvers = {
   Query: {
@@ -20,6 +21,20 @@ const resolvers = {
       // sign token with user info
       const token = signToken(user);
       // send both back
+      return { token, user };
+    },
+    login: async (parent, args) => {
+      const { email, password } = args;
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError("Incorrect credentials");
+      }
+      const passwordValidation = await user.isCorrectPassword(password);
+      if (!passwordValidation) {
+        throw new AuthenticationError("Incorrect credentials");
+      }
+      const token = signToken(user);
       return { token, user };
     },
   },

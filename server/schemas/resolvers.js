@@ -56,8 +56,7 @@ const resolvers = {
       const song = await Song.create(args);
       return song;
     },
-    addSongToSetlist: async (parent, args) => {
-      const { _id, setListName } = args;
+    addSongToSetlist: async (parent, { _id, setListName }) => {
       // find setlist and update array of song ids
       const setlist = await Setlist.findOneAndUpdate(
         { setListName },
@@ -65,6 +64,15 @@ const resolvers = {
         { new: true }
       );
       return setlist;
+    },
+    deleteSong: async (parent, { _id, setListName }) => {
+      // delete song
+      const song = await Song.findOneAndDelete({ _id });
+      await Setlist.findOneAndUpdate(
+        { setListName },
+        { $pull: { songs: { _id } } }
+      );
+      return song;
     },
   },
 };

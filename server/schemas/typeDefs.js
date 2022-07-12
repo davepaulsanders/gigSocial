@@ -54,6 +54,7 @@ const typeDefs = gql`
       bpm: Int
       embed: String!
     ): Song
+    addSongToSetlist(_id: ID!, setListName: String): Setlist
   }
 `;
 

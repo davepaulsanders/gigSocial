@@ -56,6 +56,16 @@ const resolvers = {
       const song = await Song.create(args);
       return song;
     },
+    addSongToSetlist: async (parent, args) => {
+      const { _id, setListName } = args;
+      // find setlist and update array of song ids
+      const setlist = await Setlist.findOneAndUpdate(
+        { setListName },
+        { $push: { songs: _id } },
+        { new: true }
+      );
+      return setlist;
+    },
   },
 };
 

@@ -22,16 +22,6 @@ const songSchema = new Schema({
   },
 });
 
-songSchema.post("save", async (song) => {
-  mongoose
-    .model("Setlist")
-    .findOneAndUpdate(
-      { _id: song.setlist },
-      { $push: { songs: song._id } },
-      { new: true }
-    );
-});
-
 const Song = model("Song", songSchema);
 
 module.exports = Song;

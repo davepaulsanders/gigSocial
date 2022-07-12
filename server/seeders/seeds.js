@@ -1,11 +1,12 @@
 const db = require("../config/connection");
-const { User, Setlist, Song } = require("../models");
+const { User, Setlist, Song, Comment } = require("../models");
 
 db.once("open", async () => {
   try {
     await User.deleteMany({});
     await Setlist.deleteMany({});
     await Song.deleteMany({});
+    await Comment.deleteMany({});
 
     const userInfo = await User.create({
       username: "davepsandy",
@@ -28,6 +29,7 @@ db.once("open", async () => {
       bpm: 120,
       embed:
         "<div id='rg_embed_link_378195' class='rg_embed_link' data-song-id='378195'>Read <a href='https://genius.com/Sia-chandelier-lyrics'>“Chandelier” by Sia</a> on Genius</div> <script crossorigin src='//genius.com/songs/378195/embed.js'></script>",
+      setlist: setListInfo._id,
     });
 
     await Setlist.findOneAndUpdate(
@@ -36,6 +38,16 @@ db.once("open", async () => {
       { new: true }
     );
 
+    await Comment.create({
+      commentText: "This is a test comment",
+      username: "davepsandy",
+      setList: setListInfo._id,
+    });
+    // await Setlist.findOneAndUpdate(
+    //     { _id: setListInfo._id },
+    //     { $pull: { songs: songInfo._id } },
+    //     { new: true }
+    //   );
     // setListCreator must be passed for middleware to delete from user as well
     // await Setlist.findOneAndDelete({
     //   _id: setListInfo._id,
@@ -43,10 +55,11 @@ db.once("open", async () => {
     // });
 
     //await User.findOneAndDelete({ username: "davepsandy" });
+    
+    const setListTest = await Setlist.findOne({ setListCreator: "davepsandy" });
+    const userTest = await User.findOne({ username: "davepsandy" });
 
-    const songTest = await Setlist.findOne({ setListCreator: "davepsandy" });
-
-    console.log(songTest);
+    console.log(setListTest, userTest);
     console.log("all done!");
     process.exit(0);
   } catch (err) {

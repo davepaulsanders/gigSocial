@@ -16,6 +16,12 @@ const setListSchema = new Schema({
       ref: "Song",
     },
   ],
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Comment",
+    },
+  ],
   likes: {
     type: Number,
     default: 0,

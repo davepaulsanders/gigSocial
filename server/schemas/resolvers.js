@@ -90,7 +90,14 @@ const resolvers = {
 
       return setlist;
     },
+    deleteComment: async (parent, { _id }) => {
+      // delete comment, comment is deleted in user and setlist in model middleware
+      const comment = await Comment.findOneAndDelete({ _id });
+      return comment;
+    },
   },
 };
 
 module.exports = resolvers;
+
+

@@ -58,6 +58,7 @@ const typeDefs = gql`
     addComment(commentText: String!, username: String!, setList: ID!): Comment
     deleteSetlist(_id: ID!, setListCreator: String!): Setlist
     deleteSong(_id: ID!, setListName: String!): Song
+    deleteComment(_id: ID!): Comment
   }
 `;
 

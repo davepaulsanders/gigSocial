@@ -46,6 +46,14 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addSetlist(setListName: String!, setListCreator: String!): Setlist
+    addSong(
+      songTitle: String!
+      artist: String!
+      image: String!
+      lyrics: String!
+      bpm: Int
+      embed: String!
+    ): Song
   }
 `;
 

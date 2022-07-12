@@ -1,4 +1,4 @@
-const { User, Setlist } = require("../models");
+const { User, Setlist, Song } = require("../models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
 
@@ -25,28 +25,36 @@ const resolvers = {
     },
     login: async (parent, args) => {
       const { email, password } = args;
+      // find the user
       const user = await User.findOne({ email });
 
       if (!user) {
         throw new AuthenticationError("Incorrect credentials");
       }
+      // check password
       const passwordValidation = await user.isCorrectPassword(password);
+
       if (!passwordValidation) {
         throw new AuthenticationError("Incorrect credentials");
       }
+      // sign token with user info
       const token = signToken(user);
       return { token, user };
     },
     addSetlist: async (parent, args) => {
-
-        try {
-            const setlist = await Setlist.create(args);
-            console.log(setlist)
-            return setlist;
-
-        } catch (err) {
-            console.log(err)
-        }
+      try {
+        // create setlist
+        const setlist = await Setlist.create(args);
+        console.log(setlist);
+        return setlist;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    addSong: async (parent, args) => {
+      // create song
+      const song = await Song.create(args);
+      return song;
     },
   },
 };

@@ -1,4 +1,4 @@
-const { User, Setlist, Song } = require("../models");
+const { User, Setlist, Song, Comment } = require("../models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
 
@@ -64,6 +64,11 @@ const resolvers = {
       );
       return setlist;
     },
+    addComment: async (parent, args) => {
+      // create comment
+      const comment = await Comment.create(args);
+      return comment;
+    },
     deleteSong: async (parent, { _id, setListName }) => {
       // delete song
       const song = await Song.findOneAndDelete({ _id });
@@ -74,8 +79,9 @@ const resolvers = {
       return song;
     },
     deleteSetlist: async (parent, { _id, setListCreator }) => {
+      // delete the setlist
       const setlist = await Setlist.findOneAndDelete({ _id });
-
+      // also delete the record of the setlist in the user model
       await User.findOneAndUpdate(
         { username: setListCreator },
         { $pull: { setlists: setlist._id } },

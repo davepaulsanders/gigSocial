@@ -55,6 +55,7 @@ const typeDefs = gql`
       embed: String!
     ): Song
     addSongToSetlist(_id: ID!, setListName: String): Setlist
+    addComment(commentText: String!, username: String!, setList: ID!): Comment
     deleteSetlist(_id: ID!, setListCreator: String!): Setlist
     deleteSong(_id: ID!, setListName: String!): Song
   }

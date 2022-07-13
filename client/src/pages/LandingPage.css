@@ -46,3 +46,28 @@
 .log-in-button {
     margin-bottom: 0.5rem;
 }
+
+@media only screen and (min-width: 600px) {
+    .title-container {
+        margin-bottom: 9rem;
+    }
+    .button-container {
+        width: 20rem;
+    }
+
+    .site-name {
+        font-size: 2rem;
+    }
+    .site-description {
+        width: 60%;
+        font-size: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .site-description {
+        width: 35%;
+    }
+
+}

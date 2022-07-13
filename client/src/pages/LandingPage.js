@@ -12,7 +12,7 @@ export default function LandingPage() {
         <h2 className="site-description">
           <span className="site-name">Gig Social</span> is a website to help
           musicians keep track of their setlists, lyrics, and get feedback from
-          friends ...
+          friends
         </h2>
         <div className="button-container">
           <button className="log-in-button">Log In</button>

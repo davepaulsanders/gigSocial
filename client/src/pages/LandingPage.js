@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./LandingPage.css";
-import { FORM, INPUT, BUTTON } from "../styled-components/styled-components";
+import { FORM, INPUT, BUTTON, APPEARDIV } from "../styled-components/styled-components";
 
 export default function LandingPage() {
   const [signUp, setSignUp] = useState(false);
@@ -39,16 +39,17 @@ export default function LandingPage() {
         )}
         {logIn ||
           (signUp ? null : (
-            <>
+            <APPEARDIV>
               <h2 className="site-description">
                 <span className="site-name">Gig Social</span> is a website to
                 help musicians keep track of their setlists, lyrics, and get
                 feedback from friends
               </h2>
-            </>
+            </APPEARDIV>
           ))}
         {logIn || signUp ? null : (
           <div className="button-container">
+            <APPEARDIV style={{animationDelay: "0.2s"}}>
             <BUTTON className="log-in-button" onClick={() => setLogIn(true)}>
               Log In
             </BUTTON>
@@ -56,6 +57,7 @@ export default function LandingPage() {
             <BUTTON className="sign-up-button" onClick={() => setSignUp(true)}>
               Sign Up
             </BUTTON>
+          </APPEARDIV>
           </div>
         )}
       </div>

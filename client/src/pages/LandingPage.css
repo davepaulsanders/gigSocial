@@ -46,7 +46,6 @@
 .log-in-button {
     margin-bottom: 0.5rem;
 }
-
 @media only screen and (min-width: 600px) {
     .title-container {
         margin-bottom: 9rem;
@@ -70,4 +69,11 @@
         width: 35%;
     }
 
+}
+
+/* LOG IN -----------------------------------------*/
+
+.form-button {
+    margin-top: 1rem;
+    width: 101%;
 }

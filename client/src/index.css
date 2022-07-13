@@ -11,20 +11,14 @@ code {
     monospace;
 }
 
-button {
-  color: #000;
-  font-size: 1.5rem;
-  font-weight: 400;
-  padding: 0.65rem 2.5rem;
-  background-color: transparent;
-  border: 2px solid black;
-  transition: background-color 0.2s ease-in-out;
-  white-space: nowrap;
-}
-
 button:hover {
   background-color: #e2ff61;
   
   cursor: pointer;
   
+}
+
+a {
+  text-decoration: none;
+  color: #000;
 }

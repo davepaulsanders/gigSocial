@@ -73,7 +73,22 @@
 
 /* LOG IN -----------------------------------------*/
 
-.form-button {
-    margin-top: 1rem;
-    width: 101%;
+FORM {
+    width: 95%;
 }
+
+@media only screen and (min-width: 600px) {
+    FORM {
+        width: 25rem;
+
+    }
+    
+}
+
+.pop-enter {
+    opacity: 0;
+  }
+  .pop-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+  }

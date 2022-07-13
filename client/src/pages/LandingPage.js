@@ -25,7 +25,18 @@ export default function LandingPage() {
             <BUTTON className="form-button">Log In</BUTTON>
           </FORM>
         )}
-        {signUp && <p>Sign up</p>}
+        {signUp && (
+          <FORM>
+            <h2>Sign Up</h2>
+            <label htmlFor="username">Username: </label>
+            <INPUT type="text" />
+            <label htmlFor="email">Email: </label>
+            <INPUT type="text" />
+            <label htmlFor="password">Password: </label>
+            <INPUT type="text" />
+            <BUTTON className="form-button">Sign Up</BUTTON>
+          </FORM>
+        )}
         {logIn ||
           (signUp ? null : (
             <>

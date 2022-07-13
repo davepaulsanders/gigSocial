@@ -1,3 +1,9 @@
+html {
+  box-sizing: border-box!important;
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
@@ -21,4 +27,8 @@ button:hover {
 a {
   text-decoration: none;
   color: #000;
+}
+
+input {
+  border-radius: 0;
 }

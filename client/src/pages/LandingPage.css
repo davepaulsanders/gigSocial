@@ -1,0 +1,48 @@
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-container {
+    margin-top: 0.5rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 8px double #000;
+    margin-bottom: 4.5rem;
+}
+
+.site-title {
+    font-size: 6.5rem;
+    line-height: 73%;
+    letter-spacing: -8px;
+    font-weight: 900;
+    margin: 0;
+    text-align: left;
+    font-family: "Poppins";
+}
+
+.site-description {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0 auto;
+    width: 80%;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+}
+.site-name {
+    font-family: "Poppins";
+    font-weight: 600;
+    position: relative;
+    font-size: 1.4rem;
+    
+}
+.button-container {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+}
+
+.log-in-button {
+    margin-bottom: 0.5rem;
+}

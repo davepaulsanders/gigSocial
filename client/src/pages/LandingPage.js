@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../utils/mutations";
 import { ADD_USER } from "../utils/mutations";
+import Auth from "../utils/frontEndAuth";
 import "./LandingPage.css";
 import {
   FORM,
@@ -29,7 +30,7 @@ export default function LandingPage() {
     e.preventDefault();
     try {
       const { data } = await logInData({ variables: { ...logInFormState } });
-      console.log(data);
+      Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
     }
@@ -38,7 +39,7 @@ export default function LandingPage() {
     e.preventDefault();
     try {
       const { data } = await signUpData({ variables: { ...signUpFormState } });
-      console.log(data);
+      Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
     }

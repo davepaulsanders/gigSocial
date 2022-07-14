@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { LOGIN } from "../utils/mutations";
-import { ADD_USER } from "../utils/mutations";
-import Auth from "../utils/frontEndAuth";
+import { LOGIN } from "../../utils/mutations";
+import { ADD_USER } from "../../utils/mutations";
+import Auth from "../../utils/frontEndAuth";
 import "./LandingPage.css";
 import {
   FORM,
   INPUT,
   BUTTON,
   APPEARDIV,
-} from "../styled-components/styled-components";
+} from "../../styled-components/styled-components";
 
-export default function LandingPage() {
+export const LandingPage = () => {
   const [signUp, setSignUp] = useState(false);
   const [logIn, setLogIn] = useState(false);
   const [logInFormState, setLogInFormState] = useState({
@@ -123,4 +123,4 @@ export default function LandingPage() {
       </div>
     </div>
   );
-}
+};

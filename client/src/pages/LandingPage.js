@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { LOGIN } from "../utils/mutations";
+import { ADD_USER } from "../utils/mutations";
 import "./LandingPage.css";
 import {
   FORM,
@@ -10,14 +13,45 @@ import {
 export default function LandingPage() {
   const [signUp, setSignUp] = useState(false);
   const [logIn, setLogIn] = useState(false);
+  const [logInFormState, setLogInFormState] = useState({
+    email: "",
+    password: "",
+  });
+  const [signUpFormState, setSignUpFormState] = useState({
+    email: "",
+    password: "",
+  });
 
-  const handleLogIn = (e) => {
+  const [logInData, { error }] = useMutation(LOGIN);
+  const [signUpData, { error1 }] = useMutation(ADD_USER);
+
+  const handleLogIn = async (e) => {
     e.preventDefault();
-    const data = new FormData();
+    try {
+      const { data } = await logInData({ variables: { ...logInFormState } });
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
   };
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
-    console.log("click2");
+    try {
+      const { data } = await signUpData({ variables: { ...signUpFormState } });
+      console.log(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  const handleChangeLogIn = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setLogInFormState({ ...logInFormState, [name]: value });
+  };
+  const handleChangeSignUp = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setSignUpFormState({ ...signUpFormState, [name]: value });
   };
 
   return (
@@ -33,21 +67,29 @@ export default function LandingPage() {
           <FORM id="login" onSubmit={handleLogIn}>
             <h2>Log In</h2>
             <label htmlFor="email">Email: </label>
-            <INPUT type="text" name="email" />
+            <INPUT type="email" name="email" onChange={handleChangeLogIn} />
             <label htmlFor="password">Password: </label>
-            <INPUT type="text" name="password" />
+            <INPUT
+              type="password"
+              name="password"
+              onChange={handleChangeLogIn}
+            />
             <BUTTON className="form-button">Log In</BUTTON>
           </FORM>
         )}
         {signUp && (
-          <FORM onSubmit={handleSignUp}>
+          <FORM id="signup" onSubmit={handleSignUp}>
             <h2>Sign Up</h2>
             <label htmlFor="username">Username: </label>
-            <INPUT type="text" name="username" />
+            <INPUT type="text" name="username" onChange={handleChangeSignUp} />
             <label htmlFor="email">Email: </label>
-            <INPUT type="text" name="email" />
+            <INPUT type="email" name="email" onChange={handleChangeSignUp} />
             <label htmlFor="password">Password: </label>
-            <INPUT type="text" name="password" />
+            <INPUT
+              type="password"
+              name="password"
+              onChange={handleChangeSignUp}
+            />
             <BUTTON className="form-button">Sign Up</BUTTON>
           </FORM>
         )}

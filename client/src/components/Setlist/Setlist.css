@@ -1,0 +1,28 @@
+.likes {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.like-count {
+    position: relative;
+    margin: 0;
+    padding-bottom: 0.2rem;
+    padding-left: 0.1rem;
+}
+.song-number {
+    margin-top: 0.33rem;
+    margin-right: 1rem;
+}
+.likes-songs-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+
+.setlist-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}

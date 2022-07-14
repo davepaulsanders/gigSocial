@@ -7,7 +7,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import "./App.css";
 import { LandingPage } from "./pages/LandingPage/LandingPage.js";
-import { Profile } from "./pages/Profile";
+import { Profile } from "./pages/Profile/Profile";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //link to graphql server

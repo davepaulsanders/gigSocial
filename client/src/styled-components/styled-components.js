@@ -9,7 +9,7 @@ const materialize = keyframes`
 100% { opacity: 1; }
 `;
 export const APPEARDIV = styled.div`
-animation-name: ${materialize};
+  animation-name: ${materialize};
   animation-duration: 0.5s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: backwards;
@@ -31,12 +31,10 @@ export const INPUT = styled.input`
   padding: 0.5rem 0.5rem;
   width: 100%;
   margin-bottom: 0.5rem;
-  
 `;
 
 export const BUTTON = styled.button`
   color: #000;
-  width: 27rem;
   margin-top: 0.75rem;
   width: 100%;
   font-size: 1.25rem;
@@ -46,4 +44,14 @@ export const BUTTON = styled.button`
   border: 2px solid black;
   transition: background-color 0.2s ease-in-out;
   white-space: nowrap;
+`;
+
+export const SONG_CONTAINER = styled.div`
+  max-width: 30rem;
+  background-color: #303030;
+  font-size: 1rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  margin: 1rem;
 `;

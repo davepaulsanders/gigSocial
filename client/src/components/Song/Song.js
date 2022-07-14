@@ -2,7 +2,8 @@ import React from "react";
 import { SONG_CONTAINER } from "../../styled-components/styled-components";
 import "./Song.css";
 const lyrics = require("../../assets/lyrics.png");
-export const Setlist = () => {
+
+export const Song = () => {
   return (
     <SONG_CONTAINER>
       <img

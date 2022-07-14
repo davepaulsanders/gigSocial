@@ -25,11 +25,13 @@ export const FORM = styled.form`
   animation-timing-function: ease-in-out;
 `;
 export const INPUT = styled.input`
+  font-size: 1.15rem;
   background-color: transparent;
   border: 2px solid #000;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0.5rem;
   width: 100%;
   margin-bottom: 0.5rem;
+  
 `;
 
 export const BUTTON = styled.button`

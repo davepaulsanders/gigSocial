@@ -37,26 +37,42 @@ export const Profile = () => {
   return (
     <div>
       <Header />
-      <div className="container">
+      <div className="setlist-container container">
         <div className="row">
-          <div className="setlist-header col-4 d-flex">
+          <div className="col setlist-header d-flex">
             <img className="guitar-pick" src={pick} alt="guitar pick" />
             <h2 className="setlists-title">Setlists</h2>
           </div>
-          <div className="plus-col col-8">
+          <div className="col plus-col">
             <img className="plus" src={plus} alt="add playlist" />
           </div>
         </div>
-      </div>
-      <div className="setlist-container">
-        <Setlist />
-        <Setlist />
-        <Setlist />
-        <Setlist />
-        <Setlist />
-        <Setlist />
-        <Setlist />
-        <Setlist />
+        <div className="row">
+          <div className="col-md-6">
+          <Setlist />
+          </div>
+          <div className="col-md-6">
+          <Setlist />
+          </div>
+          <div className="col-md-6">
+          <Setlist />
+          </div>
+          <div className="col-md-6">
+          <Setlist />
+          </div>
+          <div className="col-md-6">
+          <Setlist />
+          </div>
+          <div className="col-md-6">
+          <Setlist />
+          </div>
+          <div className="col-md-6">
+          <Setlist />
+          </div>
+          <div className="col-md-6">
+          <Setlist />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -47,7 +47,7 @@ export const BUTTON = styled.button`
 `;
 
 export const SONG_CONTAINER = styled.div`
-  max-width: 30rem;
+  width: 100%;
   background-color: #303030;
   font-size: 1rem;
   color: white;

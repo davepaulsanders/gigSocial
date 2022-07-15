@@ -3,7 +3,8 @@ import { BUTTON } from "../../styled-components/styled-components";
 import "./Profile.css";
 import { useQuery } from "@apollo/client";
 import { GET_LINK } from "../../utils/queries"
-
+import Auth from "../../utils/frontEndAuth"
+import { Header } from "../../components/"
 export const Profile = () => {
   const {loading, data} = useQuery(GET_LINK)
   const { username } = Auth.getProfile().data
@@ -23,8 +24,6 @@ export const Profile = () => {
         </p>
           <BUTTON onCLick={handleClick}>Connect</BUTTON>
       </div>
-        <Song />
-        <Setlist />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import "./App.css";
 import { LandingPage } from "./pages/LandingPage/LandingPage.js";
+import { Genius } from "./pages/Genius/Genius";
 import { Profile } from "./pages/Profile/Profile";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -38,6 +39,7 @@ function App() {
         <div className="App">
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/genius" element={<Genius />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>

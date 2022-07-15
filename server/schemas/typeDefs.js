@@ -18,6 +18,7 @@ const typeDefs = gql`
     likes: Int
     createdAt: String
     updatedAt: String
+    countSongs: Int
   }
   type Song {
     _id: ID

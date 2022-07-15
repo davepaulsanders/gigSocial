@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_CLIENT } from "../../utils/queries";
+import { GET_CLIENT, GET_ME } from "../../utils/queries";
 import { Header } from "../../components/Header/Header";
 import { Setlist } from "../../components/Setlist/Setlist";
+import Auth from "../../utils/frontEndAuth";
 import "./Profile.css";
 const plus = require("../../assets/plus.png");
 const pick = require("../../assets/guitar-pick.png");
 
 export const Profile = () => {
-  const { loading, data } = useQuery(GET_CLIENT);
-  const [genius, setGenius] = useState("");
+  const userId = Auth.getProfile().data._id;
 
+  const { loading, data } = useQuery(GET_CLIENT);
+  const { loading: userLoading, data: userData } = useQuery(GET_ME, {
+    variables: { _id: userId },
+  });
+  const [genius, setGenius] = useState("");
+  const userProfile = userData?.user;
+  console.log(userProfile)
   const fetchTokenForUser = async (code) => {
     const id = await data?.getClient.id;
     const secret = await data?.getClient.secret;
@@ -33,7 +40,9 @@ export const Profile = () => {
   // const code = window.location.href.split("=")[1].split("&")[0]
   // fetchTokenForUser(code)
   //   }
-
+  if (userLoading) {
+    return <h1>Loading setlists...</h1>;
+  }
   return (
     <div>
       <Header />
@@ -48,30 +57,13 @@ export const Profile = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-6">
-          <Setlist />
-          </div>
-          <div className="col-md-6">
-          <Setlist />
-          </div>
-          <div className="col-md-6">
-          <Setlist />
-          </div>
-          <div className="col-md-6">
-          <Setlist />
-          </div>
-          <div className="col-md-6">
-          <Setlist />
-          </div>
-          <div className="col-md-6">
-          <Setlist />
-          </div>
-          <div className="col-md-6">
-          <Setlist />
-          </div>
-          <div className="col-md-6">
-          <Setlist />
-          </div>
+          {userProfile.setlists.map((set) => {
+            return (
+              <div key={set.setListName} className="col-md-6">
+                <Setlist username={userProfile.username} setlist={set} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

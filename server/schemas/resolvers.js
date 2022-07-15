@@ -1,12 +1,15 @@
 const { User, Setlist, Song, Comment } = require("../models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
-require("dotenv").config()
+require("dotenv").config();
 
 const resolvers = {
   Query: {
     user: async (parent, { _id }) => {
-      const user = await User.findOne({ _id: _id });
+      const user = await (
+        await User.findOne({ _id: _id })
+      ).populate("setlists")
+
       console.log(user);
       return user;
     },
@@ -16,15 +19,15 @@ const resolvers = {
     },
     getLink: async (parent, args) => {
       // grabbing genius link from env
-      const linkUrl = process.env.GENIUS_LINK
+      const linkUrl = process.env.GENIUS_LINK;
       // returning it
-      return {url: linkUrl};
+      return { url: linkUrl };
     },
     getClient: async (parent, args) => {
-      const id = process.env.CLIENT_ID
+      const id = process.env.CLIENT_ID;
       const secret = process.env.CLIENT_SECRET;
-      return { id, secret }
-    }
+      return { id, secret };
+    },
   },
   Mutation: {
     addUser: async (parent, args) => {

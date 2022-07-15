@@ -1,20 +1,15 @@
-html {
-  box-sizing: border-box!important;
+* {
+  font-family: "Raleway", sans-serif !important;
 }
 *, ::after, ::before {
-  box-sizing: border-box;
+  box-sizing: border-box!important;
 }
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #52b788!important;
-  font-family: "Raleway", sans-serif;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  
 }
 
 button:hover {
@@ -25,8 +20,8 @@ button:hover {
 }
 
 a {
-  text-decoration: none;
-  color: #000;
+  text-decoration: none!important;
+  color: #000!important;
 }
 
 input {

@@ -11,11 +11,7 @@
     width: 5rem;
     height: 100%;
 }
-.setlist-art {
-    width: 5rem;
-    height: 100%;
-    background-color: rgb(68, 68, 68);
-}
+
 .song-name {
     font-weight: bold;
 }

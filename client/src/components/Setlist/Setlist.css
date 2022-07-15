@@ -1,3 +1,11 @@
+.setlist-art {
+    width: 5rem;
+    height: 100%;
+    background-color: rgb(68, 68, 68);
+}
+.song-name {
+    font-weight: bold;
+}
 .likes {
     width: 1.5rem;
     height: 1.5rem;
@@ -15,14 +23,20 @@
 }
 .likes-songs-container{
     display: flex;
+    flex-grow: 1;
     justify-content: center;
     align-items: center;
     margin-right: 1rem;
     margin-top: 1rem;
 }
-
+.album-info {
+    margin: 0;
+}
 .setlist-info-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    justify-content: center;
+    flex-grow: 3;
+    text-align: left;
+    margin-left: 1rem;
 }

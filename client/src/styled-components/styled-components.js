@@ -53,5 +53,6 @@ export const SONG_CONTAINER = styled.div`
   color: white;
   display: flex;
   align-items: center;
-  margin: 1rem;
+  margin-bottom: 1px;
+  
 `;

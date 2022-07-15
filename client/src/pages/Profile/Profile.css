@@ -1,0 +1,32 @@
+.setlist-container {
+    margin: 0 auto;
+    width: 95%;
+    
+}
+
+.setlists-title {
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+    top: -2px;
+}
+.setlist-header {
+    margin-bottom: 0.5rem;
+}
+.container {
+    align-items: center;
+
+}
+.plus-col {
+    text-align: right;
+}
+.plus {
+    width: 2rem;
+    margin-right: 0.5rem;
+}
+
+.guitar-pick {
+    width: 2rem!important;
+    height: 2rem;
+    margin: 0 0.5rem;
+}

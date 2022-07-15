@@ -1,6 +1,7 @@
 const { User, Setlist, Song, Comment } = require("../models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
+require("dotenv").config()
 
 const resolvers = {
   Query: {
@@ -13,6 +14,12 @@ const resolvers = {
       const setlist = await Setlist.findOne({ _id: _id });
       return setlist;
     },
+    getLink: async (parent, args) => {
+      // grabbing genius link from env
+      const linkUrl = process.env.GENIUS_LINK
+      // returning it
+      return {url: linkUrl};
+    }
   },
   Mutation: {
     addUser: async (parent, args) => {

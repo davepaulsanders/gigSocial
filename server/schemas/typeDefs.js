@@ -38,9 +38,13 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
+  type Genius {
+    url: String
+  }
   type Query {
     user(_id: ID!): User
     getSetlist(_id: ID): Setlist
+    getLink: Genius
   }
   type Mutation {
     login(email: String!, password: String!): Auth

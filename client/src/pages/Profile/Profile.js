@@ -1,18 +1,23 @@
 import React from "react";
-import { BUTTON, SONG } from "../../styled-components/styled-components";
+import { BUTTON } from "../../styled-components/styled-components";
 import "./Profile.css";
-const CLIENT_ID =
-"Q5kRxC0twZ2MRDhNOFRYuNme6W1LiGmPols-Dddpwup8cnBQ5AB9h-mk_Y11O43M";
-const CLIENT_SECRET =
-"UDZmx2IDkOMuHphTTh6J3YU77NxcZqX2tpdx5bQykIGKWlnIGRp1rngHPSRG_Xy7vFuGPmoUJRszeAfDBT4iFQ";
-const link = `https://api.genius.com/oauth/authorize?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&redirect_uri=https://localhost:3000/profile&scope=me&state=statevalue&response_type=code`;
+import { useQuery } from "@apollo/client";
+import { GET_LINK } from "../../utils/queries"
+
+const link = ""
 
 export const Profile = () => {
+  
+  const {loading, data} = useQuery(GET_LINK)
+  const handleClick = (e) => {
+    e.preventDefault()
+      const { url } = data.getLink
+      window.location.assign(url)
+  }
+  
   return (
     <div>
-      <a href={link}>
-        <BUTTON>Click to connect to genius</BUTTON>
-      </a>
+        <BUTTON onClick={handleClick}>Click to connect to genius</BUTTON>
     </div>
   );
 };

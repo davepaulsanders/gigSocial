@@ -19,6 +19,11 @@ const resolvers = {
       const linkUrl = process.env.GENIUS_LINK
       // returning it
       return {url: linkUrl};
+    },
+    getClient: async (parent, args) => {
+      const id = process.env.CLIENT_ID
+      const secret = process.env.CLIENT_SECRET;
+      return { id, secret }
     }
   },
   Mutation: {

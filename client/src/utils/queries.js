@@ -7,3 +7,12 @@ query getLink {
     } 
   }
   `
+
+export const GET_CLIENT = gql`
+query getClient {
+    getClient {
+      id
+      secret
+    } 
+  }
+  `

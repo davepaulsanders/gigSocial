@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { GET_CLIENT, GET_ME } from "../../utils/queries";
 import { ADD_SETLIST } from "../../utils/mutations";
 import { Header } from "../../components/Header/Header";
@@ -11,19 +11,33 @@ const plus = require("../../assets/plus.png");
 const pick = require("../../assets/guitar-pick.png");
 
 export const Profile = () => {
+  // Getting userId from token to get user data
   const userId = Auth.getProfile().data._id;
-
+  // Creating query hook and then querying that data immediately
   const { loading, data } = useQuery(GET_CLIENT);
   const { loading: userLoading, data: userData } = useQuery(GET_ME, {
     variables: { _id: userId },
   });
-  const [genius, setGenius] = useState("");
+  // storing that data to variable
   const userProfile = userData?.user;
 
+  // mutation to add setlist
+  const [createSetlist, { error }] = useMutation(ADD_SETLIST);
+
+  // variable to add genius token
+  const [genius, setGenius] = useState("");
+
+  // Add a setlist
   const addSetlist = (e) => {
     e.preventDefault();
+    const setListName = document.querySelector("#setListName").value;
+    const setListInfo = { setListName, setListCreator: userProfile.username };
+    createSetlist({ variables: { ...setListInfo } });
+    toggleModal();
+    // somehow we need to update the mutation
   };
-
+  console.log(userProfile);
+  // For opening and closing the add setlist modal
   const toggleModal = (e) => {
     e.preventDefault();
     const modal = document.querySelector(".modal-container");
@@ -33,7 +47,6 @@ export const Profile = () => {
       modal.classList.add("open-modal");
     }
   };
-
   const fetchTokenForUser = async (code) => {
     const id = await data?.getClient.id;
     const secret = await data?.getClient.secret;
@@ -62,7 +75,8 @@ export const Profile = () => {
   return (
     <div className="d-flex flex-column justify-content-center">
       <Header />
-      <div className="modal-container position-absolute open-modal">
+      {/* ADD SETLIST MODAL */}
+      <div className="modal-container position-absolute">
         <FORM className="add-setlist-form position-relative">
           <div className="d-flex justify-content-between w-100">
             <h2>Name your new setlist!</h2>
@@ -70,10 +84,11 @@ export const Profile = () => {
               <img className="close" src={plus} alt="add playlist" />
             </button>
           </div>
-          <INPUT></INPUT>
+          <INPUT type="text" id="setListName"></INPUT>
           <BUTTON onClick={addSetlist}>Save setlist</BUTTON>
         </FORM>
       </div>
+      {/* SETLISTS */}
       <div className="setlist-container container">
         <div className="row">
           <div className="col setlist-header d-flex">
@@ -89,19 +104,19 @@ export const Profile = () => {
         <div className="row">
           {/* If there is only one setlist */}
           {userProfile.setlists.length === 1 ? (
-            <div key={userProfile.setlists[0].setListName} className="col">
+            <div className="col">
               <Setlist
                 username={userProfile.username}
                 setlist={userProfile.setlists[0]}
               />
             </div>
           ) : (
-            // For multiple setlists
-            userProfile.setlists.map((set) => {
-              <div key={set.setListName} className="col-md-6">
+            // if there are many setlists
+            userProfile.setlists.map((set) => (
+              <div className="col-md-6">
                 <Setlist username={userProfile.username} setlist={set} />
-              </div>;
-            })
+              </div>
+            ))
           )}
         </div>
       </div>

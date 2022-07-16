@@ -30,7 +30,7 @@ export const ADD_SETLIST = gql`
       setListName
       likes
       countSongs
-      username
+      setListCreator
     }
   }
 `;

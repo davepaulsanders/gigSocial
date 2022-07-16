@@ -3,6 +3,7 @@ import { SONG_CONTAINER } from "../../styled-components/styled-components";
 import "./Setlist.css";
 const notes = require("../../assets/notes.png");
 const heart = require("../../assets/heart.png");
+
 export const Setlist = ({ username, setlist }) => {
   const colorsArray = ["#444444", "#8A202C", "#2C46B7", "#31502D"];
   const randomColor = colorsArray[Math.floor(Math.random() * 5)];

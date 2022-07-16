@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_CLIENT, GET_ME } from "../../utils/queries";
+import { ADD_SETLIST } from "../../utils/mutations";
 import { Header } from "../../components/Header/Header";
 import { Setlist } from "../../components/Setlist/Setlist";
 import Auth from "../../utils/frontEndAuth";
 import "./Profile.css";
+import { FORM, INPUT, BUTTON } from "../../styled-components/styled-components";
 const plus = require("../../assets/plus.png");
 const pick = require("../../assets/guitar-pick.png");
 
@@ -17,7 +19,21 @@ export const Profile = () => {
   });
   const [genius, setGenius] = useState("");
   const userProfile = userData?.user;
-  console.log(userProfile);
+
+  const addSetlist = (e) => {
+    e.preventDefault();
+  };
+
+  const toggleModal = (e) => {
+    e.preventDefault();
+    const modal = document.querySelector(".modal-container");
+    if (modal.classList.contains("open-modal")) {
+      modal.classList.remove("open-modal");
+    } else {
+      modal.classList.add("open-modal");
+    }
+  };
+
   const fetchTokenForUser = async (code) => {
     const id = await data?.getClient.id;
     const secret = await data?.getClient.secret;
@@ -44,8 +60,20 @@ export const Profile = () => {
     return <h1>Loading setlists...</h1>;
   }
   return (
-    <div>
+    <div className="d-flex flex-column justify-content-center">
       <Header />
+      <div className="modal-container position-absolute open-modal">
+        <FORM className="add-setlist-form position-relative">
+          <div className="d-flex justify-content-between w-100">
+            <h2>Name your new setlist!</h2>
+            <button className="add-setlist" type="button" onClick={toggleModal}>
+              <img className="close" src={plus} alt="add playlist" />
+            </button>
+          </div>
+          <INPUT></INPUT>
+          <BUTTON onClick={addSetlist}>Save setlist</BUTTON>
+        </FORM>
+      </div>
       <div className="setlist-container container">
         <div className="row">
           <div className="col setlist-header d-flex">
@@ -53,10 +81,13 @@ export const Profile = () => {
             <h2 className="setlists-title">Setlists</h2>
           </div>
           <div className="col plus-col">
-            <img className="plus" src={plus} alt="add playlist" />
+            <button className="add-setlist" type="button" onClick={toggleModal}>
+              <img className="plus" src={plus} alt="add playlist" />
+            </button>
           </div>
         </div>
         <div className="row">
+          {/* If there is only one setlist */}
           {userProfile.setlists.length === 1 ? (
             <div key={userProfile.setlists[0].setListName} className="col">
               <Setlist
@@ -65,6 +96,7 @@ export const Profile = () => {
               />
             </div>
           ) : (
+            // For multiple setlists
             userProfile.setlists.map((set) => {
               <div key={set.setListName} className="col-md-6">
                 <Setlist username={userProfile.username} setlist={set} />

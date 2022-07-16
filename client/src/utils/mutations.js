@@ -23,3 +23,14 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_SETLIST = gql`
+  mutation ($setListName: String!, $setListCreator: String!) {
+    addSetlist(setListName: $setListName, setListCreator: $setListCreator) {
+      setListName
+      likes
+      countSongs
+      username
+    }
+  }
+`;

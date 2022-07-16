@@ -10,7 +10,6 @@ const resolvers = {
         await User.findOne({ _id: _id })
       ).populate("setlists")
 
-      console.log(user);
       return user;
     },
     getSetlist: async (parent, { _id }) => {

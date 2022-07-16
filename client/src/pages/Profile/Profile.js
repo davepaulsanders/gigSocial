@@ -17,7 +17,7 @@ export const Profile = () => {
   });
   const [genius, setGenius] = useState("");
   const userProfile = userData?.user;
-  console.log(userProfile)
+  console.log(userProfile);
   const fetchTokenForUser = async (code) => {
     const id = await data?.getClient.id;
     const secret = await data?.getClient.secret;
@@ -57,13 +57,20 @@ export const Profile = () => {
           </div>
         </div>
         <div className="row">
-          {userProfile.setlists.map((set) => {
-            return (
+          {userProfile.setlists.length === 1 ? (
+            <div key={userProfile.setlists[0].setListName} className="col">
+              <Setlist
+                username={userProfile.username}
+                setlist={userProfile.setlists[0]}
+              />
+            </div>
+          ) : (
+            userProfile.setlists.map((set) => {
               <div key={set.setListName} className="col-md-6">
                 <Setlist username={userProfile.username} setlist={set} />
-              </div>
-            );
-          })}
+              </div>;
+            })
+          )}
         </div>
       </div>
     </div>

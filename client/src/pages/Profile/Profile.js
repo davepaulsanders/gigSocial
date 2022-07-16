@@ -1,24 +1,31 @@
 import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
+import "./Profile.css";
+
+// queries and mutations
 import { GET_CLIENT, GET_ME } from "../../utils/queries";
 import { ADD_SETLIST } from "../../utils/mutations";
+
+// components
 import { Header } from "../../components/Header/Header";
 import { Setlist } from "../../components/Setlist/Setlist";
-import Auth from "../../utils/frontEndAuth";
-import "./Profile.css";
 import { FORM, INPUT, BUTTON } from "../../styled-components/styled-components";
+
+// authentication
+import Auth from "../../utils/frontEndAuth";
+
+//images
 const plus = require("../../assets/plus.png");
 const pick = require("../../assets/guitar-pick.png");
 
 export const Profile = () => {
   // Getting userId from token to get user data
   const userId = Auth.getProfile().data._id;
-  // Creating query hook and then querying that data immediately
 
   // This query retrieves client info to get geniusAPI token
   const { loading, data } = useQuery(GET_CLIENT);
 
-  // Retreiving user dta and setlists
+  // Retreiving user data and setlists
   const { loading: userLoading, data: userData } = useQuery(GET_ME, {
     variables: { _id: userId },
   });
@@ -27,6 +34,7 @@ export const Profile = () => {
 
   // mutation to add setlist
   const [createSetlist, { error }] = useMutation(ADD_SETLIST, {
+    // refetch get me to refresh cache
     refetchQueries: [{ query: GET_ME, variables: { _id: userId } }],
   });
 
@@ -53,6 +61,7 @@ export const Profile = () => {
       modal.classList.add("open-modal");
     }
   };
+
   const fetchTokenForUser = async (code) => {
     const id = await data?.getClient.id;
     const secret = await data?.getClient.secret;

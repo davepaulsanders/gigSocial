@@ -20,7 +20,7 @@
     font-weight: 900;
     margin: 0 0 0 0.5rem;
     text-align: left;
-    font-family: "Poppins";
+    font-family: "Poppins"!important;
 }
 
 .genius-prompt {

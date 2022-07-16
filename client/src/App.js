@@ -9,6 +9,7 @@ import "./App.css";
 import { LandingPage } from "./pages/LandingPage/LandingPage.js";
 import { Genius } from "./pages/Genius/Genius";
 import { Profile } from "./pages/Profile/Profile";
+import { SetlistView } from "./pages/SetlistView/SetlistView";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //link to graphql server
@@ -41,6 +42,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/genius" element={<Genius />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/setlists/:id" element={<SetlistView />} />
           </Routes>
         </div>
       </Router>

@@ -8,12 +8,14 @@ const resolvers = {
     user: async (parent, { _id }) => {
       const user = await (
         await User.findOne({ _id: _id })
-      ).populate("setlists")
+      ).populate("setlists");
 
       return user;
     },
     getSetlist: async (parent, { _id }) => {
-      const setlist = await Setlist.findOne({ _id: _id });
+      const setlist = await Setlist.findOne({ _id: _id })
+        .populate("songs")
+        .populate("comments");
       return setlist;
     },
     getLink: async (parent, args) => {

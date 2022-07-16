@@ -48,7 +48,7 @@ const typeDefs = gql`
   }
   type Query {
     user(_id: ID!): User
-    getSetlist(_id: ID): Setlist
+    getSetlist(_id: ID!): Setlist
     getLink: Genius
     getClient: Client
   }

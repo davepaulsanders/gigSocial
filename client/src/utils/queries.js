@@ -23,9 +23,30 @@ export const GET_ME = gql`
       username
       email
       setlists {
+        _id
         setListName
         likes
         countSongs
+      }
+    }
+  }
+`;
+export const GET_SETLIST = gql`
+  query setlist($_id: ID!) {
+    getSetlist(_id: $_id) {
+      setListName
+      setListCreator
+      songs {
+        songTitle
+        artist
+        image
+        bpm
+        embed
+        lyrics
+      }
+      comments {
+        commentText
+        username
       }
     }
   }

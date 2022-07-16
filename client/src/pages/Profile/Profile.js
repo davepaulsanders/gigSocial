@@ -14,7 +14,11 @@ export const Profile = () => {
   // Getting userId from token to get user data
   const userId = Auth.getProfile().data._id;
   // Creating query hook and then querying that data immediately
+
+  // This query retrieves client info to get geniusAPI token
   const { loading, data } = useQuery(GET_CLIENT);
+
+  // Retreiving user dta and setlists
   const { loading: userLoading, data: userData } = useQuery(GET_ME, {
     variables: { _id: userId },
   });
@@ -22,7 +26,9 @@ export const Profile = () => {
   const userProfile = userData?.user;
 
   // mutation to add setlist
-  const [createSetlist, { error }] = useMutation(ADD_SETLIST);
+  const [createSetlist, { error }] = useMutation(ADD_SETLIST, {
+    refetchQueries: [{ query: GET_ME, variables: { _id: userId } }],
+  });
 
   // variable to add genius token
   const [genius, setGenius] = useState("");
@@ -33,10 +39,10 @@ export const Profile = () => {
     const setListName = document.querySelector("#setListName").value;
     const setListInfo = { setListName, setListCreator: userProfile.username };
     createSetlist({ variables: { ...setListInfo } });
-    toggleModal();
+    toggleModal(e);
     // somehow we need to update the mutation
   };
-  console.log(userProfile);
+
   // For opening and closing the add setlist modal
   const toggleModal = (e) => {
     e.preventDefault();
@@ -104,7 +110,7 @@ export const Profile = () => {
         <div className="row">
           {/* If there is only one setlist */}
           {userProfile.setlists.length === 1 ? (
-            <div className="col">
+            <div className="col" key={userProfile.setlists[0].setListName}>
               <Setlist
                 username={userProfile.username}
                 setlist={userProfile.setlists[0]}
@@ -113,7 +119,7 @@ export const Profile = () => {
           ) : (
             // if there are many setlists
             userProfile.setlists.map((set) => (
-              <div className="col-md-6">
+              <div className="col-md-6" key={set.setListName}>
                 <Setlist username={userProfile.username} setlist={set} />
               </div>
             ))

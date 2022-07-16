@@ -27,7 +27,6 @@ export const GET_ME = gql`
         likes
         countSongs
       }
-      
     }
   }
 `;

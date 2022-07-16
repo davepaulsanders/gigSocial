@@ -6,7 +6,7 @@ const heart = require("../../assets/heart.png");
 
 export const Setlist = ({ username, setlist }) => {
   const colorsArray = ["#444444", "#8A202C", "#2C46B7", "#31502D"];
-  const randomColor = colorsArray[Math.floor(Math.random() * 5)];
+  const randomColor = colorsArray[Math.floor(Math.random() * 4)];
   const { setListName, countSongs, likes } = setlist;
   return (
     <SONG_CONTAINER>

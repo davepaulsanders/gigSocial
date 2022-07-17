@@ -25,7 +25,7 @@ export const FORM = styled.form`
   animation-timing-function: ease-in-out;
   max-height: 40rem;
   overflow-y: scroll;
-  z-index: 100;
+  z-index: 1;
 `;
 export const INPUT = styled.input`
   font-size: 1.15rem;
@@ -57,5 +57,4 @@ export const SONG_CONTAINER = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 1px;
-  
 `;

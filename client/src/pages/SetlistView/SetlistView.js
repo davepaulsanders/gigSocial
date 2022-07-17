@@ -34,6 +34,8 @@ export const SetlistView = () => {
   // save searchData variable
   const [searchData, setSearchData] = useState();
 
+  const [active, setActive] = useState("");
+
   // For opening and closing the add setlist modal
   const toggleModal = (e) => {
     e.preventDefault();
@@ -41,6 +43,7 @@ export const SetlistView = () => {
     if (modal.classList.contains("open-modal")) {
       modal.classList.remove("open-modal");
     } else {
+      // remove searchData if modal is closed
       if (searchData) {
         setSearchData([]);
       }
@@ -48,6 +51,7 @@ export const SetlistView = () => {
     }
   };
 
+  // clean up search term and send it to fetch
   const searchGenius = (e) => {
     e.preventDefault();
 
@@ -57,6 +61,8 @@ export const SetlistView = () => {
       .trim();
     songSearch(searchTerm);
   };
+
+  // fetch function for getting songs from genius
   const songSearch = async (searchTerm) => {
     const geniusToken = localStorage.getItem("genius_token");
     const songs = await fetch(
@@ -65,7 +71,7 @@ export const SetlistView = () => {
     const list = await songs.json();
     setSearchData(list.response.hits);
   };
-console.log(searchData)
+
   // if no data yet
   if (loading) {
     return "";
@@ -85,13 +91,20 @@ console.log(searchData)
           </div>
           <INPUT type="text" id="song-search"></INPUT>
           <BUTTON onClick={searchGenius}>Search Genius</BUTTON>
+          {/* SEARCH DATA */}
           <APPEARDIV className="results-container">
-            {searchData !== undefined ? (
+            {searchData ? (
               <p className="choose">Choose a song to add!</p>
             ) : null}
             {searchData !== undefined
               ? searchData.map((song) => (
-                  <SearchCard key={song.result.id} song={song.result} />
+                  <SearchCard
+                    active={active}
+                    setActive={setActive}
+                    style={"cursor: pointer"}
+                    key={song.result.id}
+                    song={song.result}
+                  />
                 ))
               : null}
           </APPEARDIV>

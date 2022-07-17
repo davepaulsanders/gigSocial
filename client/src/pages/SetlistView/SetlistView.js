@@ -18,12 +18,15 @@ const plus = require("../../assets/plus.png");
 const pick = require("../../assets/guitar-pick.png");
 
 export const SetlistView = () => {
+  // get the setlist data
   const setListId = useParams().id;
   const { loading, data } = useQuery(GET_SETLIST, {
     variables: { _id: setListId },
   });
-
   const setListData = data?.getSetlist;
+
+  // save searchData variable
+  const [searchData, setSearchData] = useState([]);
 
   // For opening and closing the add setlist modal
   const toggleModal = (e) => {
@@ -32,18 +35,26 @@ export const SetlistView = () => {
     if (modal.classList.contains("open-modal")) {
       modal.classList.remove("open-modal");
     } else {
+      if (searchData) {
+        setSearchData();
+      }
       modal.classList.add("open-modal");
     }
   };
-  //console.log(setListData)
-  const songSearch = async () => {
+
+  const searchGenius = (e) => {
+    e.preventDefault();
+    const searchTerm = e.target.value.replace(" ", "%20").trim();
+    console.log(searchTerm);
+    songSearch(searchTerm);
+  };
+  const songSearch = async (searchTerm) => {
     const geniusToken = localStorage.getItem("genius_token");
-    console.log(geniusToken);
     const songs = await fetch(
-      `https://api.genius.com/search?q=Sia&access_token=${geniusToken}`
+      `https://api.genius.com/search?q=${searchTerm}and%20Shout&access_token=${geniusToken}`
     );
     const list = await songs.json();
-    console.log(list);
+    setSearchData(list.response.hits);
   };
 
   // if no data yet
@@ -53,18 +64,18 @@ export const SetlistView = () => {
   return (
     <div className="d-flex flex-column justify-content-center">
       <Header />
-      <button onClick={songSearch}>Click</button>
       {/* ADD SONG MODAL */}
       <div className="modal-container position-absolute">
         <FORM className="add-setlist-form position-relative">
           <div className="d-flex justify-content-between w-100">
-            <h2>Name your new setlist!</h2>
+            <h2>Search for a song</h2>
             <button className="add-setlist" type="button" onClick={toggleModal}>
               <img className="close" src={plus} alt="add playlist" />
             </button>
           </div>
           <INPUT type="text" id="setListName"></INPUT>
-          <BUTTON>Save setlist</BUTTON>
+          <BUTTON onClick={searchGenius}>Search Genius</BUTTON>
+          {searchData ? <p>here</p> : null}
         </FORM>
       </div>
       {/* SONGS */}

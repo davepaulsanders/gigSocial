@@ -23,6 +23,9 @@ export const FORM = styled.form`
   animation-name: ${materializeScale};
   animation-duration: 0.3s;
   animation-timing-function: ease-in-out;
+  max-height: 40rem;
+  overflow-y: scroll;
+  z-index: 100;
 `;
 export const INPUT = styled.input`
   font-size: 1.15rem;

@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
-
+import "./SetlistView.css";
 // queries and mutations
 import { GET_SETLIST } from "../../utils/queries";
 
 // components
 import { Header } from "../../components/Header/Header";
 import { Song } from "../../components/Song/Song";
-import { FORM, INPUT, BUTTON } from "../../styled-components/styled-components";
+import { SearchCard } from "../../components/SearchCard/SearchCard";
+import {
+  FORM,
+  INPUT,
+  BUTTON,
+  APPEARDIV,
+} from "../../styled-components/styled-components";
 
 // authentication
 import Auth from "../../utils/frontEndAuth";
@@ -26,7 +32,7 @@ export const SetlistView = () => {
   const setListData = data?.getSetlist;
 
   // save searchData variable
-  const [searchData, setSearchData] = useState([]);
+  const [searchData, setSearchData] = useState();
 
   // For opening and closing the add setlist modal
   const toggleModal = (e) => {
@@ -36,7 +42,7 @@ export const SetlistView = () => {
       modal.classList.remove("open-modal");
     } else {
       if (searchData) {
-        setSearchData();
+        setSearchData([]);
       }
       modal.classList.add("open-modal");
     }
@@ -44,23 +50,27 @@ export const SetlistView = () => {
 
   const searchGenius = (e) => {
     e.preventDefault();
-    const searchTerm = e.target.value.replace(" ", "%20").trim();
-    console.log(searchTerm);
+
+    const searchTerm = document
+      .querySelector("#song-search")
+      .value.replace(" ", "%20")
+      .trim();
     songSearch(searchTerm);
   };
   const songSearch = async (searchTerm) => {
     const geniusToken = localStorage.getItem("genius_token");
     const songs = await fetch(
-      `https://api.genius.com/search?q=${searchTerm}and%20Shout&access_token=${geniusToken}`
+      `https://api.genius.com/search?q=${searchTerm}&access_token=${geniusToken}`
     );
     const list = await songs.json();
     setSearchData(list.response.hits);
   };
-
+console.log(searchData)
   // if no data yet
   if (loading) {
     return "";
   }
+
   return (
     <div className="d-flex flex-column justify-content-center">
       <Header />
@@ -73,9 +83,18 @@ export const SetlistView = () => {
               <img className="close" src={plus} alt="add playlist" />
             </button>
           </div>
-          <INPUT type="text" id="setListName"></INPUT>
+          <INPUT type="text" id="song-search"></INPUT>
           <BUTTON onClick={searchGenius}>Search Genius</BUTTON>
-          {searchData ? <p>here</p> : null}
+          <APPEARDIV className="results-container">
+            {searchData !== undefined ? (
+              <p className="choose">Choose a song to add!</p>
+            ) : null}
+            {searchData !== undefined
+              ? searchData.map((song) => (
+                  <SearchCard key={song.result.id} song={song.result} />
+                ))
+              : null}
+          </APPEARDIV>
         </FORM>
       </div>
       {/* SONGS */}

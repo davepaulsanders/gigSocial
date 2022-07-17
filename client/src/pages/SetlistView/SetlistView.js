@@ -101,6 +101,7 @@ export const SetlistView = () => {
                   <SearchCard
                     active={active}
                     setActive={setActive}
+                    toggleModal={toggleModal}
                     style={"cursor: pointer"}
                     key={song.result.id}
                     song={song.result}

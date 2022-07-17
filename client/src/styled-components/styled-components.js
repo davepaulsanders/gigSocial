@@ -57,4 +57,5 @@ export const SONG_CONTAINER = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 1px;
+  overflow: hidden;
 `;

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useMutation, useQuery } from "@apollo/client";
+import React, { useState, useEffect } from "react";
+import { useMutation, useQuery, useLazyQuery } from "@apollo/client";
 import "./Profile.css";
 
 // queries and mutations
@@ -23,7 +23,7 @@ export const Profile = () => {
   const userId = Auth.getProfile().data._id;
 
   // This query retrieves client info to get geniusAPI token
-  const { loading, data } = useQuery(GET_CLIENT);
+  const [getClient, { loading, data }] = useLazyQuery(GET_CLIENT);
 
   // Retreiving user data and setlists
   const { loading: userLoading, data: userData } = useQuery(GET_ME, {
@@ -38,9 +38,10 @@ export const Profile = () => {
     refetchQueries: [{ query: GET_ME, variables: { _id: userId } }],
   });
 
-  // variable to add genius token
-  const [genius, setGenius] = useState("");
-
+  useEffect(() => {
+    const code = window.location.href.split("=")[1].split("&")[0];
+    fetchTokenForUser(code);
+  }, []);
   // Add a setlist
   const addSetlist = (e) => {
     e.preventDefault();
@@ -63,27 +64,31 @@ export const Profile = () => {
   };
 
   const fetchTokenForUser = async (code) => {
-    const id = await data?.getClient.id;
-    const secret = await data?.getClient.secret;
-    const body = `client_secret=${secret}&grant_type=authorization_code&code=${code}&client_id=${id}&redirect_uri=http://localhost:3000/profile&response_type=code`;
-    if (!id || !secret) {
+    const geniusToken = localStorage.getItem("genius_token");
+    if (geniusToken) {
       return;
     }
-    const token = await fetch("https://api.genius.com/oauth/token/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body,
-    });
-    const tokenResponse = await token.json();
-    localStorage.setItem("genius_token", tokenResponse.access_token);
-    setGenius(tokenResponse.access_token);
-    return;
+    const client = await getClient();
+    const clientInfo = client.data.getClient;
+    const { id, secret } = clientInfo;
+    console.log(id, secret)
+    console.log("fetching genius token...");
+    const body = `client_secret=${secret}&grant_type=authorization_code&code=${code}&client_id=${id}&redirect_uri=http://localhost:3000/profile&response_type=code`;
+    try {
+      const token = await fetch("https://api.genius.com/oauth/token/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      });
+      const tokenResponse = await token.json();
+      //console.log(tokenResponse.access_token);
+      localStorage.setItem("genius_token", tokenResponse.access_token);
+      return;
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  //   if (!genius) {
-  // const code = window.location.href.split("=")[1].split("&")[0]
-  // fetchTokenForUser(code)
-  //   }
   if (userLoading) {
     return <h1>Loading setlists...</h1>;
   }

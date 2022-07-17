@@ -24,7 +24,7 @@ export const SetlistView = () => {
   });
 
   const setListData = data?.getSetlist;
-  console.log(setListData);
+
   // For opening and closing the add setlist modal
   const toggleModal = (e) => {
     e.preventDefault();
@@ -35,10 +35,26 @@ export const SetlistView = () => {
       modal.classList.add("open-modal");
     }
   };
+  //console.log(setListData)
+  const fetchSongs = async () => {
+    const geniusToken = localStorage.getItem("genius_token");
+    const songs = await fetch("https://api.genius.com/search?q=Sia", {
+      headers: {
+        Authorization: `Bearer ${JSON.parse(geniusToken)}`,
+      },
+    });
+    const list = await songs.json();
+    console.log(list);
+  };
 
+  // if no data yet
+  if (loading) {
+    return "";
+  }
   return (
     <div className="d-flex flex-column justify-content-center">
       <Header />
+      <button onClick={fetchSongs}>Click</button>
       {/* ADD SONG MODAL */}
       <div className="modal-container position-absolute">
         <FORM className="add-setlist-form position-relative">

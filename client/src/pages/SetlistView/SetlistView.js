@@ -36,13 +36,12 @@ export const SetlistView = () => {
     }
   };
   //console.log(setListData)
-  const fetchSongs = async () => {
+  const songSearch = async () => {
     const geniusToken = localStorage.getItem("genius_token");
-    const songs = await fetch("https://api.genius.com/search?q=Sia", {
-      headers: {
-        Authorization: `Bearer ${JSON.parse(geniusToken)}`,
-      },
-    });
+    console.log(geniusToken);
+    const songs = await fetch(
+      `https://api.genius.com/search?q=Sia&access_token=${geniusToken}`
+    );
     const list = await songs.json();
     console.log(list);
   };
@@ -54,7 +53,7 @@ export const SetlistView = () => {
   return (
     <div className="d-flex flex-column justify-content-center">
       <Header />
-      <button onClick={fetchSongs}>Click</button>
+      <button onClick={songSearch}>Click</button>
       {/* ADD SONG MODAL */}
       <div className="modal-container position-absolute">
         <FORM className="add-setlist-form position-relative">

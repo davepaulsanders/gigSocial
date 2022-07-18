@@ -26,8 +26,9 @@ const pick = require("../../assets/guitar-pick.png");
 export const SetlistView = () => {
   // get the setlist data
   const setListId = useParams().id;
+
   const { loading, data } = useQuery(GET_SETLIST, {
-    variables: { _id: setListId },
+    variables: { setListId: setListId },
   });
   const setListData = data?.getSetlist;
 
@@ -50,7 +51,7 @@ export const SetlistView = () => {
       modal.classList.add("open-modal");
     }
   };
-
+console.log(setListData)
   // clean up search term and send it to fetch
   const searchGenius = (e) => {
     e.preventDefault();
@@ -76,7 +77,6 @@ export const SetlistView = () => {
   if (loading) {
     return "";
   }
-
   return (
     <div className="d-flex flex-column justify-content-center">
       <Header />
@@ -127,7 +127,7 @@ export const SetlistView = () => {
         <div className="row">
           {/* If there is only one song */}
           {setListData.songs.length === 1 ? (
-            <div className="col" key={setListData.song[0].songTitle}>
+            <div className="col" key={setListData.song[0].artist}>
               <Song
                 setListCreator={setListData.setListCreator}
                 song={setListData.songs[0]}
@@ -136,7 +136,7 @@ export const SetlistView = () => {
           ) : (
             // if there are many songs
             setListData.songs.map((song) => (
-              <div className="col-md-6" key={song.songTitle}>
+              <div className="col-md-6" key={`${song.artist}-${song.songTitle}`}>
                 <Song setListCreator={setListData.setListCreator} song={song} />
               </div>
             ))

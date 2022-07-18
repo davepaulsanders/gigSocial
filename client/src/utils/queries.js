@@ -23,7 +23,7 @@ export const GET_ME = gql`
       username
       email
       setlists {
-        _id
+        setListId
         setListName
         likes
         countSongs
@@ -32,10 +32,11 @@ export const GET_ME = gql`
   }
 `;
 export const GET_SETLIST = gql`
-  query setlist($_id: ID!) {
-    getSetlist(_id: $_id) {
+  query setlist($setListId: ID!) {
+    getSetlist(setListId: $setListId) {
       setListName
       setListCreator
+      setListId
       songs {
         songTitle
         artist

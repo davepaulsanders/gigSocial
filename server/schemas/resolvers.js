@@ -12,8 +12,8 @@ const resolvers = {
 
       return user;
     },
-    getSetlist: async (parent, { _id }) => {
-      const setlist = await Setlist.findOne({ _id: _id })
+    getSetlist: async (parent, { setListId }) => {
+      const setlist = await Setlist.findOne({ setListId })
         .populate("songs")
         .populate("comments");
       return setlist;
@@ -71,10 +71,10 @@ const resolvers = {
       const song = await Song.create(args);
       return song;
     },
-    addSongToSetlist: async (parent, { _id, setListName }) => {
+    addSongToSetlist: async (parent, { _id, setListId }) => {
       // find setlist and update array of song ids
       const setlist = await Setlist.findOneAndUpdate(
-        { setListName },
+        { setListId },
         { $push: { songs: _id } },
         { new: true }
       );

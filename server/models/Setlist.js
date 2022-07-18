@@ -2,6 +2,12 @@ const { Schema, model, default: mongoose } = require("mongoose");
 const User = require("./User");
 const setListSchema = new Schema(
   {
+    setListId: {
+      type: Schema.Types.ObjectId,
+      unique: true,
+      required: true,
+      auto: true,
+    },
     setListName: {
       type: String,
       required: true,

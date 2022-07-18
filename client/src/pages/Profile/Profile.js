@@ -71,7 +71,6 @@ export const Profile = () => {
     const client = await getClient();
     const clientInfo = client.data.getClient;
     const { id, secret } = clientInfo;
-    console.log(id, secret);
     console.log("fetching genius token...");
     const body = `client_secret=${secret}&grant_type=authorization_code&code=${code}&client_id=${id}&redirect_uri=http://localhost:3000/profile&response_type=code`;
     try {

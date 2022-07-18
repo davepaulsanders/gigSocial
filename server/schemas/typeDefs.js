@@ -11,6 +11,7 @@ const typeDefs = gql`
   }
   type Setlist {
     _id: ID
+    setListId: ID
     setListName: String
     setListCreator: String
     songs: [Song]
@@ -48,7 +49,7 @@ const typeDefs = gql`
   }
   type Query {
     user(_id: ID!): User
-    getSetlist(_id: ID!): Setlist
+    getSetlist(setListId: ID!): Setlist
     getLink: Genius
     getClient: Client
   }
@@ -61,10 +62,10 @@ const typeDefs = gql`
       artist: String!
       image: String!
       lyrics: String!
-      bpm: Int
-      embed: String!
+      bpm: Int!
+      embed: String
     ): Song
-    addSongToSetlist(_id: ID!, setListName: String): Setlist
+    addSongToSetlist(_id: ID!, setListId: ID!): Setlist
     addComment(commentText: String!, username: String!, setList: ID!): Comment
     deleteSetlist(_id: ID!, setListCreator: String!): Setlist
     deleteSong(_id: ID!, setListName: String!): Song

@@ -34,3 +34,37 @@ export const ADD_SETLIST = gql`
     }
   }
 `;
+
+export const ADD_SONG = gql`
+  mutation (
+    $artist: String!
+    $image: String!
+    $lyrics: String!
+    $bpm: Int!
+    $embed: String
+    $songTitle: String!
+  ) {
+    addSong(
+      songTitle: $songTitle
+      artist: $artist
+      image: $image
+      lyrics: $lyrics
+      bpm: $bpm
+      embed: $embed
+    ) {
+      _id
+      songTitle
+    }
+  }
+`;
+
+export const ADD_SONG_TO_SETLIST = gql`
+  mutation ($_id: ID!, $setListId: ID!) {
+    addSongToSetlist(_id: $_id, setListId: $setListId) {
+      setListName
+      songs {
+        _id
+      }
+    }
+  }
+`;

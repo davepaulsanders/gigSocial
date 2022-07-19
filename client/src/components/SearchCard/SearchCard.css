@@ -3,22 +3,22 @@
 }
 
 .chosen-song {
-    border: 1px solid yellow!important;
-    color: yellow!important;
+    border: 1px solid #e2ff61!important;
+    color: #e2ff61!important;
 }
 .info-album {
     flex-grow: 2;
 }
 .add-song {
     display: none;
-    width: 13rem!important;
+    width: 5rem!important;
     height: 4rem!important;
     padding: 1rem!important;
     margin: 0!important;
     position: absolute;
-    right: 0px;
+    right: 10px;
     bottom: 8px;
-    background-color: yellow!important;
+    background-color: #e2ff61!important;
 }
 
 .appear {
@@ -29,7 +29,7 @@
     width: 6rem;
     padding: 0.25rem 1rem!important;
     margin: 0.5rem 0!important;
-    background-color: yellow!important;
+    background-color: #52b788!important;
 }
 
 .cancel {
@@ -39,4 +39,5 @@
 
 .choose-bpm-title {
     font-size: 1rem;
+    color: white;
 }

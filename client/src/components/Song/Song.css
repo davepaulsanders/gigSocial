@@ -36,4 +36,21 @@ margin: 0;
     width: 1.5rem;
     margin-right: 1rem;
     margin-left: 1.5rem;
+    cursor: pointer;
+}
+
+.delete-confirm, .delete-cancel {
+    display: none;
+    margin: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.delete-confirm {
+    background-color: red!important;
+}
+
+.delete-cancel {
+    background-color: #e2ff61!important;
+}
+.delete-confirm-visible {
+    display: block;
 }

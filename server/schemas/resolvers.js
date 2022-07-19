@@ -85,11 +85,11 @@ const resolvers = {
       const comment = await Comment.create(args);
       return comment;
     },
-    deleteSong: async (parent, { _id, setListName }) => {
+    deleteSong: async (parent, { _id, setListId }) => {
       // delete song
       const song = await Song.findOneAndDelete({ _id });
       await Setlist.findOneAndUpdate(
-        { setListName },
+        { setListId },
         { $pull: { songs: { _id } } }
       );
       return song;

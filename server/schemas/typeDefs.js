@@ -68,7 +68,7 @@ const typeDefs = gql`
     addSongToSetlist(_id: ID!, setListId: ID!): Setlist
     addComment(commentText: String!, username: String!, setList: ID!): Comment
     deleteSetlist(_id: ID!, setListCreator: String!): Setlist
-    deleteSong(_id: ID!, setListName: String!): Song
+    deleteSong(_id: ID!, setListId: ID!): Song
     deleteComment(_id: ID!): Comment
   }
 `;

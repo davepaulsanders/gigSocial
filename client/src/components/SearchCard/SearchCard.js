@@ -93,6 +93,7 @@ export const SearchCard = ({ song, active, setActive, toggleModal }) => {
         </div>
       </SONG_CONTAINER>
     );
+    // If there is an active song and it matches the songId of this song
   } else if (songChosen && active === songId) {
     return (
       <SONG_CONTAINER

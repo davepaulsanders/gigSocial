@@ -68,3 +68,11 @@ export const ADD_SONG_TO_SETLIST = gql`
     }
   }
 `;
+
+export const DELETE_SONG = gql`
+  mutation deleteSong($_id: ID!, $setListId: ID!) {
+    deleteSong(_id: $_id, setListId: $setListId) {
+      songTitle
+    }
+  }
+`;

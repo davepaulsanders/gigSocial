@@ -52,7 +52,6 @@ export const SetlistView = () => {
       modal.classList.add("open-modal");
     }
   };
-  console.log(setListData);
   // clean up search term and send it to fetch
   const searchGenius = (e) => {
     e.preventDefault();
@@ -73,10 +72,10 @@ export const SetlistView = () => {
     const list = await songs.json();
     setSearchData(list.response.hits);
   };
-const test = (e) => {
-  e.preventDefault()
-  console.log('click')
-}
+  const test = (e) => {
+    e.preventDefault();
+    console.log("click");
+  };
   // if no data yet
   if (loading) {
     return "";
@@ -85,7 +84,7 @@ const test = (e) => {
     <div className="d-flex flex-column justify-content-center">
       <Header />
       {/* ADD SONG MODAL */}
-      <div onClick={test}className="modal-container position-absolute">
+      <div onClick={test} className="modal-container position-absolute">
         <FORM className="add-setlist-form position-relative">
           <div className="d-flex justify-content-between w-100">
             <h2>Search for a song</h2>
@@ -96,24 +95,24 @@ const test = (e) => {
           <INPUT type="text" id="song-search"></INPUT>
           <BUTTON onClick={searchGenius}>Search Genius</BUTTON>
           {/* SEARCH DATA */}
-          
-            <div className="results-container">
-              {searchData ? (
-                <p className="choose">Choose a song to add!</p>
-              ) : null}
-              {searchData !== undefined
-                ? searchData.map((song) => (
-                    <SearchCard
-                      active={active}
-                      setActive={setActive}
-                      toggleModal={toggleModal}
-                      style={"cursor: pointer"}
-                      key={song.result.id}
-                      song={song.result}
-                    />
-                  ))
-                : null}
-            </div>
+
+          <div className="results-container">
+            {searchData ? (
+              <p className="choose">Choose a song to add!</p>
+            ) : null}
+            {searchData !== undefined
+              ? searchData.map((song) => (
+                  <SearchCard
+                    active={active}
+                    setActive={setActive}
+                    toggleModal={toggleModal}
+                    style={"cursor: pointer"}
+                    key={song.result.id}
+                    song={song.result}
+                  />
+                ))
+              : null}
+          </div>
         </FORM>
       </div>
       {/* SONGS */}

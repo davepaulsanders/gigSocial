@@ -5,6 +5,7 @@
     flex-grow: 3;
     text-align: left;
     margin-left: 1rem;
+    
 }
 
 .album-art {
@@ -27,5 +28,12 @@ margin: 0;
 .lyrics {
     height: 2rem;
     width: 2rem;
+    margin-right: 0.25rem;
+}
+
+.garbage {
+    height: 1.5rem;
+    width: 1.5rem;
     margin-right: 1rem;
+    margin-left: 1.5rem;
 }

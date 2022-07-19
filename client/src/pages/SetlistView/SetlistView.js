@@ -35,6 +35,7 @@ export const SetlistView = () => {
   // save searchData variable
   const [searchData, setSearchData] = useState();
 
+  // set active song
   const [active, setActive] = useState("");
 
   // For opening and closing the add setlist modal

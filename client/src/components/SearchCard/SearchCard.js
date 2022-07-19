@@ -93,7 +93,7 @@ export const SearchCard = ({ song, active, setActive, toggleModal }) => {
         </div>
       </SONG_CONTAINER>
     );
-  } else {
+  } else if (songChosen && active === songId) {
     return (
       <SONG_CONTAINER
         className={songId === active ? "song-data chosen-song" : "song-data"}
@@ -122,8 +122,15 @@ export const SearchCard = ({ song, active, setActive, toggleModal }) => {
               </option>
             </select>
           </div>
-          <BUTTON className="add-cancel-button"onClick={addToSetlist}>Add</BUTTON>
-          <BUTTON className="add-cancel-button cancel"onClick={() => setSongChosen(false)}>Cancel</BUTTON>
+          <BUTTON className="add-cancel-button" onClick={addToSetlist}>
+            Add
+          </BUTTON>
+          <BUTTON
+            className="add-cancel-button cancel"
+            onClick={() => setSongChosen(false)}
+          >
+            Cancel
+          </BUTTON>
         </div>
       </SONG_CONTAINER>
     );

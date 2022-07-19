@@ -51,7 +51,7 @@ export const SetlistView = () => {
       modal.classList.add("open-modal");
     }
   };
-console.log(setListData)
+  console.log(setListData);
   // clean up search term and send it to fetch
   const searchGenius = (e) => {
     e.preventDefault();
@@ -72,7 +72,10 @@ console.log(setListData)
     const list = await songs.json();
     setSearchData(list.response.hits);
   };
-
+const test = (e) => {
+  e.preventDefault()
+  console.log('click')
+}
   // if no data yet
   if (loading) {
     return "";
@@ -81,7 +84,7 @@ console.log(setListData)
     <div className="d-flex flex-column justify-content-center">
       <Header />
       {/* ADD SONG MODAL */}
-      <div className="modal-container position-absolute">
+      <div onClick={test}className="modal-container position-absolute">
         <FORM className="add-setlist-form position-relative">
           <div className="d-flex justify-content-between w-100">
             <h2>Search for a song</h2>
@@ -92,23 +95,24 @@ console.log(setListData)
           <INPUT type="text" id="song-search"></INPUT>
           <BUTTON onClick={searchGenius}>Search Genius</BUTTON>
           {/* SEARCH DATA */}
-          <APPEARDIV className="results-container">
-            {searchData ? (
-              <p className="choose">Choose a song to add!</p>
-            ) : null}
-            {searchData !== undefined
-              ? searchData.map((song) => (
-                  <SearchCard
-                    active={active}
-                    setActive={setActive}
-                    toggleModal={toggleModal}
-                    style={"cursor: pointer"}
-                    key={song.result.id}
-                    song={song.result}
-                  />
-                ))
-              : null}
-          </APPEARDIV>
+          
+            <div className="results-container">
+              {searchData ? (
+                <p className="choose">Choose a song to add!</p>
+              ) : null}
+              {searchData !== undefined
+                ? searchData.map((song) => (
+                    <SearchCard
+                      active={active}
+                      setActive={setActive}
+                      toggleModal={toggleModal}
+                      style={"cursor: pointer"}
+                      key={song.result.id}
+                      song={song.result}
+                    />
+                  ))
+                : null}
+            </div>
         </FORM>
       </div>
       {/* SONGS */}
@@ -136,7 +140,10 @@ console.log(setListData)
           ) : (
             // if there are many songs
             setListData.songs.map((song) => (
-              <div className="col-md-6" key={`${song.artist}-${song.songTitle}`}>
+              <div
+                className="col-md-6"
+                key={`${song.artist}-${song.songTitle}`}
+              >
                 <Song setListCreator={setListData.setListCreator} song={song} />
               </div>
             ))

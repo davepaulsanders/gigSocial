@@ -10,7 +10,7 @@ const materialize = keyframes`
 `;
 export const APPEARDIV = styled.div`
   animation-name: ${materialize};
-  animation-duration: 0.5s;
+  animation-duration: 2s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: backwards;
 `;
@@ -23,9 +23,10 @@ export const FORM = styled.form`
   animation-name: ${materializeScale};
   animation-duration: 0.3s;
   animation-timing-function: ease-in-out;
-  max-height: 40rem;
-  overflow-y: scroll;
+  max-height: 30rem;
+  overflow-y: auto;
   z-index: 1;
+  
 `;
 export const INPUT = styled.input`
   font-size: 1.15rem;

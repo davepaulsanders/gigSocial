@@ -1,10 +1,10 @@
 import React from "react";
 import { SONG_CONTAINER } from "../../styled-components/styled-components";
 import "./Song.css";
-const lyrics = require("../../assets/lyrics.png");
+const lyricsimg = require("../../assets/lyrics.png");
 
 export const Song = ({ setListCreator, song }) => {
-  const { songTitle, artist, bpm, embed, image } = song;
+  const { songTitle, artist, bpm, embed, image, lyrics } = song;
   return (
     <SONG_CONTAINER>
       <img className="album-art" src={image} alt="album art" />
@@ -13,7 +13,9 @@ export const Song = ({ setListCreator, song }) => {
         <p className="album-info">{artist}</p>
       </div>
       <p className="bpm">{bpm}bpm</p>
-      <img className="lyrics" src={lyrics} alt="lyrics" />
+      <a href={lyrics}>
+        <img className="lyrics" src={lyricsimg} alt="lyrics" />
+      </a>
     </SONG_CONTAINER>
   );
 };

@@ -6,13 +6,37 @@
     border: 1px solid yellow!important;
     color: yellow!important;
 }
-
+.info-album {
+    flex-grow: 2;
+}
 .add-song {
-    width: auto!important;
-    height: 3rem;
     display: none;
+    width: 13rem!important;
+    height: 4rem!important;
+    padding: 1rem!important;
+    margin: 0!important;
+    position: absolute;
+    right: 0px;
+    bottom: 8px;
+    background-color: yellow!important;
 }
 
 .appear {
-    display: flex;
+    display: inline;
+}
+
+.add-cancel-button {
+    width: 6rem;
+    padding: 0.25rem 1rem!important;
+    margin: 0.5rem 0!important;
+    background-color: yellow!important;
+}
+
+.cancel {
+    background-color: red!important;
+    margin-right: 0.2rem!important;
+}
+
+.choose-bpm-title {
+    font-size: 1rem;
 }

@@ -37,7 +37,7 @@ export const SetlistView = () => {
 
   // set active song
   const [active, setActive] = useState("");
-
+  const [activeDelete, setActiveDelete] = useState(false);
   // For opening and closing the add setlist modal
   const toggleModal = (e) => {
     e.preventDefault();
@@ -76,6 +76,8 @@ export const SetlistView = () => {
     e.preventDefault();
     console.log("click");
   };
+
+  console.log(activeDelete);
   // if no data yet
   if (loading) {
     return "";
@@ -133,6 +135,8 @@ export const SetlistView = () => {
           {setListData.songs.length === 1 ? (
             <div className="col" key={setListData.song[0].artist}>
               <Song
+                activeDelete={activeDelete}
+                setActiveDelete={setActiveDelete}
                 setListCreator={setListData.setListCreator}
                 song={setListData.songs[0]}
               />
@@ -144,7 +148,11 @@ export const SetlistView = () => {
                 className="col-md-6"
                 key={`${song.artist}-${song.songTitle}`}
               >
-                <Song setListCreator={setListData.setListCreator} song={song} />
+                <Song
+                  activeDelete={activeDelete}
+                  setActiveDelete={setActiveDelete}
+                  song={song}
+                />
               </div>
             ))
           )}

@@ -1,32 +1,46 @@
 const { Schema, model, default: mongoose } = require("mongoose");
 const User = require("./User");
-const setListSchema = new Schema({
-  setListName: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  setListCreator: {
-    type: String,
-    required: true,
-  },
-  songs: [
-    {
+const setListSchema = new Schema(
+  {
+    setListId: {
       type: Schema.Types.ObjectId,
-      ref: "Song",
+      unique: true,
+      required: true,
+      auto: true,
     },
-  ],
-  comments: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Comment",
+    setListName: {
+      type: String,
+      required: true,
+      trim: true,
     },
-  ],
-  likes: {
-    type: Number,
-    default: 0,
+    setListCreator: {
+      type: String,
+      required: true,
+    },
+    songs: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Song",
+      },
+    ],
+    comments: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Comment",
+      },
+    ],
+    likes: {
+      type: Number,
+      default: 0,
+    },
   },
-});
+  {
+    toJSON: {
+      getters: true,
+      virtuals: true,
+    },
+  }
+);
 
 // add created at and updated at
 setListSchema.set("timestamps", true);
@@ -39,6 +53,9 @@ setListSchema.post("save", async (setlist) => {
   );
 });
 
+setListSchema.virtual("countSongs").get(function () {
+  return this.songs.length;
+});
 const Setlist = model("Setlist", setListSchema);
 
 module.exports = Setlist;

@@ -51,22 +51,22 @@ db.once("open", async () => {
     });
 
     await Setlist.findOneAndUpdate(
-      { _id: setListInfo1._id },
+      { setListId: setListInfo1.setListId },
       { $push: { songs: songInfo1._id } },
       { new: true }
     );
     await Setlist.findOneAndUpdate(
-      { _id: setListInfo1._id },
+      { setListId: setListInfo1.setListId },
       { $push: { songs: songInfo2._id } },
       { new: true }
     );
     await Setlist.findOneAndUpdate(
-      { _id: setListInfo2._id },
+      { setListId: setListInfo2.setListId },
       { $push: { songs: songInfo1._id } },
       { new: true }
     );
     await Setlist.findOneAndUpdate(
-      { _id: setListInfo2._id },
+      { setListId: setListInfo2.setListId },
       { $push: { songs: songInfo2._id } },
       { new: true }
     );
@@ -74,22 +74,22 @@ db.once("open", async () => {
     const commentInfo1 = await Comment.create({
       commentText: "This is a test comment",
       username: userInfo1.username,
-      setList: setListInfo1._id,
+      setList: setListInfo1.setListId,
     });
     const commentInfo2 = await Comment.create({
       commentText: "This is also a test comment",
       username: userInfo1.username,
-      setList: setListInfo1._id,
+      setList: setListInfo1.setListId,
     });
     const commentInfo3 = await Comment.create({
       commentText: "Yet another comment",
       username: userInfo2.username,
-      setList: setListInfo2._id,
+      setList: setListInfo2.setListId,
     });
     const commentInfo4 = await Comment.create({
       commentText: "This is also a test comment",
       username: userInfo2.username,
-      setList: setListInfo2._id,
+      setList: setListInfo2.setListId,
     });
 
     console.log("all done!");

@@ -1,17 +1,33 @@
 const { User, Setlist, Song, Comment } = require("../models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
+require("dotenv").config();
 
 const resolvers = {
   Query: {
     user: async (parent, { _id }) => {
-      const user = await User.findOne({ _id: _id });
-      console.log(user);
+      const user = await (
+        await User.findOne({ _id: _id })
+      ).populate("setlists");
+
       return user;
     },
-    getSetlist: async (parent, { _id }) => {
-      const setlist = await Setlist.findOne({ _id: _id });
+    getSetlist: async (parent, { setListId }) => {
+      const setlist = await Setlist.findOne({ setListId })
+        .populate("songs")
+        .populate("comments");
       return setlist;
+    },
+    getLink: async (parent, args) => {
+      // grabbing genius link from env
+      const linkUrl = process.env.GENIUS_LINK;
+      // returning it
+      return { url: linkUrl };
+    },
+    getClient: async (parent, args) => {
+      const id = process.env.CLIENT_ID;
+      const secret = process.env.CLIENT_SECRET;
+      return { id, secret };
     },
   },
   Mutation: {
@@ -55,10 +71,10 @@ const resolvers = {
       const song = await Song.create(args);
       return song;
     },
-    addSongToSetlist: async (parent, { _id, setListName }) => {
+    addSongToSetlist: async (parent, { _id, setListId }) => {
       // find setlist and update array of song ids
       const setlist = await Setlist.findOneAndUpdate(
-        { setListName },
+        { setListId },
         { $push: { songs: _id } },
         { new: true }
       );
@@ -69,13 +85,14 @@ const resolvers = {
       const comment = await Comment.create(args);
       return comment;
     },
-    deleteSong: async (parent, { _id, setListName }) => {
+    deleteSong: async (parent, { _id, setListId }) => {
       // delete song
       const song = await Song.findOneAndDelete({ _id });
-      await Setlist.findOneAndUpdate(
-        { setListName },
-        { $pull: { songs: { _id } } }
+      const setList = await Setlist.findOneAndUpdate(
+        { setListId },
+        { $pull: { songs: _id } }
       );
+      console.log(setList);
       return song;
     },
     deleteSetlist: async (parent, { _id, setListCreator }) => {

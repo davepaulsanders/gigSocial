@@ -1,16 +1,73 @@
-.profile-container {
-    margin-top: 9rem;
-    line-height: 1.4;
+.setlist-container {
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+
+}
+.setlist-row {
+    padding-left: 0!important;
+    margin: 0!important;
+}
+.setlists-title {
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+    top: -2px;
+}
+.setlist-header {
+    margin-bottom: 0.5rem;
+}
+.container {
+    align-items: center;
+
+}
+.plus-col {
+    text-align: right;
+}
+.plus {
+    width: 2rem;
+    margin-right: 0.5rem;
 }
 
-.gig-social {
-    font-size: 1.4rem;
-    font-weight: 700;
+.guitar-pick {
+    width: 2rem!important;
+    height: 2rem;
+    margin: 0 0.5rem;
 }
-.genius-prompt {
-    width: 80%!important;
+
+.add-setlist {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
 }
-.username {
-    font-size: 1.4rem;
-    font-weight: 700;
+
+.add-setlist:hover {
+    background-color: transparent;
+}
+.modal-container {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(30, 30, 30, 0.8);
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+.add-setlist-form {
+    padding-top: 1rem!important;
+    background-color: #52b788!important;
+    position: relative;
+    top: -90px;
+}
+
+.close {
+    width: 2rem;
+    transform: rotate(45deg);
+    margin-bottom: 1rem;
+}
+
+.open-modal {
+display: flex;
 }

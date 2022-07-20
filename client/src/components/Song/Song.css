@@ -5,17 +5,14 @@
     flex-grow: 3;
     text-align: left;
     margin-left: 1rem;
+    
 }
 
 .album-art {
     width: 5rem;
     height: 100%;
 }
-.setlist-art {
-    width: 5rem;
-    height: 100%;
-    background-color: rgb(68, 68, 68);
-}
+
 .song-name {
     font-weight: bold;
 }
@@ -25,10 +22,35 @@ margin: 0;
 }
 
 .bpm {
+    margin-top: 1rem;
     margin-right: 0.5rem;
 }
 .lyrics {
     height: 2rem;
     width: 2rem;
+    margin-right: 0.25rem;
+}
+
+.garbage {
+    height: 1.5rem;
+    width: 1.5rem;
     margin-right: 1rem;
+    margin-left: 1.5rem;
+    cursor: pointer;
+}
+
+.delete-confirm, .delete-cancel {
+    display: none;
+    margin: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.delete-confirm {
+    background-color: red!important;
+}
+
+.delete-cancel {
+    background-color: #e2ff61!important;
+}
+.delete-confirm-visible {
+    display: block;
 }

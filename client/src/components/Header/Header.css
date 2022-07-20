@@ -9,8 +9,7 @@
     margin-top: 0.5rem;
     padding-bottom: 0.25rem;
     border-bottom: 5px double #000;
-    margin-bottom: 4.5rem;
-    display: flex;
+    margin-bottom: 3rem;
 }
 
 .header-title {
@@ -20,10 +19,29 @@
     font-weight: 900;
     margin: 0 0 0 0.5rem;
     text-align: left;
-    font-family: "Poppins";
+    font-family: "Poppins"!important;
 }
 
 .genius-prompt {
     font-size: 1.2rem;
     width: 80%;
+}
+
+.hamburger {
+    width: 2rem;
+    margin-right: 1.5rem;
+}
+
+.nav-link {
+    display: none;
+    font-weight: 700;
+}
+
+@media only screen and (min-width: 700px) {
+    .hamburger {
+        display: none;
+    }
+    .nav-link {
+        display: block;
+    }
 }

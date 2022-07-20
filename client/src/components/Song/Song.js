@@ -17,7 +17,9 @@ export const Song = ({ song, activeDelete, setActiveDelete }) => {
     refetchQueries: [{ query: GET_SETLIST, variables: { setListId } }],
   });
 
-  const deleteSong = (e) => {
+
+  // pull up the options to delete or cancel deleting a song
+  const deleteSongMenu = (e) => {
     e.preventDefault();
 
     if (activeDelete) {
@@ -34,6 +36,7 @@ export const Song = ({ song, activeDelete, setActiveDelete }) => {
     setActiveDelete(true);
   };
 
+  // exit the delete menu
   const cancelDelete = (e) => {
     e.preventDefault();
     const closestSong = e.target.closest(".song");
@@ -46,6 +49,7 @@ export const Song = ({ song, activeDelete, setActiveDelete }) => {
     setActiveDelete(false);
   };
 
+  // Delete a song
   const confirmDelete = (e) => {
     e.preventDefault();
     deleteSongMutation({ variables: { _id, setListId } });
@@ -63,7 +67,7 @@ export const Song = ({ song, activeDelete, setActiveDelete }) => {
       </a>
       <p className="bpm">{bpm}bpm</p>
       <img
-        onClick={deleteSong}
+        onClick={deleteSongMenu}
         className="garbage"
         src={garbageIcon}
         alt="delete"

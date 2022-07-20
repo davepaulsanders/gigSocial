@@ -22,6 +22,7 @@ import Auth from "../../utils/frontEndAuth";
 //images
 const plus = require("../../assets/plus.png");
 const pick = require("../../assets/guitar-pick.png");
+const blackHeart = require("../../assets/black-heart.png");
 
 export const SetlistView = () => {
   // get the setlist data
@@ -47,7 +48,7 @@ export const SetlistView = () => {
     } else {
       // remove searchData if modal is closed
       if (searchData) {
-        setSearchData([]);
+        setSearchData();
       }
       modal.classList.add("open-modal");
     }
@@ -72,11 +73,12 @@ export const SetlistView = () => {
     const list = await songs.json();
     setSearchData(list.response.hits);
   };
-  const test = (e) => {
-    e.preventDefault();
-    console.log("click");
-  };
 
+  const likeSetlist = (e) => {
+    e.preventDefault()
+    
+
+  }
   // if no data yet
   if (loading) {
     return "";
@@ -85,7 +87,7 @@ export const SetlistView = () => {
     <div className="d-flex flex-column justify-content-center">
       <Header />
       {/* ADD SONG MODAL */}
-      <div onClick={test} className="modal-container position-absolute">
+      <div className="modal-container position-absolute">
         <FORM className="add-setlist-form position-relative">
           <div className="d-flex justify-content-between w-100">
             <h2>Search for a song</h2>
@@ -98,7 +100,7 @@ export const SetlistView = () => {
           {/* SEARCH DATA */}
 
           <div className="results-container">
-            {searchData ? (
+            {searchData !== undefined ? (
               <p className="choose">Choose a song to add!</p>
             ) : null}
             {searchData !== undefined
@@ -119,11 +121,15 @@ export const SetlistView = () => {
       {/* SONGS */}
       <div className="setlist-container container">
         <div className="row">
-          <div className="col setlist-header d-flex">
+          <div className="col setlist-header m-0 d-flex align-items-center">
             <img className="guitar-pick" src={pick} alt="guitar pick" />
-            <h2 className="setlists-title">{setListData.setListName}</h2>
+            <h2 className="setlists-title">
+              {setListData.setListName}
+            </h2>
+            <img className="setlist-likes" onClick={likeSetlist} src={blackHeart} />
+            <p className="setlist-likes-count">{setListData.likes}</p>
           </div>
-          <div className="col plus-col">
+          <div className="col-2 plus-col">
             <button className="add-setlist" type="button" onClick={toggleModal}>
               <img className="plus" src={plus} alt="add playlist" />
             </button>

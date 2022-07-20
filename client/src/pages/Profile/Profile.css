@@ -33,7 +33,8 @@
 .guitar-pick {
     width: 2rem!important;
     height: 2rem;
-    margin: 0 0.5rem;
+    margin-right: 0.25rem;
+    margin-bottom: 0.5rem;
 }
 
 .add-setlist {

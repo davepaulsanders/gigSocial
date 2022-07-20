@@ -76,3 +76,12 @@ export const DELETE_SONG = gql`
     }
   }
 `;
+
+export const ADD_LIKE = gql`
+mutation addLike(){
+  addLikeToSetlist {
+
+  }
+}
+
+`

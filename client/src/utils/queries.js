@@ -37,6 +37,7 @@ export const GET_SETLIST = gql`
       setListName
       setListCreator
       setListId
+      likes
       songs {
         _id
         songTitle

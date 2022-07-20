@@ -80,6 +80,12 @@ const resolvers = {
       );
       return setlist;
     },
+    addLikeToSetlist: async (parent, { setListId }) => {
+      const setlist = await Setlist.findOneAndUpdate(
+        { setListId },
+        { $inc: { likes } }
+      );
+    },
     addComment: async (parent, args) => {
       // create comment
       const comment = await Comment.create(args);

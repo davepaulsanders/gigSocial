@@ -1,4 +1,24 @@
+.setlist-header {
+    margin-bottom: 0.5rem!important;
+}
+
 .results-container {
     margin-top: 1rem!important;
     width: 100%;
+}
+
+.setlists-title {
+    
+    margin-bottom: 0!important;
+}
+
+.setlist-likes {
+    width: 2rem;
+    height: 2rem;
+    margin-left: 0.5rem;
+    
+}
+
+.setlist-likes-count {
+    margin: 0;
 }

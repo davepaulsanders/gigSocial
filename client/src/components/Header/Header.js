@@ -5,9 +5,9 @@ const hamburger = require("../../assets/hamburger-menu.png");
 const plus = require("../../assets/plus.png");
 
 export const Header = () => {
-  const toggleMenu = (e) => {
-    e.preventDefault();
-    const nav = document.querySelector(".nav-list");
+    const toggleMenu = (e) => {
+        e.preventDefault();
+        const nav = document.querySelector(".nav-list");
     if (nav.classList.contains("closed")) {
       nav.classList.remove("closed");
       nav.classList.add("open");
@@ -16,7 +16,9 @@ export const Header = () => {
       nav.classList.add("closed");
     }
   };
-
+  window.addEventListener("resize", () => {
+    
+  });
   return (
     <header>
       <div className="header-container d-flex justify-content-between align-items-center">
@@ -31,16 +33,14 @@ export const Header = () => {
           alt=""
         />
         <nav className="d-flex align-items-center">
-          <ul className="nav-list d-flex align-items-center">
+          <ul className="nav-list d-flex align-items-center closed">
             <li className="nav-link">
               <a href="">Browse</a>
             </li>
-            <li className="nav-link" >
-              <a href="/setlists">
-                Setlists
-              </a>
+            <li className="nav-link">
+              <a href="/setlists">Setlists</a>
             </li>
-            <li className="nav-link" >
+            <li className="nav-link">
               <button
                 onClick={() => Auth.logout()}
                 className="nav-log-out me-4"

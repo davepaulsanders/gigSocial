@@ -1,6 +1,7 @@
 import React from "react";
 import "./Header.css";
-const hamburger = require('../../assets/hamburger-menu.png')
+import Auth from "../../utils/frontEndAuth";
+const hamburger = require("../../assets/hamburger-menu.png");
 export const Header = () => {
   return (
     <div>
@@ -17,9 +18,12 @@ export const Header = () => {
           <a className="nav-link" href="/setlists">
             Setlists
           </a>
-          <a className="nav-link me-4" href="">
+          <button
+            onClick={() => Auth.logout()}
+            className="nav-log-out nav-link me-4"
+          >
             Log Out
-          </a>
+          </button>
         </nav>
       </div>
     </div>

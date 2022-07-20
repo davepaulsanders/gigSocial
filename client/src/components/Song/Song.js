@@ -11,13 +11,12 @@ const garbageIcon = require("../../assets/garbage.png");
 
 export const Song = ({ song, activeDelete, setActiveDelete }) => {
   const setListId = useParams().id;
-  const { songTitle, artist, bpm, embed, image, lyrics } = song;
+  const { songTitle, artist, bpm, embed, image, lyrics, _id } = song;
   const [deleteSongMutation, { error }] = useMutation(DELETE_SONG, {
     // refetch get me to refresh cache
     refetchQueries: [{ query: GET_SETLIST, variables: { setListId } }],
   });
 
-  console.log(activeDelete);
   const deleteSong = (e) => {
     e.preventDefault();
 
@@ -44,7 +43,13 @@ export const Song = ({ song, activeDelete, setActiveDelete }) => {
     closestSong
       .querySelector(".delete-cancel")
       .classList.remove("delete-confirm-visible");
-      setActiveDelete(false)
+    setActiveDelete(false);
+  };
+
+  const confirmDelete = (e) => {
+    e.preventDefault();
+    deleteSongMutation({ variables: { _id, setListId } });
+    setActiveDelete(false)
   };
   return (
     <SONG_CONTAINER className="song position-relative justify-content-center align-items-center">
@@ -64,7 +69,9 @@ export const Song = ({ song, activeDelete, setActiveDelete }) => {
         alt="delete"
       />
       <div className="d-flex position-absolute">
-        <BUTTON className="delete-confirm">Delete</BUTTON>
+        <BUTTON onClick={confirmDelete} className="delete-confirm">
+          Delete
+        </BUTTON>
         <BUTTON onClick={cancelDelete} className="delete-cancel">
           Cancel
         </BUTTON>

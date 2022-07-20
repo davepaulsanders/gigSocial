@@ -134,12 +134,7 @@ export const SetlistView = () => {
           {/* If there is only one song */}
           {setListData.songs.length === 1 ? (
             <div className="col" key={setListData.song[0].artist}>
-              <Song
-                activeDelete={activeDelete}
-                setActiveDelete={setActiveDelete}
-                setListCreator={setListData.setListCreator}
-                song={setListData.songs[0]}
-              />
+              <Song song={setListData.songs[0]} />
             </div>
           ) : (
             // if there are many songs

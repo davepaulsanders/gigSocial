@@ -38,6 +38,7 @@ export const GET_SETLIST = gql`
       setListCreator
       setListId
       songs {
+        _id
         songTitle
         artist
         image

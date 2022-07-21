@@ -78,10 +78,9 @@ export const DELETE_SONG = gql`
 `;
 
 export const ADD_LIKE = gql`
-mutation addLike(){
-  addLikeToSetlist {
-
+  mutation addLike($setListId: ID!, $_id: ID!) {
+    addLikeToSetlist(setListId: $setListId, _id: $_id) {
+      likes
+    }
   }
-}
-
-`
+`;

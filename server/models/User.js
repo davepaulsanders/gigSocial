@@ -32,6 +32,12 @@ const userSchema = new Schema(
         ref: "Comment",
       },
     ],
+    likedSetlists: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Setlist",
+      }
+    ]
   },
   {
     toJSON: {

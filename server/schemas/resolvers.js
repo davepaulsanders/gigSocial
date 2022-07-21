@@ -80,11 +80,30 @@ const resolvers = {
       );
       return setlist;
     },
-    addLikeToSetlist: async (parent, { setListId }) => {
-      const setlist = await Setlist.findOneAndUpdate(
-        { setListId },
-        { $inc: { likes } }
-      );
+    addLikeToSetlist: async (parent, { setListId, _id }) => {
+      // check if the user has already liked the setlist
+      const user = await User.findOne({
+        _id,
+      });
+      const checkForSetlist = user.likedSetlists.indexOf(setListId);
+      // if they haven't, add a like to the setlist
+      // I can probably just filter it here
+      if (checkForSetlist === -1) {
+        const setlist = await Setlist.findOneAndUpdate(
+          { setListId },
+          { $inc: { likes: 1 } }
+        );
+        // add the setlist to the user's liked setlists
+       await User.findOneAndUpdate(
+          { _id },
+          { $push: { likedSetlists: setListId } },
+          { new: true }
+        );
+        return setlist;
+      } else {
+        const setlist = await Setlist.findOne({ setListId });
+        return setlist;
+      }
     },
     addComment: async (parent, args) => {
       // create comment

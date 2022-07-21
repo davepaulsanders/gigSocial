@@ -7,6 +7,7 @@ const typeDefs = gql`
     email: String
     password: String
     setlists: [Setlist]
+    likedSetlists: [Setlist]
     comments: [Comment]
   }
   type Setlist {
@@ -66,7 +67,7 @@ const typeDefs = gql`
       embed: String
     ): Song
     addSongToSetlist(_id: ID!, setListId: ID!): Setlist
-    addLikeToSetlist(setListId: ID!): Setlist
+    addLikeToSetlist(setListId: ID!, _id: ID!): Setlist
     addComment(commentText: String!, username: String!, setList: ID!): Comment
     deleteSetlist(_id: ID!, setListCreator: String!): Setlist
     deleteSong(_id: ID!, setListId: ID!): Song

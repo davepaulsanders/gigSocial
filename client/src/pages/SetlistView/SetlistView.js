@@ -4,7 +4,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import "./SetlistView.css";
 // queries and mutations
 import { GET_SETLIST } from "../../utils/queries";
-
+import { ADD_LIKE } from "../../utils/mutations";
 // components
 import { Header } from "../../components/Header/Header";
 import { Song } from "../../components/Song/Song";
@@ -28,6 +28,7 @@ export const SetlistView = () => {
   // get the setlist data
   const setListId = useParams().id;
 
+  const userId = Auth.getProfile().data._id
   const { loading, data } = useQuery(GET_SETLIST, {
     variables: { setListId: setListId },
   });
@@ -39,6 +40,13 @@ export const SetlistView = () => {
   // set active song
   const [active, setActive] = useState("");
   const [activeDelete, setActiveDelete] = useState(false);
+
+  // like update mutation
+
+  const [addLike, { error }] = useMutation(ADD_LIKE, {
+    refetchQueries: [{ query: GET_SETLIST, variables: { setListId } }],
+  });
+
   // For opening and closing the add setlist modal
   const toggleModal = (e) => {
     e.preventDefault();
@@ -75,10 +83,10 @@ export const SetlistView = () => {
   };
 
   const likeSetlist = (e) => {
-    e.preventDefault()
-    
+    e.preventDefault();
 
-  }
+    addLike({ variables: { setListId, _id: userId } });
+  };
   // if no data yet
   if (loading) {
     return "";
@@ -123,10 +131,12 @@ export const SetlistView = () => {
         <div className="row">
           <div className="col setlist-header m-0 d-flex align-items-center">
             <img className="guitar-pick" src={pick} alt="guitar pick" />
-            <h2 className="setlists-title">
-              {setListData.setListName}
-            </h2>
-            <img className="setlist-likes" onClick={likeSetlist} src={blackHeart} />
+            <h2 className="setlists-title">{setListData.setListName}</h2>
+            <img
+              className="setlist-likes"
+              onClick={likeSetlist}
+              src={blackHeart}
+            />
             <p className="setlist-likes-count">{setListData.likes}</p>
           </div>
           <div className="col-2 plus-col">

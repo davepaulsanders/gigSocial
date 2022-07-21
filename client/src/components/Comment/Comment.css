@@ -1,0 +1,22 @@
+.comment {
+    display: flex;
+    width: 90%;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.user-avatar {
+    width: 2rem;
+    height: 2rem;
+    margin: 0.25rem 0.35rem 0 0;
+}
+
+
+.username {
+    margin-right: 0.25rem;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.comment-text {
+    text-align: left;
+}

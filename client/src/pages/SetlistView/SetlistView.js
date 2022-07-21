@@ -9,6 +9,7 @@ import { ADD_LIKE } from "../../utils/mutations";
 import { Header } from "../../components/Header/Header";
 import { Song } from "../../components/Song/Song";
 import { SearchCard } from "../../components/SearchCard/SearchCard";
+import { Comment } from "../../components/Comment/Comment";
 import {
   FORM,
   INPUT,
@@ -28,21 +29,26 @@ export const SetlistView = () => {
   // get the setlist data
   const setListId = useParams().id;
 
+  // get the user's id from the token in localstorage
   const userId = Auth.getProfile().data._id
+
+  // query to get setlist info
   const { loading, data } = useQuery(GET_SETLIST, {
     variables: { setListId: setListId },
   });
+  // save setlist data to variable
   const setListData = data?.getSetlist;
 
-  // save searchData variable
+  // save searchData variable if user wants to add song
   const [searchData, setSearchData] = useState();
 
   // set active song
   const [active, setActive] = useState("");
+  
+  // variable for checking if the active delete menu is active in any song
   const [activeDelete, setActiveDelete] = useState(false);
 
-  // like update mutation
-
+  // mutation for adding likes
   const [addLike, { error }] = useMutation(ADD_LIKE, {
     refetchQueries: [{ query: GET_SETLIST, variables: { setListId } }],
   });
@@ -61,10 +67,10 @@ export const SetlistView = () => {
       modal.classList.add("open-modal");
     }
   };
+
   // clean up search term and send it to fetch
   const searchGenius = (e) => {
     e.preventDefault();
-
     const searchTerm = document
       .querySelector("#song-search")
       .value.replace(" ", "%20")
@@ -168,6 +174,8 @@ export const SetlistView = () => {
           )}
         </div>
       </div>
+      <h2 className="comment-title">Comments:</h2>
+      <Comment />
     </div>
   );
 };

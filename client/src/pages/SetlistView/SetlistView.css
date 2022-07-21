@@ -22,3 +22,12 @@
 .setlist-likes-count {
     margin: 0;
 }
+
+.comment-title {
+    text-align: left;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    margin-bottom: 0;
+    font-weight: 700;
+
+}

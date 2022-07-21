@@ -87,7 +87,6 @@ const resolvers = {
       });
       const checkForSetlist = user.likedSetlists.indexOf(setListId);
       // if they haven't, add a like to the setlist
-      // I can probably just filter it here
       if (checkForSetlist === -1) {
         const setlist = await Setlist.findOneAndUpdate(
           { setListId },
@@ -101,6 +100,7 @@ const resolvers = {
         );
         return setlist;
       } else {
+        // if they have liked the setlist, decrement the like instead
         const setlist = await Setlist.findOneAndUpdate({ setListId }, { $inc: { likes: -1 } });
         await User.findOneAndUpdate(
           { _id },

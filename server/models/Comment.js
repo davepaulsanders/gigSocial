@@ -16,29 +16,37 @@ const commentSchema = new Schema({
 });
 
 commentSchema.post("save", async (comment) => {
-  await model("User").findOneAndUpdate(
-    { username: comment.username },
-    { $push: { comments: comment._id } },
-    { new: true }
-  );
-  await model("Setlist").findOneAndUpdate(
-    { _id: comment.setList },
-    { $push: { comments: comment._id } },
-    { new: true }
-  );
+  await mongoose
+    .model("User")
+    .findOneAndUpdate(
+      { username: comment.username },
+      { $push: { comments: comment._id } },
+      { new: true }
+    );
+  await mongoose
+    .model("Setlist")
+    .findOneAndUpdate(
+      { setListId: comment.setList },
+      { $push: { comments: comment._id } },
+      { new: true }
+    );
 });
 
 commentSchema.post("findOneAndDelete", async (comment) => {
-  await mongoose.model("User").findOneAndUpdate(
-    { username: comment.username },
-    { $pull: { comments: comment._id } },
-    { new: true }
-  );
-  await mongoose.model("Setlist").findOneAndUpdate(
-    { username: comment.username },
-    { $pull: { comments: comment._id } },
-    { new: true }
-  );
+  await mongoose
+    .model("User")
+    .findOneAndUpdate(
+      { username: comment.username },
+      { $pull: { comments: comment._id } },
+      { new: true }
+    );
+  await mongoose
+    .model("Setlist")
+    .findOneAndUpdate(
+      { username: comment.username },
+      { $pull: { comments: comment._id } },
+      { new: true }
+    );
 });
 
 const Comment = model("Comment", commentSchema);

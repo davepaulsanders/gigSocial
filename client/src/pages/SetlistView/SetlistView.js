@@ -24,6 +24,7 @@ import Auth from "../../utils/frontEndAuth";
 const plus = require("../../assets/plus.png");
 const pick = require("../../assets/guitar-pick.png");
 const blackHeart = require("../../assets/black-heart.png");
+const user = require("../../assets/user.png");
 
 export const SetlistView = () => {
   // get the setlist data
@@ -31,6 +32,7 @@ export const SetlistView = () => {
 
   // get the user's id from the token in localstorage
   const userId = Auth.getProfile().data._id;
+  const username = Auth.getProfile().data.username;
 
   // query to get setlist info
   const { loading, data } = useQuery(GET_SETLIST, {
@@ -175,6 +177,10 @@ export const SetlistView = () => {
         </div>
       </div>
       <h2 className="comment-title">Comments:</h2>
+      <form className="d-flex align-items-center comment-form">
+        <img className="current-user" src={user}/>
+        <INPUT className="comment-input" placeholder={`Add a comment as ${username}`}/>
+      </form>
       {setListData.comments.map((comment) => (
         <Comment key={comment._id} comment={comment} />
       ))}

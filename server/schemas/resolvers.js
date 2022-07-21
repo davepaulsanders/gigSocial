@@ -101,7 +101,12 @@ const resolvers = {
         );
         return setlist;
       } else {
-        const setlist = await Setlist.findOne({ setListId });
+        const setlist = await Setlist.findOneAndUpdate({ setListId }, { $inc: { likes: -1 } });
+        await User.findOneAndUpdate(
+          { _id },
+          { $pull: { likedSetlists: setListId } },
+          { new: true }
+        );
         return setlist;
       }
     },

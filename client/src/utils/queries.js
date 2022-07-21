@@ -48,6 +48,7 @@ export const GET_SETLIST = gql`
         lyrics
       }
       comments {
+        _id
         commentText
         username
       }

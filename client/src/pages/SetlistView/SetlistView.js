@@ -30,7 +30,7 @@ export const SetlistView = () => {
   const setListId = useParams().id;
 
   // get the user's id from the token in localstorage
-  const userId = Auth.getProfile().data._id
+  const userId = Auth.getProfile().data._id;
 
   // query to get setlist info
   const { loading, data } = useQuery(GET_SETLIST, {
@@ -44,7 +44,7 @@ export const SetlistView = () => {
 
   // set active song
   const [active, setActive] = useState("");
-  
+
   // variable for checking if the active delete menu is active in any song
   const [activeDelete, setActiveDelete] = useState(false);
 
@@ -175,7 +175,9 @@ export const SetlistView = () => {
         </div>
       </div>
       <h2 className="comment-title">Comments:</h2>
-      <Comment />
+      {setListData.comments.map((comment) => (
+        <Comment key={comment._id} comment={comment} />
+      ))}
     </div>
   );
 };

@@ -1,19 +1,22 @@
 const { Schema, model, default: mongoose } = require("mongoose");
 
-const commentSchema = new Schema({
-  commentText: {
-    type: "String",
-    required: true,
+const commentSchema = new Schema(
+  {
+    commentText: {
+      type: "String",
+      required: true,
+    },
+    username: {
+      type: "String",
+      required: true,
+    },
+    setList: {
+      type: Schema.Types.ObjectId,
+      required: true,
+    },
   },
-  username: {
-    type: "String",
-    required: true,
-  },
-  setList: {
-    type: Schema.Types.ObjectId,
-    required: true,
-  },
-});
+  { timestamps: true }
+);
 
 commentSchema.post("save", async (comment) => {
   await mongoose

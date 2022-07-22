@@ -36,6 +36,7 @@ const typeDefs = gql`
     commentText: String
     username: String
     setList: ID
+    createdAt: String
   }
   type Auth {
     token: ID!

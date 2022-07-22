@@ -15,7 +15,10 @@ const resolvers = {
     getSetlist: async (parent, { setListId }) => {
       const setlist = await Setlist.findOne({ setListId })
         .populate("songs")
-        .populate("comments");
+        .populate({
+          path: "comments",
+          sort: { createdAt: 1 },
+        });
       return setlist;
     },
     getLink: async (parent, args) => {
@@ -93,7 +96,7 @@ const resolvers = {
           { $inc: { likes: 1 } }
         );
         // add the setlist to the user's liked setlists
-       await User.findOneAndUpdate(
+        await User.findOneAndUpdate(
           { _id },
           { $push: { likedSetlists: setListId } },
           { new: true }
@@ -101,7 +104,10 @@ const resolvers = {
         return setlist;
       } else {
         // if they have liked the setlist, decrement the like instead
-        const setlist = await Setlist.findOneAndUpdate({ setListId }, { $inc: { likes: -1 } });
+        const setlist = await Setlist.findOneAndUpdate(
+          { setListId },
+          { $inc: { likes: -1 } }
+        );
         await User.findOneAndUpdate(
           { _id },
           { $pull: { likedSetlists: setListId } },

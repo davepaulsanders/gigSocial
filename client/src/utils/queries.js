@@ -49,6 +49,8 @@ export const GET_SETLIST = gql`
       }
       comments {
         _id
+        setList
+        createdAt
         commentText
         username
       }

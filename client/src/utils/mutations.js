@@ -100,3 +100,11 @@ export const ADD_COMMENT = gql`
     }
   }
 `;
+
+export const DELETE_COMMENT = gql`
+mutation deleteComment ($_id: ID!) {
+  deleteComment(_id: $_id){
+    commentText
+  }
+}
+`;

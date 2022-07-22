@@ -20,3 +20,36 @@
     text-align: left;
     
 }
+
+.comment-trash {
+    width: 1rem;
+    height: 1rem;
+    align-self: center;
+}
+
+.delete-comment-container {
+    display: none;
+}
+
+.delete-comment-confirm {
+    width: 5rem;
+    position: absolute;
+    top: 0.25rem;
+    right: 6rem;
+    z-index: 100;
+    background-color: red;
+    
+}
+.delete-comment-cancel {
+    width: 5rem;
+    position: absolute;
+    top: 0.25rem;
+    right: 0.5rem;
+    z-index: 100;
+    background-color: yellow;
+    
+}
+
+.delete-container-appear {
+    display: block;
+}

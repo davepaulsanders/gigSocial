@@ -10,12 +10,7 @@ import { Header } from "../../components/Header/Header";
 import { Song } from "../../components/Song/Song";
 import { SearchCard } from "../../components/SearchCard/SearchCard";
 import { Comment } from "../../components/Comment/Comment";
-import {
-  FORM,
-  INPUT,
-  BUTTON,
-  APPEARDIV,
-} from "../../styled-components/styled-components";
+import { FORM, INPUT, BUTTON } from "../../styled-components/styled-components";
 
 // authentication
 import Auth from "../../utils/frontEndAuth";
@@ -49,6 +44,9 @@ export const SetlistView = () => {
 
   // variable for checking if the active delete menu is active in any song
   const [activeDelete, setActiveDelete] = useState(false);
+
+  // variable for checking if the active delete menu is active in any comment
+  const [activeDeleteComment, setActiveDeleteComment] = useState(false);
 
   // mutation for adding likes
   const [addLike, { error }] = useMutation(ADD_LIKE, {
@@ -114,7 +112,7 @@ export const SetlistView = () => {
     }
     addNewComment({ variables: { commentText, username, setList: setListId } });
 
-    document.querySelector(".comment-input").value = ""
+    document.querySelector(".comment-input").value = "";
   };
 
   // if no data yet
@@ -147,7 +145,6 @@ export const SetlistView = () => {
                     active={active}
                     setActive={setActive}
                     toggleModal={toggleModal}
-                    style={"cursor: pointer"}
                     key={song.result.id}
                     song={song.result}
                   />
@@ -164,6 +161,7 @@ export const SetlistView = () => {
             <h2 className="setlists-title">{setListData.setListName}</h2>
             <img
               className="setlist-likes"
+              alt="likes"
               onClick={likeSetlist}
               src={blackHeart}
             />
@@ -203,7 +201,7 @@ export const SetlistView = () => {
         className="d-flex align-items-center comment-form"
         onSubmit={addComment}
       >
-        <img className="current-user" src={user} />
+        <img className="current-user" alt="current-user" src={user} />
         <div className="add-comment-container d-flex align-items-center position-relative">
           <INPUT
             className="comment-input"
@@ -214,7 +212,14 @@ export const SetlistView = () => {
         </div>
       </form>
       {setListData.comments.map((comment) => (
-        <Comment key={comment._id} comment={comment} />
+        <Comment
+          key={comment._id}
+          activeDeleteComment={activeDeleteComment}
+          setActiveDeleteComment={setActiveDeleteComment}
+          setListCreator={setListData.setListCreator}
+          currentUser={username}
+          comment={comment}
+        />
       ))}
     </div>
   );

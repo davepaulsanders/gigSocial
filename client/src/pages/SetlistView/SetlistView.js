@@ -4,7 +4,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import "./SetlistView.css";
 // queries and mutations
 import { GET_SETLIST } from "../../utils/queries";
-import { ADD_LIKE } from "../../utils/mutations";
+import { ADD_LIKE, ADD_COMMENT } from "../../utils/mutations";
 // components
 import { Header } from "../../components/Header/Header";
 import { Song } from "../../components/Song/Song";
@@ -54,6 +54,9 @@ export const SetlistView = () => {
   const [addLike, { error }] = useMutation(ADD_LIKE, {
     refetchQueries: [{ query: GET_SETLIST, variables: { setListId } }],
   });
+  const [addNewComment, { error2 }] = useMutation(ADD_COMMENT, {
+    refetchQueries: [{ query: GET_SETLIST, variables: { setListId } }],
+  });
 
   // For opening and closing the add setlist modal
   const toggleModal = (e) => {
@@ -95,6 +98,25 @@ export const SetlistView = () => {
 
     addLike({ variables: { setListId, _id: userId } });
   };
+
+  // Add post button if text field has something in it
+  const addPostButton = (e) => {
+    e.preventDefault();
+    const postButton = document.querySelector(".post-button");
+    postButton.classList.add("post-appear");
+  };
+
+  const addComment = (e) => {
+    e.preventDefault();
+    const commentText = document.querySelector(".comment-input").value;
+    if (commentText === "") {
+      return;
+    }
+    addNewComment({ variables: { commentText, username, setList: setListId } });
+
+    document.querySelector(".comment-input").value = ""
+  };
+
   // if no data yet
   if (loading) {
     return "";
@@ -177,9 +199,19 @@ export const SetlistView = () => {
         </div>
       </div>
       <h2 className="comment-title">Comments:</h2>
-      <form className="d-flex align-items-center comment-form">
-        <img className="current-user" src={user}/>
-        <INPUT className="comment-input" placeholder={`Add a comment as ${username}`}/>
+      <form
+        className="d-flex align-items-center comment-form"
+        onSubmit={addComment}
+      >
+        <img className="current-user" src={user} />
+        <div className="add-comment-container d-flex align-items-center position-relative">
+          <INPUT
+            className="comment-input"
+            placeholder={`Add a comment as ${username}`}
+            onChange={addPostButton}
+          ></INPUT>
+          <button className="post-button">Post</button>
+        </div>
       </form>
       {setListData.comments.map((comment) => (
         <Comment key={comment._id} comment={comment} />

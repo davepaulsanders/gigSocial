@@ -84,3 +84,19 @@ export const ADD_LIKE = gql`
     }
   }
 `;
+
+export const ADD_COMMENT = gql`
+  mutation addComment(
+    $commentText: String!
+    $username: String!
+    $setList: ID!
+  ) {
+    addComment(
+      commentText: $commentText
+      username: $username
+      setList: $setList
+    ) {
+      commentText
+    }
+  }
+`;

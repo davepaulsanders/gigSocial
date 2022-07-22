@@ -33,7 +33,7 @@ ul {
 
 .hamburger {
     width: 2rem;
-    position: fixed;
+    position: absolute;
     right: 1.5rem;
     display: block;
     cursor: pointer;

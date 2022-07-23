@@ -66,7 +66,7 @@ export const LandingPage = () => {
       <div className="landing-page">
         {logIn && (
           <FORM id="login" onSubmit={handleLogIn}>
-            <h2>Log In</h2>
+            <h2 className="form-title">Log In</h2>
             <label htmlFor="email">Email: </label>
             <INPUT type="email" name="email" onChange={handleChangeLogIn} />
             <label htmlFor="password">Password: </label>
@@ -80,7 +80,7 @@ export const LandingPage = () => {
         )}
         {signUp && (
           <FORM id="signup" onSubmit={handleSignUp}>
-            <h2>Sign Up</h2>
+            <h2 className="form-title">Sign Up</h2>
             <label htmlFor="username">Username: </label>
             <INPUT type="text" name="username" onChange={handleChangeSignUp} />
             <label htmlFor="email">Email: </label>

@@ -196,31 +196,35 @@ export const SetlistView = () => {
           )}
         </div>
       </div>
-      <h2 className="comment-title">Comments:</h2>
-      <form
-        className="d-flex align-items-center comment-form"
-        onSubmit={addComment}
-      >
-        <img className="current-user" alt="current-user" src={user} />
-        <div className="add-comment-container d-flex align-items-center position-relative">
-          <INPUT
-            className="comment-input"
-            placeholder={`Add a comment as ${username}`}
-            onChange={addPostButton}
-          ></INPUT>
-          <button className="post-button">Post</button>
+      <div className="d-flex flex-column align-items-center justify-content-center mx-3">
+        <div className="comments-container d-flex flex-column align-items-start">
+          <h2 className="comment-title">Comments:</h2>
+          <form
+            className="d-flex align-items-center comment-form"
+            onSubmit={addComment}
+          >
+            <div className="add-comment-container d-flex align-items-center position-relative">
+            <img className="current-user" alt="current-user" src={user} />
+              <INPUT
+                className="comment-input"
+                placeholder={`Add a comment as ${username}`}
+                onChange={addPostButton}
+              ></INPUT>
+              <button className="post-button">Post</button>
+            </div>
+          </form>
+          {setListData.comments.map((comment) => (
+            <Comment
+              key={comment._id}
+              activeDeleteComment={activeDeleteComment}
+              setActiveDeleteComment={setActiveDeleteComment}
+              setListCreator={setListData.setListCreator}
+              currentUser={username}
+              comment={comment}
+            />
+          ))}
         </div>
-      </form>
-      {setListData.comments.map((comment) => (
-        <Comment
-          key={comment._id}
-          activeDeleteComment={activeDeleteComment}
-          setActiveDeleteComment={setActiveDeleteComment}
-          setListCreator={setListData.setListCreator}
-          currentUser={username}
-          comment={comment}
-        />
-      ))}
+      </div>
     </div>
   );
 };

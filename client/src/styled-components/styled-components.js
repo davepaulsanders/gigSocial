@@ -33,7 +33,6 @@ export const INPUT = styled.input`
   background-color: transparent;
   border: 2px solid #000;
   padding: 0.5rem 0.5rem;
-  width: 100%;
   margin-bottom: 0.5rem;
 `;
 

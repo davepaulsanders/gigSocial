@@ -18,3 +18,12 @@
     width: 80%!important;
 }
 
+@media only screen and (min-width: 700px) {
+    .genius-prompt {
+        width: 40%!important;
+    }
+    .genius-button {
+        width: 30%!important;
+    }
+}
+

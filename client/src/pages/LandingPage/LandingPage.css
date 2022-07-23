@@ -4,7 +4,9 @@
     justify-content: center;
     align-items: center;
 }
-
+.form-title {
+    margin-top: 1rem;
+}
 .title-container {
     margin-top: 0.5rem;
     padding-bottom: 0.25rem;

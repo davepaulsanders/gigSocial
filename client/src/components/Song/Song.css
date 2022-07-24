@@ -24,6 +24,7 @@
 .album-art {
     width: 5rem;
     height: 100%;
+    transition: width 0.3s ease-in-out;
 }
 
 .song-name {
@@ -52,17 +53,27 @@
     cursor: pointer;
 }
 
+.confirm-container {
+    right: 0;
+    background-color: #303030;
+}
+
 .delete-confirm, .delete-cancel {
     display: none;
-    margin: 0 0.5rem 0.5rem 0.5rem;
+    border-radius: 7px;
+    font-weight: 600!important;
+    padding: 0.25rem 1rem!important;
+    margin-bottom: 0.65rem;
 }
 
 .delete-confirm {
     background-color: red!important;
+    margin-right: 0.25rem;
 }
 
 .delete-cancel {
-    background-color: #e2ff61!important;
+    background-color: #969696!important;
+    margin-right: 1rem;
 }
 .delete-confirm-visible {
     display: block;

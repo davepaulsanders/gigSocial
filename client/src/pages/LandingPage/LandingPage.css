@@ -5,7 +5,9 @@
     align-items: center;
 }
 .form-title {
+    font-weight: 700;
     margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 .title-container {
     margin-top: 0.5rem;

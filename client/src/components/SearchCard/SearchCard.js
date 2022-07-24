@@ -97,13 +97,13 @@ export const SearchCard = ({ song, active, setActive, toggleModal }) => {
   } else if (songChosen && active === songId) {
     return (
       <SONG_CONTAINER
-        className={songId === active ? "song-data chosen-song" : "song-data"}
+        className={songId === active ? "song-data chosen-song width-increase" : "song-data"}
         id={song.id}
         onClick={highlightSong}
       >
-        <img className="album-art" src={image} alt="album art" />
+        <img className="album-art album-increase" src={image} alt="album art" />
         <div className="d-flex">
-          <div className="d-flex flex-column mx-3">
+          <div className="bpm-container d-flex flex-column justify-content-center">
             <p className="choose-bpm-title my-0">Choose a bpm</p>
             <select id="bpm-select">
               <option value="60" key="">
@@ -123,6 +123,7 @@ export const SearchCard = ({ song, active, setActive, toggleModal }) => {
               </option>
             </select>
           </div>
+          <div className="d-flex flex-column justify-content-center align-items-center">
           <BUTTON className="add-cancel-button" onClick={addToSetlist}>
             Add
           </BUTTON>
@@ -132,6 +133,7 @@ export const SearchCard = ({ song, active, setActive, toggleModal }) => {
           >
             Cancel
           </BUTTON>
+          </div>
         </div>
       </SONG_CONTAINER>
     );

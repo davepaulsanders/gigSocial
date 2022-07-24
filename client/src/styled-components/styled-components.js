@@ -52,6 +52,8 @@ export const BUTTON = styled.button`
 
 export const SONG_CONTAINER = styled.div`
   width: 100%;
+  height: 80px;
+  transition: height 0.3s ease-in-out;
   background-color: #303030;
   font-size: 1rem;
   color: white;

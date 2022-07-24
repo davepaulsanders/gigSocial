@@ -81,7 +81,7 @@ export const Song = ({
             src={garbageIcon}
             alt="delete"
           />
-          <div className="d-flex position-absolute">
+          <div className="confirm-container d-flex justify-content-center position-absolute">
             <BUTTON onClick={confirmDelete} className="delete-confirm">
               Delete
             </BUTTON>

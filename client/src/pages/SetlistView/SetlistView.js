@@ -145,9 +145,6 @@ export const SetlistView = () => {
           {/* SEARCH DATA */}
 
           <div className="results-container">
-            {searchData !== undefined ? (
-              <p className="choose">Choose a song to add!</p>
-            ) : null}
             {searchData !== undefined
               ? searchData.map((song) => (
                   <SearchCard

@@ -44,6 +44,7 @@ export const Profile = () => {
       fetchTokenForUser(code);
     }
   }, []);
+
   // Add a setlist
   const addSetlist = (e) => {
     e.preventDefault();
@@ -100,12 +101,12 @@ export const Profile = () => {
       <div className="modal-container position-absolute">
         <FORM className="add-setlist-form position-relative">
           <div className="d-flex justify-content-between w-100">
-            <h2>Name your new setlist!</h2>
+            <h2 className="setlist-modal-title">Name your new setlist!</h2>
             <button className="add-setlist" type="button" onClick={toggleModal}>
               <img className="close" src={plus} alt="add playlist" />
             </button>
           </div>
-          <INPUT type="text" id="setListName"></INPUT>
+          <INPUT type="text" placeholder="Name your setlist" id="setListName"></INPUT>
           <BUTTON onClick={addSetlist}>Save setlist</BUTTON>
         </FORM>
       </div>

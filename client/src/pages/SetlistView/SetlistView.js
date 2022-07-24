@@ -123,7 +123,7 @@ export const SetlistView = () => {
     <div className="d-flex flex-column justify-content-center">
       <Header />
       {/* ADD SONG MODAL */}
-      <div className="modal-container position-absolute">
+      <div className="setlist-add-modal modal-container position-absolute">
         <FORM className="add-setlist-form position-relative">
           <div className="d-flex justify-content-between w-100">
             <h2>Search for a song</h2>

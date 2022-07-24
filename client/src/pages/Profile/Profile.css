@@ -22,6 +22,12 @@
     align-items: center;
 
 }
+
+.setlist-modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
 .plus-col {
     text-align: right;
 }
@@ -66,7 +72,7 @@
 .close {
     width: 2rem;
     transform: rotate(45deg);
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .open-modal {

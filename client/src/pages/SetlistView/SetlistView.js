@@ -10,7 +10,12 @@ import { Header } from "../../components/Header/Header";
 import { Song } from "../../components/Song/Song";
 import { SearchCard } from "../../components/SearchCard/SearchCard";
 import { Comment } from "../../components/Comment/Comment";
-import { FORM, INPUT, BUTTON } from "../../styled-components/styled-components";
+import {
+  FORM,
+  INPUT,
+  BUTTON,
+  APPEARDIV,
+} from "../../styled-components/styled-components";
 
 // authentication
 import Auth from "../../utils/frontEndAuth";
@@ -126,12 +131,16 @@ export const SetlistView = () => {
       <div className="setlist-add-modal modal-container position-absolute">
         <FORM className="add-setlist-form position-relative">
           <div className="d-flex justify-content-between w-100">
-            <h2>Search for a song</h2>
+            <h2 className="setlist-add-title">Search for a song</h2>
             <button className="add-setlist" type="button" onClick={toggleModal}>
               <img className="close" src={plus} alt="add playlist" />
             </button>
           </div>
-          <INPUT type="text" id="song-search"></INPUT>
+          <INPUT
+            type="text"
+            placeholder="Type to search genius for a song"
+            id="song-search"
+          ></INPUT>
           <BUTTON onClick={searchGenius}>Search Genius</BUTTON>
           {/* SEARCH DATA */}
 
@@ -155,7 +164,7 @@ export const SetlistView = () => {
       </div>
       {/* SONGS */}
       <div className="mobile-desktop-flex d-flex flex-column container">
-        <div className="setlist-container w-50">
+        <APPEARDIV className="setlist-container w-50">
           <div className="row">
             <div className="col-10 setlist-header m-0 d-flex align-items-center">
               <img className="guitar-pick" src={pick} alt="guitar pick" />
@@ -205,8 +214,11 @@ export const SetlistView = () => {
               ))
             )}
           </div>
-        </div>
-        <div className="comments-width d-flex flex-column align-items-center justify-content-center w-50">
+        </APPEARDIV>
+        <APPEARDIV
+          style={{ animationDelay: "0.2s" }}
+          className="comments-width d-flex flex-column align-items-center justify-content-center w-50"
+        >
           <div className="comments-container d-flex flex-column align-items-start">
             <h2 className="comment-title">Comments:</h2>
             <form
@@ -234,7 +246,7 @@ export const SetlistView = () => {
               />
             ))}
           </div>
-        </div>
+        </APPEARDIV>
       </div>
     </div>
   );

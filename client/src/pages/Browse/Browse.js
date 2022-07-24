@@ -3,7 +3,10 @@ import { useQuery } from "@apollo/client";
 import { GET_ALL_SETLISTS } from "../../utils/queries";
 import { Header } from "../../components/Header/Header";
 import { Setlist } from "../../components/Setlist/Setlist";
+import { APPEARDIV } from "../../styled-components/styled-components";
 import Auth from "../../utils/frontEndAuth";
+import "./Browse.css"
+
 const pick = require("../../assets/guitar-pick.png");
 
 export const Browse = () => {
@@ -20,12 +23,12 @@ export const Browse = () => {
   return (
     <div className="d-flex flex-column justify-content-center">
       <Header />
-      <div className="setlist-container container">
+      <APPEARDIV className="setlist-container container">
         <div className="row">
           <div className="col setlist-header d-flex">
-            <img className="guitar-pick" src={pick} alt="guitar pick" />
-            <h2 className="setlists-title">
-              Check out these setlists from other creators!
+            <img className="guitar-pick-browse" src={pick} alt="guitar pick" />
+            <h2 className="setlists-browse-title">
+              Check out these other setlists!
             </h2>
           </div>
         </div>
@@ -47,7 +50,7 @@ export const Browse = () => {
             ))
           )}
         </div>
-      </div>
+      </APPEARDIV>
     </div>
   );
 };

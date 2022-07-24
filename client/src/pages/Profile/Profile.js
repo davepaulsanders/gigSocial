@@ -9,7 +9,7 @@ import { ADD_SETLIST } from "../../utils/mutations";
 // components
 import { Header } from "../../components/Header/Header";
 import { Setlist } from "../../components/Setlist/Setlist";
-import { FORM, INPUT, BUTTON } from "../../styled-components/styled-components";
+import { FORM, INPUT, BUTTON, APPEARDIV } from "../../styled-components/styled-components";
 
 // authentication
 import Auth from "../../utils/frontEndAuth";
@@ -111,7 +111,7 @@ export const Profile = () => {
         </FORM>
       </div>
       {/* SETLISTS */}
-      <div className="setlist-container container">
+      <APPEARDIV className="setlist-container container">
         <div className="row">
           <div className="col setlist-header d-flex">
             <img className="guitar-pick" src={pick} alt="guitar pick" />
@@ -141,7 +141,7 @@ export const Profile = () => {
             ))
           )}
         </div>
-      </div>
+      </APPEARDIV>
     </div>
   );
 };

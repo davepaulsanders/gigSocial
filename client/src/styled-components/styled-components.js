@@ -5,12 +5,12 @@ const materializeScale = keyframes`
 100% { opacity: 1; transform: scale(100%); }
 `;
 const materialize = keyframes`
-0% { opacity: 0; }
-100% { opacity: 1; }
+0% { opacity: 0; transform: translateY(-7px); }
+100% { opacity: 1; transform: translateY(0px); }
 `;
 export const APPEARDIV = styled.div`
   animation-name: ${materialize};
-  animation-duration: 2s;
+  animation-duration: 0.3s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: backwards;
 `;

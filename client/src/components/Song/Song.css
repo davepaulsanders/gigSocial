@@ -1,3 +1,16 @@
+.song-order {
+    background-color: #303030;
+    padding: 0.75rem;
+    height: 1rem;
+    width: 1rem;
+    top: 0;
+    left: 0;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .album-info-container {
     display: flex;
     flex-direction: column;

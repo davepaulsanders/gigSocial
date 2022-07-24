@@ -71,6 +71,15 @@
 
 @media only screen and (min-width: 700px) {
     .comments-container {
-        width: 40%;
+        width: 100%;
+        padding: 2rem;
+    }
+
+    .mobile-desktop-flex {
+        flex-direction: row!important;
+    }
+
+    .setlist-container {
+        width: 50%;
     }
 }

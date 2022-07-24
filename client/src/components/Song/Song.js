@@ -9,14 +9,13 @@ import { BUTTON } from "../../styled-components/styled-components";
 const lyricsimg = require("../../assets/lyrics.png");
 const garbageIcon = require("../../assets/garbage.png");
 
-export const Song = ({ song, activeDelete, setActiveDelete }) => {
+export const Song = ({ song, songOrder, activeDelete, setActiveDelete }) => {
   const setListId = useParams().id;
   const { songTitle, artist, bpm, embed, image, lyrics, _id } = song;
   const [deleteSongMutation, { error }] = useMutation(DELETE_SONG, {
     // refetch get me to refresh cache
     refetchQueries: [{ query: GET_SETLIST, variables: { setListId } }],
   });
-
 
   // pull up the options to delete or cancel deleting a song
   const deleteSongMenu = (e) => {
@@ -53,10 +52,11 @@ export const Song = ({ song, activeDelete, setActiveDelete }) => {
   const confirmDelete = (e) => {
     e.preventDefault();
     deleteSongMutation({ variables: { _id, setListId } });
-    setActiveDelete(false)
+    setActiveDelete(false);
   };
   return (
     <SONG_CONTAINER className="song position-relative justify-content-center align-items-center">
+      <p className="song-order position-absolute">{songOrder + 1}</p>
       <img className="album-art" src={image} alt="album art" />
       <div className="album-info-container">
         <p className="album-info song-name">{songTitle}</p>

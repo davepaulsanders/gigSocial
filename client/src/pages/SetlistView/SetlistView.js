@@ -154,9 +154,10 @@ export const SetlistView = () => {
         </FORM>
       </div>
       {/* SONGS */}
-      <div className="setlist-container container">
+      <div className="mobile-desktop-flex d-flex flex-column container">
+      <div className="setlist-container w-50">
         <div className="row">
-          <div className="col setlist-header m-0 d-flex align-items-center">
+          <div className="col-10 setlist-header m-0 d-flex align-items-center">
             <img className="guitar-pick" src={pick} alt="guitar pick" />
             <h2 className="setlists-title">{setListData.setListName}</h2>
             <img
@@ -176,19 +177,20 @@ export const SetlistView = () => {
         <div className="row">
           {/* If there is only one song */}
           {setListData.songs.length === 1 ? (
-            <div className="col" key={setListData.song[0].artist}>
+            <div className="col-12" key={setListData.song[0].artist}>
               <Song song={setListData.songs[0]} />
             </div>
           ) : (
             // if there are many songs
-            setListData.songs.map((song) => (
+            setListData.songs.map((song, i) => (
               <div
-                className="col-md-6"
+                className="col-12"
                 key={`${song.artist}-${song.songTitle}`}
               >
                 <Song
                   activeDelete={activeDelete}
                   setActiveDelete={setActiveDelete}
+                  songOrder={i}
                   song={song}
                 />
               </div>
@@ -196,7 +198,7 @@ export const SetlistView = () => {
           )}
         </div>
       </div>
-      <div className="d-flex flex-column align-items-center justify-content-center mx-3">
+      <div className="d-flex flex-column align-items-center justify-content-center mx-3 w-50">
         <div className="comments-container d-flex flex-column align-items-start">
           <h2 className="comment-title">Comments:</h2>
           <form
@@ -224,6 +226,7 @@ export const SetlistView = () => {
             />
           ))}
         </div>
+      </div>
       </div>
     </div>
   );

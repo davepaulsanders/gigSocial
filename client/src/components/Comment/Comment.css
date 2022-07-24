@@ -25,6 +25,7 @@
     height: 1rem;
     margin-left: 1rem;
     margin-top: 0.5rem;
+    margin-right: 1rem;
     justify-self: flex-end;
     cursor: pointer;
 }
@@ -47,7 +48,8 @@
     border-radius: 7px;
     z-index: 100;
     font-weight: 600;
-    padding: 0.25rem
+    padding: 0.25rem;
+    margin-bottom: 0.5rem;
 }
 .delete-comment-confirm {
     background-color: red;
@@ -55,6 +57,7 @@
 .delete-comment-cancel {
     background-color: #969696;
     margin-left: 0.25rem;
+    
 }
 
 .delete-container-appear {

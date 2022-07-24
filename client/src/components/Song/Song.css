@@ -54,19 +54,20 @@
 }
 
 .confirm-container {
-    right: 0;
+    opacity: 0;
+    right: -250px;
     background-color: #303030;
+    transition: opacity 0.3s ease-in-out, right 0.3s ease-in-out;
 }
 
-.delete-confirm, .delete-cancel {
-    display: none;
+.delete-button, .delete-cancel {
     border-radius: 7px;
     font-weight: 600!important;
     padding: 0.25rem 1rem!important;
     margin-bottom: 0.65rem;
 }
 
-.delete-confirm {
+.delete-button {
     background-color: red!important;
     margin-right: 0.25rem;
 }
@@ -76,5 +77,6 @@
     margin-right: 1rem;
 }
 .delete-confirm-visible {
-    display: block;
+    opacity: 1;
+    right: 0;
 }

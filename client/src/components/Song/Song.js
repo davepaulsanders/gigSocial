@@ -9,7 +9,14 @@ import { BUTTON } from "../../styled-components/styled-components";
 const lyricsimg = require("../../assets/lyrics.png");
 const garbageIcon = require("../../assets/garbage.png");
 
-export const Song = ({ song, songOrder, activeDelete, setActiveDelete }) => {
+export const Song = ({
+  song,
+  songOrder,
+  activeDelete,
+  setActiveDelete,
+  currentUser,
+  setListCreator,
+}) => {
   const setListId = useParams().id;
   const { songTitle, artist, bpm, embed, image, lyrics, _id } = song;
   const [deleteSongMutation, { error }] = useMutation(DELETE_SONG, {
@@ -66,20 +73,24 @@ export const Song = ({ song, songOrder, activeDelete, setActiveDelete }) => {
         <img className="lyrics" src={lyricsimg} alt="lyrics" />
       </a>
       <p className="bpm">{bpm}bpm</p>
-      <img
-        onClick={deleteSongMenu}
-        className="garbage"
-        src={garbageIcon}
-        alt="delete"
-      />
-      <div className="d-flex position-absolute">
-        <BUTTON onClick={confirmDelete} className="delete-confirm">
-          Delete
-        </BUTTON>
-        <BUTTON onClick={cancelDelete} className="delete-cancel">
-          Cancel
-        </BUTTON>
-      </div>
+      {currentUser === setListCreator ? (
+        <>
+          <img
+            onClick={deleteSongMenu}
+            className="garbage"
+            src={garbageIcon}
+            alt="delete"
+          />
+          <div className="d-flex position-absolute">
+            <BUTTON onClick={confirmDelete} className="delete-confirm">
+              Delete
+            </BUTTON>
+            <BUTTON onClick={cancelDelete} className="delete-cancel">
+              Cancel
+            </BUTTON>
+          </div>
+        </>
+      ) : null}
     </SONG_CONTAINER>
   );
 };

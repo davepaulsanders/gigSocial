@@ -168,15 +168,17 @@ export const SetlistView = () => {
               />
               <p className="setlist-likes-count">{setListData.likes}</p>
             </div>
-            <div className="col-2 plus-col">
-              <button
-                className="add-setlist"
-                type="button"
-                onClick={toggleModal}
-              >
-                <img className="plus" src={plus} alt="add playlist" />
-              </button>
-            </div>
+            {username === setListData.setListCreator ? (
+              <div className="col-2 plus-col">
+                <button
+                  className="add-setlist"
+                  type="button"
+                  onClick={toggleModal}
+                >
+                  <img className="plus" src={plus} alt="add playlist" />
+                </button>
+              </div>
+            ) : null}
           </div>
           <div className="row">
             {/* If there is only one song */}
@@ -192,6 +194,8 @@ export const SetlistView = () => {
                   key={`${song.artist}-${song.songTitle}`}
                 >
                   <Song
+                    currentUser={username}
+                    setListCreator={setListData.setListCreator}
                     activeDelete={activeDelete}
                     setActiveDelete={setActiveDelete}
                     songOrder={i}

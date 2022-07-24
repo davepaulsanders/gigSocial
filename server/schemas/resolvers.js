@@ -32,9 +32,11 @@ const resolvers = {
       const secret = process.env.CLIENT_SECRET;
       return { id, secret };
     },
-    getAllSetlists: async (parent, args) => {
-      const setlists = await Setlist.find({});
-      return setlists
+    getAllSetlists: async (parent, { username }) => {
+      const setlists = await Setlist.find({
+        setListCreator: { $ne: username },
+      });
+      return setlists;
     },
   },
   Mutation: {

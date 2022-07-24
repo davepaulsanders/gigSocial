@@ -155,78 +155,82 @@ export const SetlistView = () => {
       </div>
       {/* SONGS */}
       <div className="mobile-desktop-flex d-flex flex-column container">
-      <div className="setlist-container w-50">
-        <div className="row">
-          <div className="col-10 setlist-header m-0 d-flex align-items-center">
-            <img className="guitar-pick" src={pick} alt="guitar pick" />
-            <h2 className="setlists-title">{setListData.setListName}</h2>
-            <img
-              className="setlist-likes"
-              alt="likes"
-              onClick={likeSetlist}
-              src={blackHeart}
-            />
-            <p className="setlist-likes-count">{setListData.likes}</p>
-          </div>
-          <div className="col-2 plus-col">
-            <button className="add-setlist" type="button" onClick={toggleModal}>
-              <img className="plus" src={plus} alt="add playlist" />
-            </button>
-          </div>
-        </div>
-        <div className="row">
-          {/* If there is only one song */}
-          {setListData.songs.length === 1 ? (
-            <div className="col-12" key={setListData.song[0].artist}>
-              <Song song={setListData.songs[0]} />
+        <div className="setlist-container w-50">
+          <div className="row">
+            <div className="col-10 setlist-header m-0 d-flex align-items-center">
+              <img className="guitar-pick" src={pick} alt="guitar pick" />
+              <h2 className="setlists-title">{setListData.setListName}</h2>
+              <img
+                className="setlist-likes"
+                alt="likes"
+                onClick={likeSetlist}
+                src={blackHeart}
+              />
+              <p className="setlist-likes-count">{setListData.likes}</p>
             </div>
-          ) : (
-            // if there are many songs
-            setListData.songs.map((song, i) => (
-              <div
-                className="col-12"
-                key={`${song.artist}-${song.songTitle}`}
+            <div className="col-2 plus-col">
+              <button
+                className="add-setlist"
+                type="button"
+                onClick={toggleModal}
               >
-                <Song
-                  activeDelete={activeDelete}
-                  setActiveDelete={setActiveDelete}
-                  songOrder={i}
-                  song={song}
-                />
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-      <div className="d-flex flex-column align-items-center justify-content-center mx-3 w-50">
-        <div className="comments-container d-flex flex-column align-items-start">
-          <h2 className="comment-title">Comments:</h2>
-          <form
-            className="d-flex align-items-center comment-form"
-            onSubmit={addComment}
-          >
-            <div className="add-comment-container d-flex align-items-center position-relative">
-            <img className="current-user" alt="current-user" src={user} />
-              <INPUT
-                className="comment-input"
-                placeholder={`Add a comment as ${username}`}
-                onChange={addPostButton}
-              ></INPUT>
-              <button className="post-button">Post</button>
+                <img className="plus" src={plus} alt="add playlist" />
+              </button>
             </div>
-          </form>
-          {setListData.comments.map((comment) => (
-            <Comment
-              key={comment._id}
-              activeDeleteComment={activeDeleteComment}
-              setActiveDeleteComment={setActiveDeleteComment}
-              setListCreator={setListData.setListCreator}
-              currentUser={username}
-              comment={comment}
-            />
-          ))}
+          </div>
+          <div className="row">
+            {/* If there is only one song */}
+            {setListData.songs.length === 1 ? (
+              <div className="col-12" key={setListData.song[0].artist}>
+                <Song song={setListData.songs[0]} />
+              </div>
+            ) : (
+              // if there are many songs
+              setListData.songs.map((song, i) => (
+                <div
+                  className="col-12"
+                  key={`${song.artist}-${song.songTitle}`}
+                >
+                  <Song
+                    activeDelete={activeDelete}
+                    setActiveDelete={setActiveDelete}
+                    songOrder={i}
+                    song={song}
+                  />
+                </div>
+              ))
+            )}
+          </div>
         </div>
-      </div>
+        <div className="comments-width d-flex flex-column align-items-center justify-content-center w-50">
+          <div className="comments-container d-flex flex-column align-items-start">
+            <h2 className="comment-title">Comments:</h2>
+            <form
+              className="d-flex align-items-center comment-form"
+              onSubmit={addComment}
+            >
+              <div className="add-comment-container d-flex align-items-center position-relative">
+                <img className="current-user" alt="current-user" src={user} />
+                <INPUT
+                  className="comment-input"
+                  placeholder={`Add a comment as ${username}`}
+                  onChange={addPostButton}
+                ></INPUT>
+                <button className="post-button">Post</button>
+              </div>
+            </form>
+            {setListData.comments.map((comment) => (
+              <Comment
+                key={comment._id}
+                activeDeleteComment={activeDeleteComment}
+                setActiveDeleteComment={setActiveDeleteComment}
+                setListCreator={setListData.setListCreator}
+                currentUser={username}
+                comment={comment}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

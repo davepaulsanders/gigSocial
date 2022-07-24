@@ -1,7 +1,9 @@
 .setlist-header {
     margin-bottom: 0.5rem!important;
 }
-
+.setlist-container {
+    width: 100%!important;
+}
 .results-container {
     margin-top: 1rem!important;
     width: 100%;
@@ -21,7 +23,10 @@
 .setlist-likes-count {
     margin: 0;
 }
-
+.comments-width {
+    width: 100%!important;
+    margin: 1rem;
+}
 .comment-title {
     text-align: left;
     margin-top: 2rem;
@@ -31,10 +36,6 @@
 }
 
 .comment-form {
-    margin-bottom: 1rem;
-    width: 100%;
-}
-.comments-container {
     width: 100%;
 }
 .current-user {
@@ -69,17 +70,20 @@
     display: block;
 }
 
-@media only screen and (min-width: 700px) {
-    .comments-container {
-        width: 100%;
-        padding: 2rem;
+@media only screen and (min-width: 1000px) {
+    .comments-width {
+        width: 50%!important;
     }
 
+    .comments-container {
+        padding: 2rem;
+        min-width: 35rem!important;
+    }
     .mobile-desktop-flex {
         flex-direction: row!important;
     }
 
     .setlist-container {
-        width: 50%;
+        width: 50%!important;
     }
 }

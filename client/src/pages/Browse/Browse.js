@@ -3,11 +3,14 @@ import { useQuery } from "@apollo/client";
 import { GET_ALL_SETLISTS } from "../../utils/queries";
 import { Header } from "../../components/Header/Header";
 import { Setlist } from "../../components/Setlist/Setlist";
-
+import Auth from "../../utils/frontEndAuth";
 const pick = require("../../assets/guitar-pick.png");
 
 export const Browse = () => {
-  const { loading, data } = useQuery(GET_ALL_SETLISTS);
+  const username = Auth.getProfile().data.username;
+  const { loading, data } = useQuery(GET_ALL_SETLISTS, {
+    variables: { username },
+  });
 
   const setListData = data?.getAllSetlists;
 
@@ -21,7 +24,9 @@ export const Browse = () => {
         <div className="row">
           <div className="col setlist-header d-flex">
             <img className="guitar-pick" src={pick} alt="guitar pick" />
-            <h2 className="setlists-title">Setlists</h2>
+            <h2 className="setlists-title">
+              Check out these setlists from other creators!
+            </h2>
           </div>
         </div>
         <div className="row">
@@ -29,7 +34,7 @@ export const Browse = () => {
           {setListData.length === 1 ? (
             <div className="col" key={setListData[0].setListName}>
               <Setlist
-                username={setListData.setListCreator}
+                username={setListData[0].setListCreator}
                 setlist={setListData[0]}
               />
             </div>

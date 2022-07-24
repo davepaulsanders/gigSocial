@@ -5,8 +5,17 @@ const notes = require("../../assets/notes.png");
 const heart = require("../../assets/heart.png");
 
 export const Setlist = ({ username, setlist }) => {
-  const colorsArray = ["#444444", "#8A202C", "#2C46B7", "#31502D"];
-  const randomColor = colorsArray[Math.floor(Math.random() * 4)];
+  
+  const colorsArray = [
+    "#444444",
+    "#8A202C",
+    "#2C46B7",
+    "#31502D",
+    "#F078A2",
+    "#D09172",
+    "#A5BBD2",
+  ];
+  const randomColor = colorsArray[Math.floor(Math.random() * 7)];
   const { _id, setListId, setListName, countSongs, likes } = setlist;
   return (
     <a href={`/setlists/${setListId}`}>

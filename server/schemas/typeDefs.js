@@ -54,6 +54,7 @@ const typeDefs = gql`
     getSetlist(setListId: ID!): Setlist
     getLink: Genius
     getClient: Client
+    getAllSetlists: [Setlist]
   }
   type Mutation {
     login(email: String!, password: String!): Auth

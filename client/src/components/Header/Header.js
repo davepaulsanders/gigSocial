@@ -35,7 +35,7 @@ export const Header = () => {
         <nav className="d-flex align-items-center">
           <ul className="nav-list d-flex align-items-center closed">
             <li className="nav-link">
-              <a href="">Browse</a>
+              <a href="/browse">Browse</a>
             </li>
             <li className="nav-link">
               <a href="/setlists">Setlists</a>

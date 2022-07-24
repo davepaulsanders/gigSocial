@@ -57,3 +57,14 @@ export const GET_SETLIST = gql`
     }
   }
 `;
+
+export const GET_ALL_SETLISTS = gql`
+  query getAllSetlists {
+    getAllSetlists {
+      setListName
+      setListCreator
+      setListId
+      likes
+    }
+  }
+`;

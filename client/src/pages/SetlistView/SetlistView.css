@@ -80,7 +80,9 @@
 .post-appear {
     display: block;
 }
-
+.new-height {
+    height: 30rem!important;
+}
 @media only screen and (min-width: 1000px) {
     .comments-width {
         width: 50%!important;

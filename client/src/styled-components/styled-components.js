@@ -23,7 +23,8 @@ export const FORM = styled.form`
   animation-name: ${materializeScale};
   animation-duration: 0.3s;
   animation-timing-function: ease-in-out;
-  max-height: 30rem;
+  height: 14rem;
+  transition: height 0.3s ease-in-out;
   overflow-y: auto;
   z-index: 1;
   

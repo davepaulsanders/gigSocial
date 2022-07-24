@@ -50,6 +50,13 @@
 .log-in-button {
     margin-bottom: 0.5rem;
 }
+
+#login {
+    height: 20rem;
+}
+#signup {
+    height: 25rem;
+}
 @media only screen and (min-width: 600px) {
     .title-container {
         margin-bottom: 5rem;

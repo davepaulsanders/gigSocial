@@ -52,7 +52,7 @@ export const Comment = ({
   };
 
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex justify-content-center position-relative">
       <div className="comment">
         <img className="user-avatar" alt="user-avatar" src={user} />
         <p className="comment-text">
@@ -63,7 +63,7 @@ export const Comment = ({
       {/* If the viewer created the setlist, or they made the specific comment */}
       {currentUser === setListCreator || currentUser === username ? (
         <>
-          <div className="position-relative delete-comment-container">
+          <div className="delete-comment-container">
             <button
               className="delete-comment-confirm"
               onClick={confirmCommentDelete}

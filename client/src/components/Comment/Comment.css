@@ -30,28 +30,35 @@
 }
 
 .delete-comment-container {
-    display: none;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #52b788;
+    height: 3rem;
+    right: -11rem;
+    opacity: 0;
+    width: 10.5rem;
+    transition: right 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
-.delete-comment-confirm {
+.delete-comment-confirm, .delete-comment-cancel {
     width: 5rem;
-    position: absolute;
-    top: 0.25rem;
-    right: 6rem;
+    border-radius: 7px;
     z-index: 100;
+    font-weight: 600;
+    padding: 0.25rem
+}
+.delete-comment-confirm {
     background-color: red;
-    
 }
 .delete-comment-cancel {
-    width: 5rem;
-    position: absolute;
-    top: 0.25rem;
-    right: 0.5rem;
-    z-index: 100;
-    background-color: yellow;
-    
+    background-color: #969696;
+    margin-left: 0.25rem;
 }
 
 .delete-container-appear {
-    display: block;
+    right: 0;
+    opacity: 1;
+    
 }

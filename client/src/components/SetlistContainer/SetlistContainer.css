@@ -1,0 +1,31 @@
+.setlist-header {
+    margin-bottom: 0.5rem!important;
+}
+.setlist-container {
+    width: 100%!important;
+}
+
+.setlists-title {
+    margin-bottom: 0!important;
+}
+.setlist-likes {
+    width: 2rem;
+    height: 2rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
+
+.setlist-likes-count {
+    margin: 0;
+}
+
+
+.new-height {
+    height: 30rem!important;
+}
+@media only screen and (min-width: 1000px) {
+
+.setlist-container {
+    width: 50%!important;
+}
+}

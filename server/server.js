@@ -5,13 +5,16 @@ const PORT = process.env.PORT || 3001;
 // mongoDB connection
 const db = require("./config/connection");
 const path = require("path");
+
 // Apollo set up
 const { ApolloServer } = require("apollo-server-express");
 const { typeDefs, resolvers } = require("./schemas");
+const { authMiddleware } = require("./utils/auth");
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: authMiddleware,
 });
 
 // express set up
@@ -22,13 +25,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // if in production environment, server static files from build folder
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "../client/build")));
-// }
-
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
-// });
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+}
 
 // function to start server, connect it to express
 const startApolloServer = async (typeDefs, resolvers) => {

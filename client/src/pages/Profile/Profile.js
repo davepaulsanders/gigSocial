@@ -9,7 +9,12 @@ import { ADD_SETLIST } from "../../utils/mutations";
 // components
 import { Header } from "../../components/Header/Header";
 import { Setlist } from "../../components/Setlist/Setlist";
-import { FORM, INPUT, BUTTON, APPEARDIV } from "../../styled-components/styled-components";
+import {
+  FORM,
+  INPUT,
+  BUTTON,
+  APPEARDIV,
+} from "../../styled-components/styled-components";
 
 // authentication
 import Auth from "../../utils/frontEndAuth";
@@ -19,6 +24,10 @@ const plus = require("../../assets/plus.png");
 const pick = require("../../assets/guitar-pick.png");
 
 export const Profile = () => {
+  if (!Auth.loggedIn()) {
+    window.location.replace("/");
+  }
+
   // Getting userId from token to get user data
   const userId = Auth.getProfile().data._id;
 
@@ -106,7 +115,11 @@ export const Profile = () => {
               <img className="close" src={plus} alt="add playlist" />
             </button>
           </div>
-          <INPUT type="text" placeholder="Name your setlist" id="setListName"></INPUT>
+          <INPUT
+            type="text"
+            placeholder="Name your setlist"
+            id="setListName"
+          ></INPUT>
           <BUTTON onClick={addSetlist}>Save setlist</BUTTON>
         </FORM>
       </div>

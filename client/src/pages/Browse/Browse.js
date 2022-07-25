@@ -5,11 +5,15 @@ import { Header } from "../../components/Header/Header";
 import { Setlist } from "../../components/Setlist/Setlist";
 import { APPEARDIV } from "../../styled-components/styled-components";
 import Auth from "../../utils/frontEndAuth";
-import "./Browse.css"
+import "./Browse.css";
 
 const pick = require("../../assets/guitar-pick.png");
 
 export const Browse = () => {
+  if (!Auth.loggedIn()) {
+    window.location.replace("/");
+  }
+
   const username = Auth.getProfile().data.username;
   const { loading, data } = useQuery(GET_ALL_SETLISTS, {
     variables: { username },

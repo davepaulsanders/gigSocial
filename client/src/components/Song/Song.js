@@ -69,7 +69,7 @@ export const Song = ({
         <p className="album-info song-name">{songTitle}</p>
         <p className="album-info">{artist}</p>
       </div>
-      <a href={lyrics}>
+      <a href={lyrics} target="_blank">
         <img className="lyrics" src={lyricsimg} alt="lyrics" />
       </a>
       <p className="bpm">{bpm}bpm</p>

@@ -12,6 +12,10 @@ import {
 } from "../../styled-components/styled-components";
 
 export const LandingPage = () => {
+  const geniusToken = localStorage.getItem("genius_token");
+  if (Auth.loggedIn() && geniusToken) {
+    window.location.replace("/setlists");
+  }
 
   const [signUp, setSignUp] = useState(false);
   const [logIn, setLogIn] = useState(false);

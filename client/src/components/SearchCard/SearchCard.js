@@ -5,10 +5,7 @@ import { ADD_SONG, ADD_SONG_TO_SETLIST } from "../../utils/mutations";
 import { GET_SETLIST } from "../../utils/queries";
 import {
   SONG_CONTAINER,
-  FORM,
-  INPUT,
   BUTTON,
-  APPEARDIV,
 } from "../../styled-components/styled-components";
 import "./SearchCard.css";
 const plus = require("../../assets/plus.png");
@@ -97,7 +94,11 @@ export const SearchCard = ({ song, active, setActive, toggleModal }) => {
   } else if (songChosen && active === songId) {
     return (
       <SONG_CONTAINER
-        className={songId === active ? "song-data chosen-song width-increase" : "song-data"}
+        className={
+          songId === active
+            ? "song-data chosen-song width-increase"
+            : "song-data"
+        }
         id={song.id}
         onClick={highlightSong}
       >
@@ -124,15 +125,15 @@ export const SearchCard = ({ song, active, setActive, toggleModal }) => {
             </select>
           </div>
           <div className="d-flex flex-column justify-content-center align-items-center">
-          <BUTTON className="add-cancel-button" onClick={addToSetlist}>
-            Add
-          </BUTTON>
-          <BUTTON
-            className="add-cancel-button cancel"
-            onClick={() => setSongChosen(false)}
-          >
-            Cancel
-          </BUTTON>
+            <BUTTON className="add-cancel-button" onClick={addToSetlist}>
+              Add
+            </BUTTON>
+            <BUTTON
+              className="add-cancel-button cancel"
+              onClick={() => setSongChosen(false)}
+            >
+              Cancel
+            </BUTTON>
           </div>
         </div>
       </SONG_CONTAINER>

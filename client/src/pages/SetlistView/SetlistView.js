@@ -27,6 +27,10 @@ const blackHeart = require("../../assets/black-heart.png");
 const user = require("../../assets/user.png");
 
 export const SetlistView = () => {
+  if (!Auth.loggedIn()) {
+    window.location.replace("/");
+  }
+
   // get the setlist data
   const setListId = useParams().id;
 
@@ -67,7 +71,9 @@ export const SetlistView = () => {
     const modal = document.querySelector(".modal-container");
     if (modal.classList.contains("open-modal")) {
       modal.classList.remove("open-modal");
-      document.querySelector(".add-setlist-form").classList.remove('new-height')
+      document
+        .querySelector(".add-setlist-form")
+        .classList.remove("new-height");
     } else {
       // remove searchData if modal is closed
       if (searchData) {
@@ -85,7 +91,7 @@ export const SetlistView = () => {
       .value.replace(" ", "%20")
       .trim();
     songSearch(searchTerm);
-    document.querySelector(".add-setlist-form").classList.add('new-height')
+    document.querySelector(".add-setlist-form").classList.add("new-height");
   };
 
   // fetch function for getting songs from genius
@@ -149,14 +155,14 @@ export const SetlistView = () => {
           <div className="results-container">
             {searchData !== undefined
               ? searchData.map((song) => (
-                <APPEARDIV key={song.result.id}>
-                  <SearchCard
-                    active={active}
-                    setActive={setActive}
-                    toggleModal={toggleModal}
-                    key={song.result.id}
-                    song={song.result}
-                  />
+                  <APPEARDIV key={song.result.id}>
+                    <SearchCard
+                      active={active}
+                      setActive={setActive}
+                      toggleModal={toggleModal}
+                      key={song.result.id}
+                      song={song.result}
+                    />
                   </APPEARDIV>
                 ))
               : null}

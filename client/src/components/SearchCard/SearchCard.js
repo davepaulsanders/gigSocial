@@ -107,21 +107,11 @@ export const SearchCard = ({ song, active, setActive, toggleModal }) => {
           <div className="bpm-container d-flex flex-column justify-content-center">
             <p className="choose-bpm-title my-0">Choose a bpm</p>
             <select id="bpm-select">
-              <option value="60" key="">
-                60
-              </option>
-              <option value="70" key="">
-                70
-              </option>
-              <option value="80" key="">
-                80
-              </option>
-              <option value="90" key="">
-                90
-              </option>
-              <option value="100" key="">
-                100
-              </option>
+              <option value="60">60</option>
+              <option value="70">70</option>
+              <option value="80">80</option>
+              <option value="90">90</option>
+              <option value="100">100</option>
             </select>
           </div>
           <div className="d-flex flex-column justify-content-center align-items-center">

@@ -8,7 +8,7 @@ import { ADD_LIKE, ADD_COMMENT } from "../../utils/mutations";
 // components
 import { Header } from "../../components/Header/Header";
 import { Song } from "../../components/Song/Song";
-import { SearchCard } from "../../components/SearchCard/SearchCard";
+import { SearchModal } from "../../components/SearchModal/SearchModal";
 import { Comment } from "../../components/Comment/Comment";
 import {
   FORM,
@@ -45,11 +45,7 @@ export const SetlistView = () => {
   // save setlist data to variable
   const setListData = data?.getSetlist;
 
-  // save searchData variable if user wants to add song
-  const [searchData, setSearchData] = useState();
-
-  // set active song
-  const [active, setActive] = useState("");
+  const [openModal, setOpenModal] = useState(false);
 
   // variable for checking if the active delete menu is active in any song
   const [activeDelete, setActiveDelete] = useState(false);
@@ -65,45 +61,6 @@ export const SetlistView = () => {
     refetchQueries: [{ query: GET_SETLIST, variables: { setListId } }],
   });
 
-  // For opening and closing the add setlist modal
-  const toggleModal = (e) => {
-    e.preventDefault();
-    const modal = document.querySelector(".modal-container");
-    if (modal.classList.contains("open-modal")) {
-      modal.classList.remove("open-modal");
-      document
-        .querySelector(".add-setlist-form")
-        .classList.remove("new-height");
-    } else {
-      // remove searchData if modal is closed
-      if (searchData) {
-        setSearchData();
-      }
-      modal.classList.add("open-modal");
-    }
-  };
-
-  // clean up search term and send it to fetch
-  const searchGenius = (e) => {
-    e.preventDefault();
-    const searchTerm = document
-      .querySelector("#song-search")
-      .value.replace(" ", "%20")
-      .trim();
-    songSearch(searchTerm);
-    document.querySelector(".add-setlist-form").classList.add("new-height");
-  };
-
-  // fetch function for getting songs from genius
-  const songSearch = async (searchTerm) => {
-    const geniusToken = localStorage.getItem("genius_token");
-    const songs = await fetch(
-      `https://api.genius.com/search?q=${searchTerm}&access_token=${geniusToken}`
-    );
-    const list = await songs.json();
-    setSearchData(list.response.hits);
-  };
-
   const likeSetlist = (e) => {
     e.preventDefault();
 
@@ -111,10 +68,14 @@ export const SetlistView = () => {
   };
 
   // Add post button if text field has something in it
-  const addPostButton = (e) => {
+  const togglePostButton = (e) => {
     e.preventDefault();
     const postButton = document.querySelector(".post-button");
-    postButton.classList.add("post-appear");
+    if (postButton.classList.contains("post-appear")) {
+      postButton.classList.remove("post-appear");
+    } else {
+      postButton.classList.add("post-appear");
+    }
   };
 
   const addComment = (e) => {
@@ -135,40 +96,7 @@ export const SetlistView = () => {
   return (
     <div className="d-flex flex-column justify-content-center">
       <Header />
-      {/* ADD SONG MODAL */}
-      <div className="setlist-add-modal modal-container position-absolute">
-        <FORM className="add-setlist-form position-relative">
-          <div className="d-flex justify-content-between w-100">
-            <h2 className="setlist-add-title">Search for a song</h2>
-            <button className="add-setlist" type="button" onClick={toggleModal}>
-              <img className="close" src={plus} alt="add playlist" />
-            </button>
-          </div>
-          <INPUT
-            type="text"
-            placeholder="Type to search genius for a song"
-            id="song-search"
-          ></INPUT>
-          <BUTTON onClick={searchGenius}>Search Genius</BUTTON>
-          {/* SEARCH DATA */}
-
-          <div className="results-container">
-            {searchData !== undefined
-              ? searchData.map((song) => (
-                  <APPEARDIV key={song.result.id}>
-                    <SearchCard
-                      active={active}
-                      setActive={setActive}
-                      toggleModal={toggleModal}
-                      key={song.result.id}
-                      song={song.result}
-                    />
-                  </APPEARDIV>
-                ))
-              : null}
-          </div>
-        </FORM>
-      </div>
+      <SearchModal openModal={openModal} setOpenModal={setOpenModal} />
       {/* SONGS */}
       <div className="mobile-desktop-flex d-flex flex-column container">
         <APPEARDIV className="setlist-container w-50">
@@ -186,12 +114,13 @@ export const SetlistView = () => {
             </div>
             {username === setListData.setListCreator ? (
               <div className="col-2 plus-col">
-                <button
-                  className="add-setlist"
-                  type="button"
-                  onClick={toggleModal}
-                >
-                  <img className="plus" src={plus} alt="add playlist" />
+                <button className="add-setlist" type="button">
+                  <img
+                    className="plus"
+                    src={plus}
+                    alt="add playlist"
+                    onClick={() => setOpenModal(true)}
+                  />
                 </button>
               </div>
             ) : null}
@@ -237,7 +166,8 @@ export const SetlistView = () => {
                 <INPUT
                   className="comment-input"
                   placeholder={`Add a comment as ${username}`}
-                  onChange={addPostButton}
+                  onChange={togglePostButton}
+                  onBlur={togglePostButton}
                 ></INPUT>
                 <button className="post-button">Post</button>
               </div>

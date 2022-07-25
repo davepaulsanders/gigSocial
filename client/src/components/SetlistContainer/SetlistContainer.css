@@ -20,10 +20,16 @@
     margin: 0;
 }
 
+.plus-col {
+    display: flex;
+    justify-content: center;
+    padding: 0!important;
+}
 
 .new-height {
     height: 30rem!important;
 }
+
 @media only screen and (min-width: 1000px) {
 
 .setlist-container {

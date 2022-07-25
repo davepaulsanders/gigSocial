@@ -2,7 +2,6 @@
 .comments-width {
     width: 100%!important;
     margin: 1rem;
-    overflow-x: hidden;
 }
 .comment-title {
     text-align: left;
@@ -51,11 +50,12 @@
 }
 
 .comments-container {
-    min-width: 33rem!important;
+    min-width: 27rem!important;
     
     }
     .comments-width {
         max-height: 30rem;
+
         overflow-y: auto;
         margin-top: 0;
     }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { APPEARDIV } from "../../styled-components/styled-components";
+import { Metronome } from "../../components/Metronome/Metronome";
 import { useMutation } from "@apollo/client";
 import { GET_SETLIST } from "../../utils/queries";
 import { ADD_LIKE } from "../../utils/mutations";
@@ -34,7 +35,7 @@ export const SetlistContainer = ({
   return (
     <APPEARDIV className="setlist-container w-50">
       <div className="row">
-        <div className="col-10 setlist-header m-0 d-flex align-items-center">
+        <div className="col-6 setlist-header m-0 d-flex align-items-center">
           <img className="guitar-pick" src={pick} alt="guitar pick" />
           <h2 className="setlists-title">{setListData.setListName}</h2>
           <img
@@ -44,6 +45,9 @@ export const SetlistContainer = ({
             src={blackHeart}
           />
           <p className="setlist-likes-count">{setListData.likes}</p>
+        </div>
+        <div className="col-4">
+          <Metronome />
         </div>
         {username === setListData.setListCreator ? (
           <div className="col-2 plus-col">

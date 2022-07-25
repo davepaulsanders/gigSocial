@@ -13,11 +13,6 @@ import {
 
 export const LandingPage = () => {
 
-  // If the user is already logged in and trys to go to this page, redirect
-  if (Auth.loggedIn()) {
-    window.location.replace("/setlists")
-  }
-
   const [signUp, setSignUp] = useState(false);
   const [logIn, setLogIn] = useState(false);
   const [logInFormState, setLogInFormState] = useState({

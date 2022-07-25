@@ -34,11 +34,11 @@
 @keyframes click {
     from {
         transform: scale(1.1);
-        border: 1px solid rgb(113, 0, 117);
+        
     }
     to {
         transform: scale(1);
-        border: 1px solid #e2ff61;
+        
     }
 }
 .pulse {

@@ -40,6 +40,10 @@
     margin-right: 1rem;
     cursor: pointer;
 }
+
+.bpm:hover {
+    color: #e2ff61;
+}
 .lyrics {
     height: 2rem;
     width: 2rem;

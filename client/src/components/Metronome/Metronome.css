@@ -10,6 +10,8 @@
     font-size: 1.5rem;
     position: relative;
     top: -0.5rem;
+    cursor: pointer;
+
 }
 
 .up-arrow, .down-arrow {
@@ -17,6 +19,7 @@
     height: 1.5rem;
     position: relative;
     top: -0.4rem;
+    cursor: pointer;
 }
 
 .down-arrow {
@@ -27,4 +30,17 @@
     position: relative;
     top: 0.4rem;
     left: 1px;
+}
+
+@keyframes click {
+    from {
+        transform: scale(1.1);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+.pulse {
+    animation: click 1s infinite;
+    
 }

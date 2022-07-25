@@ -38,6 +38,7 @@
 .bpm {
     margin-top: 1rem;
     margin-right: 1rem;
+    cursor: pointer;
 }
 .lyrics {
     height: 2rem;

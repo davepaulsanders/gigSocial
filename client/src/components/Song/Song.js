@@ -16,6 +16,7 @@ export const Song = ({
   setActiveDelete,
   currentUser,
   setListCreator,
+  setBpm,
 }) => {
   const setListId = useParams().id;
   const { songTitle, artist, bpm, embed, image, lyrics, _id } = song;
@@ -61,6 +62,16 @@ export const Song = ({
     deleteSongMutation({ variables: { _id, setListId } });
     setActiveDelete(false);
   };
+
+  const getNewBpm = (e) => {
+    e.preventDefault();
+    // remove pulse if it's happening
+    document.querySelector(".metronome-circle").classList.remove("pulse");
+    // set new bpm
+    const newBpm = Number(e.target.getAttribute("data-bpm"));
+    setBpm(newBpm);
+  };
+
   return (
     <SONG_CONTAINER className="song position-relative justify-content-center align-items-center">
       <p className="song-order position-absolute">{songOrder + 1}</p>
@@ -72,7 +83,9 @@ export const Song = ({
       <a href={lyrics} target="_blank">
         <img className="lyrics" src={lyricsimg} alt="lyrics" />
       </a>
-      <p className="bpm">{bpm}bpm</p>
+      <p className="bpm" onClick={getNewBpm} data-bpm={bpm}>
+        {bpm}bpm
+      </p>
       {currentUser === setListCreator ? (
         <>
           <img

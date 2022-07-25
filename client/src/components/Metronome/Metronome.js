@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import "./Metronome.css";
 const upArrow = require("../../assets/up.png");
-export const Metronome = () => {
-  let [bpm, setBpm] = useState(120);
-
+export const Metronome = ({ bpm, setBpm }) => {
   const toggleMetronome = (e) => {
     e.preventDefault();
     const metronome = document.querySelector(".metronome-circle");
     if (metronome.classList.contains("pulse")) {
       metronome.classList.remove("pulse");
     } else {
+      const milliSeconds = 60000 / bpm;
+      metronome.style.animationDuration = `${milliSeconds}ms`;
       metronome.classList.add("pulse");
     }
   };
 
   const bpmTempoSet = (e) => {
     e.preventDefault();
+    document.querySelector(".metronome-circle").classList.remove("pulse");
     if (e.target.classList.contains("up-arrow")) {
       if (bpm === 350) {
         return;

@@ -11,7 +11,7 @@
     position: relative;
     top: -0.5rem;
     cursor: pointer;
-
+    animation-iteration-count: infinite;
 }
 
 .up-arrow, .down-arrow {
@@ -29,18 +29,20 @@
 .metronome-bpm {
     position: relative;
     top: 0.4rem;
-    left: 1px;
 }
 
 @keyframes click {
     from {
         transform: scale(1.1);
+        border: 1px solid rgb(113, 0, 117);
     }
     to {
         transform: scale(1);
+        border: 1px solid #e2ff61;
     }
 }
 .pulse {
-    animation: click 1s infinite;
+    animation-name: click;
+    animation-duration: 1s;
     
 }

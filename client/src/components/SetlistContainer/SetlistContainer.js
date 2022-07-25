@@ -20,6 +20,8 @@ export const SetlistContainer = ({
 }) => {
   // variable for checking if the active delete menu is active in any song
   const [activeDelete, setActiveDelete] = useState(false);
+  // keeping track of bpm
+  let [bpm, setBpm] = useState(120);
 
   // mutation for adding likes
   const [addLike, { error }] = useMutation(ADD_LIKE, {
@@ -47,7 +49,7 @@ export const SetlistContainer = ({
           <p className="setlist-likes-count">{setListData.likes}</p>
         </div>
         <div className="col-4">
-          <Metronome />
+          <Metronome bpm={bpm} setBpm={setBpm} />
         </div>
         {username === setListData.setListCreator ? (
           <div className="col-2 plus-col">
@@ -66,13 +68,15 @@ export const SetlistContainer = ({
         {/* If there is only one song */}
         {setListData.songs.length === 1 ? (
           <div className="col-12" key={setListData.song[0].artist}>
-            <Song song={setListData.songs[0]} />
+            <Song bpm={bpm} setBpm={setBpm} song={setListData.songs[0]} />
           </div>
         ) : (
           // if there are many songs
           setListData.songs.map((song, i) => (
             <div className="col-12" key={`${song.artist}-${song.songTitle}`}>
               <Song
+                bpm={bpm}
+                setBpm={setBpm}
                 currentUser={username}
                 setListCreator={setListData.setListCreator}
                 activeDelete={activeDelete}

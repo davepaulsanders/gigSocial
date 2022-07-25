@@ -22,17 +22,22 @@ export const SearchModal = ({ openModal, setOpenModal }) => {
     e.preventDefault();
     const modal = document.querySelector(".modal-container");
     if (modal.classList.contains("open-modal")) {
+      // Setting scroll to top again
+      document.querySelector(".add-setlist-form").scrollTop = 0;
+
+      // closing modal and removing extra height
       modal.classList.remove("open-modal");
       document
         .querySelector(".add-setlist-form")
         .classList.remove("new-height");
 
-      // remove searchData
+      // remove searchData from parent
       if (searchData) {
         setSearchData();
       }
-      // setState in parent
+      // set modal state to closed
       setOpenModal(false);
+      
       // clear input field
       document.querySelector("#song-search").value = "";
     }
@@ -67,10 +72,10 @@ export const SearchModal = ({ openModal, setOpenModal }) => {
       }
     >
       <FORM className="add-setlist-form position-relative">
-        <div className="d-flex justify-content-between w-100">
+        <div className="modal-title d-flex justify-content-between w-100">
           <h2 className="setlist-add-title">Search for a song</h2>
           <button className="add-setlist" type="button" onClick={closeModal}>
-            <img className="close" src={plus} alt="add playlist" />
+            <img className="close search" src={plus} alt="add playlist" />
           </button>
         </div>
         <INPUT
@@ -80,7 +85,6 @@ export const SearchModal = ({ openModal, setOpenModal }) => {
         ></INPUT>
         <BUTTON onClick={searchGenius}>Search Genius</BUTTON>
         {/* SEARCH DATA */}
-
         <div className="results-container">
           {searchData !== undefined
             ? searchData.map((song) => (

@@ -42,7 +42,7 @@ export const CommentContainer = ({ username, setListId, setListData }) => {
   return (
     <APPEARDIV
       style={{ animationDelay: "0.2s" }}
-      className="comments-width d-flex flex-column align-items-center justify-content-center w-50"
+      className="comments-width d-flex flex-column align-items-center w-50"
     >
       <div className="comments-container d-flex flex-column align-items-start">
         <h2 className="comment-title">Comments:</h2>

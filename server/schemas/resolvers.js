@@ -49,30 +49,42 @@ const resolvers = {
   },
   Mutation: {
     addUser: async (parent, args) => {
-      // create user
-      const user = await User.create(args);
-      // sign token with user info
-      const token = signToken(user);
-      // send both back
-      return { token, user };
+      try {
+        // create user
+        const user = await User.create(args);
+        // sign token with user info
+        const token = signToken(user);
+        // send both back
+        return { token, user };
+      } catch (err) {
+        if (err) {
+          return err;
+        }
+      }
     },
     login: async (parent, args) => {
-      const { email, password } = args;
-      // find the user
-      const user = await User.findOne({ email });
+      try {
+        const { email, password } = args;
+        // find the user
+        const user = await User.findOne({ email });
 
-      if (!user) {
-        throw new AuthenticationError("Incorrect credentials");
-      }
-      // check password
-      const passwordValidation = await user.isCorrectPassword(password);
+        if (!user) {
+          throw new AuthenticationError("Incorrect credentials");
+        }
+        // check password
+        const passwordValidation = await user.isCorrectPassword(password);
 
-      if (!passwordValidation) {
-        throw new AuthenticationError("Incorrect credentials");
+        if (!passwordValidation) {
+          throw new AuthenticationError("Incorrect credentials");
+        }
+        // sign token with user info
+        const token = signToken(user);
+        return { token, user };
+      } catch (err) {
+        if (err) {
+          return err;
+        }
       }
-      // sign token with user info
-      const token = signToken(user);
-      return { token, user };
     },
     addSetlist: async (parent, args, context) => {
       if (context.user) {

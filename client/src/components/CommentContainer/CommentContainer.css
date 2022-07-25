@@ -10,7 +10,6 @@
     margin-bottom: 1rem;
     font-weight: 700;
 }
-
 .comment-form {
     width: 100%;
 }
@@ -22,7 +21,7 @@
     align-self: flex-start;
 }
 .add-comment-container {
-    width: 100%;
+    width: 98%;
     margin: 0;
 }
 .comment-input {
@@ -51,7 +50,15 @@
 }
 
 .comments-container {
-    padding: 2rem;
-    min-width: 35rem!important;
-}
+    min-width: 33rem!important;
+    
+    }
+    .comments-width {
+        max-height: 30rem;
+        overflow-y: auto;
+        margin-top: 0;
+    }
+    .comment-title {
+        margin-top: 0;
+    }
 }

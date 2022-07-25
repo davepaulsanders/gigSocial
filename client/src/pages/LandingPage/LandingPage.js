@@ -17,6 +17,10 @@ export const LandingPage = () => {
     window.location.replace("/setlists");
   }
 
+  // selector for log in and sign up errors
+  const loginError = document.querySelector(".login-form-errors");
+  const signupError = document.querySelector(".signup-form-errors");
+
   const [signUp, setSignUp] = useState(false);
   const [logIn, setLogIn] = useState(false);
   const [logInFormState, setLogInFormState] = useState({
@@ -37,7 +41,10 @@ export const LandingPage = () => {
       const { data } = await logInData({ variables: { ...logInFormState } });
       Auth.login(data.login.token);
     } catch (err) {
-      console.error(err);
+      if (err) {
+        loginError.style.backgroundColor = "#000";
+        loginError.textContent = "Wrong email/password combination!";
+      }
     }
   };
   const handleSignUp = async (e) => {
@@ -46,20 +53,30 @@ export const LandingPage = () => {
       const { data } = await signUpData({ variables: { ...signUpFormState } });
       Auth.login(data.login.token);
     } catch (err) {
-      console.error(err);
+      if (err) {
+        signupError.style.backgroundColor = "#000";
+        signupError.textContent = "Sorry, something went wrong!";
+      }
     }
   };
   const handleChangeLogIn = (e) => {
     e.preventDefault();
+    // resetting errors if necessary
+    loginError.style.backgroundColor = "";
+    loginError.textContent = "";
+
     const { name, value } = e.target;
     setLogInFormState({ ...logInFormState, [name]: value });
   };
   const handleChangeSignUp = (e) => {
     e.preventDefault();
+    // resetting errors if necessary
+    signupError.style.backgroundColor = "";
+    signupError.textContent = "";
+
     const { name, value } = e.target;
     setSignUpFormState({ ...signUpFormState, [name]: value });
   };
-
   return (
     <div>
       <div className="title-container">
@@ -80,6 +97,7 @@ export const LandingPage = () => {
               name="password"
               onChange={handleChangeLogIn}
             />
+            <p className="login-form-errors w-100"></p>
             <BUTTON className="form-button">Log In</BUTTON>
           </FORM>
         )}
@@ -96,6 +114,7 @@ export const LandingPage = () => {
               name="password"
               onChange={handleChangeSignUp}
             />
+            <p className="signup-form-errors w-100"></p>
             <BUTTON className="form-button">Sign Up</BUTTON>
           </FORM>
         )}

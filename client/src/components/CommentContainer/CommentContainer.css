@@ -2,6 +2,7 @@
 .comments-width {
     width: 100%!important;
     margin: 1rem;
+    overflow-x: hidden;
 }
 .comment-title {
     text-align: left;
@@ -11,7 +12,7 @@
     font-weight: 700;
 }
 .comment-form {
-    width: 100%;
+    width: 98%;
 }
 .current-user {
     width: 2rem;
@@ -58,6 +59,7 @@
         overflow-y: auto;
         margin-top: 0;
     }
+    
     .comment-title {
         margin-top: 0;
     }

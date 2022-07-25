@@ -4,6 +4,17 @@
 *, ::after, ::before {
   box-sizing: border-box!important;
 }
+*::-webkit-scrollbar {
+  width: 0.25rem;
+  background-color: transparent!important;
+}
+ *::-webkit-scrollbar-track {
+  background-color: transparent!important;
+}
+ 
+*::-webkit-scrollbar-thumb {
+  background-color: #000;
+}
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;

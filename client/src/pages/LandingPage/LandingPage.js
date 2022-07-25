@@ -62,8 +62,8 @@ export const LandingPage = () => {
   const handleChangeLogIn = (e) => {
     e.preventDefault();
     // resetting errors if necessary
-    loginError.style.backgroundColor = "";
-    loginError.textContent = "";
+    document.querySelector(".login-form-errors").style.backgroundColor = "";
+    document.querySelector(".login-form-errors").textContent = "";
 
     const { name, value } = e.target;
     setLogInFormState({ ...logInFormState, [name]: value });
@@ -71,8 +71,8 @@ export const LandingPage = () => {
   const handleChangeSignUp = (e) => {
     e.preventDefault();
     // resetting errors if necessary
-    signupError.style.backgroundColor = "";
-    signupError.textContent = "";
+    document.querySelector(".signup-form-errors").style.backgroundColor = "";
+    document.querySelector(".signup-form-errors").textContent = "";
 
     const { name, value } = e.target;
     setSignUpFormState({ ...signUpFormState, [name]: value });

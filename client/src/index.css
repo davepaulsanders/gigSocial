@@ -24,7 +24,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #52b788!important;
-  overflow-x: hidden;
+  overflow-x: hidden!important;
 }
 
 button:hover {

@@ -41,12 +41,12 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/genius" element={<Genius />} />
-            <Route path="/setlists" element={<Profile />} />
-            <Route path="/setlists/:id" element={<SetlistView />} />
-            <Route path="/browse" element={<Browse />} />
-            <Route path="*" element={<NothingHere />} />
+            <Route path="/" component={<LandingPage />} />
+            <Route path="/genius" component={<Genius />} />
+            <Route path="/setlists" component={<Profile />} />
+            <Route path="/setlists/:id" component={<SetlistView />} />
+            <Route path="/browse" component={<Browse />} />
+            <Route path="*" component={<NothingHere />} />
           </Routes>
         </div>
       </Router>

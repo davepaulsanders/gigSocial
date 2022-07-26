@@ -44,6 +44,7 @@ ul {
     transition: transform 0.3s ease-out;
     height: 50px!important;
     z-index: 100;
+    right: 0;
     position: fixed;
 }
 
@@ -59,6 +60,7 @@ ul {
 .plus-menu-exit {
     transform: rotate(45deg);
     width: 1.5rem;
+    cursor: pointer;
 }
 
 .nav-link {
@@ -85,13 +87,5 @@ ul {
 @media only screen and (min-width: 700px) {
     .hamburger {
         display: none;
-    }
-
-    .plus-menu-exit {
-        display: none;
-    }
-    .nav-list {
-        right: 0;
-        width: fit-content;
     }
 }

@@ -11,12 +11,24 @@ export const Header = () => {
     if (nav.classList.contains("closed")) {
       nav.classList.remove("closed");
       nav.classList.add("open");
+      document.querySelector(".plus-menu-exit").style.display = "block";
     } else {
       nav.classList.remove("open");
       nav.classList.add("closed");
     }
   };
-  window.addEventListener("resize", () => {});
+  window.addEventListener("resize", () => {
+    const nav = document.querySelector(".nav-list");
+    if (window.innerWidth > 700 && nav.classList.contains("closed")) {
+      nav.classList.remove("closed");
+      nav.classList.add("open");
+      document.querySelector(".plus-menu-exit").style.display = "none";
+    }
+    if (window.innerWidth < 700 && nav.classList.contains("open")) {
+      nav.classList.remove("open");
+      nav.classList.add("closed");
+    }
+  });
   return (
     <header>
       <div className="header-container d-flex justify-content-between align-items-center">

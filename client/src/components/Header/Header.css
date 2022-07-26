@@ -13,7 +13,7 @@ ul {
     margin-top: 0.5rem;
     padding-bottom: 0.25rem;
     border-bottom: 5px double #000;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .header-title {
@@ -45,7 +45,8 @@ ul {
     height: 50px!important;
     z-index: 100;
     right: 0;
-    position: fixed;
+    top: 0;
+    position: sticky;
 }
 
 .closed {

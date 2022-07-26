@@ -15,8 +15,8 @@
     position: relative;
     top: -2px;
 }
-.setlist-header {
-    margin-bottom: 0.5rem;
+.setlist-header-profile {
+    margin-bottom: 0!important;
 }
 .container {
     align-items: center;

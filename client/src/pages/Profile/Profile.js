@@ -126,17 +126,17 @@ export const Profile = () => {
       {/* SETLISTS */}
       <APPEARDIV className="setlist-container container">
         <div className="row">
-          <div className="col setlist-header d-flex">
+          <div className="col-6 setlist-header-profile d-flex">
             <img className="guitar-pick" src={pick} alt="guitar pick" />
             <h2 className="setlists-title">Setlists</h2>
           </div>
-          <div className="col plus-col">
+          <div className="col-6 plus-col">
             <button className="add-setlist" type="button" onClick={toggleModal}>
               <img className="plus" src={plus} alt="add playlist" />
             </button>
           </div>
         </div>
-        <div className="row">
+        <div className="row my-2">
           {/* If there is only one setlist */}
           {userProfile.setlists.length === 1 ? (
             <div className="col" key={userProfile.setlists[0].setListName}>

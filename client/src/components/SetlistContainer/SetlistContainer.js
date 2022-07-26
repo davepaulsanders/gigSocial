@@ -36,7 +36,7 @@ export const SetlistContainer = ({
 
   return (
     <APPEARDIV className="setlist-container">
-      <div className="row">
+      <div className="row my-2">
         <div className="col-12 col-md-6 setlist-header m-0 d-flex align-items-center">
           <img className="guitar-pick" src={pick} alt="guitar pick" />
           <h2 className="setlists-title">{setListData.setListName}</h2>

@@ -1,6 +1,11 @@
+.comments {
+    width:98%;
+}
+
 .comment {
     display: flex;
-    width: 100%;
+    width: 90%;
+    margin-bottom: 0.5rem;
 }
 
 .user-avatar {
@@ -17,16 +22,14 @@
 }
 .comment-text {
     text-align: left;
-    
 }
 
 .comment-trash {
     width: 1rem;
     height: 1rem;
-    margin-left: 1rem;
-    margin-top: 0.5rem;
-    margin-right: 1rem;
-    justify-self: flex-end;
+    position: absolute;
+    right: 0;
+    top: 7px;
     cursor: pointer;
 }
 

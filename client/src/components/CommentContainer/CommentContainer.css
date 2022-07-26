@@ -13,35 +13,35 @@
     font-weight: 700;
 }
 .comment-form {
-    width: 98%;
+    width: 100%;
 }
 .current-user {
     width: 2rem;
     height: 2rem;
-    margin-top: 0;
-    margin-right: 0.3rem;
     align-self: flex-start;
+    margin-right: 0.25rem;
 }
 .add-comment-container {
-    width: 98%;
-    margin: 0;
+    width: 90%;
 }
 .comment-input {
     margin-bottom: 1rem!important;
     padding: 0.25rem 3.5rem 0.25rem 0.5rem!important;
     font-size: 1rem!important;
-    flex-grow: 1;
-
 }
-
 .post-button {
-    position: absolute;
-    right: 0.25rem;
     background-color: transparent;
     border: none;
     font-weight: 700;
     top: 0.35rem;
     display: none;
+    color: black;
+    position: absolute;
+    right: 5px;
+}
+
+.post-button:hover {
+    background-color: transparent!important;
 }
 
 .post-appear {

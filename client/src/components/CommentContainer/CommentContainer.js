@@ -31,6 +31,7 @@ export const CommentContainer = ({ username, setListId, setListData }) => {
 
   const addComment = (e) => {
     e.preventDefault();
+
     const commentText = document.querySelector(".comment-input").value;
     if (commentText === "") {
       return;
@@ -42,12 +43,13 @@ export const CommentContainer = ({ username, setListId, setListData }) => {
   return (
     <APPEARDIV
       style={{ animationDelay: "0.2s" }}
-      className="comments-width d-flex flex-column align-items-center w-50"
+      className="comments-width d-flex flex-column align-items-start"
     >
-      <div className="comments-container d-flex flex-column align-items-start">
+      <div className="comments-container d-flex flex-column justify-content-center align-items-start">
         <h2 className="comment-title">Comments:</h2>
         <form
-          className="d-flex align-items-center comment-form"
+          method="POST"
+          className="d-flex align-items-center justify-content-center comment-form"
           onSubmit={addComment}
         >
           <div className="add-comment-container d-flex align-items-center position-relative">
@@ -56,9 +58,10 @@ export const CommentContainer = ({ username, setListId, setListData }) => {
               className="comment-input"
               placeholder={`Add a comment as ${username}`}
               onChange={addPostButton}
-              onBlur={removePostButton}
             ></INPUT>
-            <button onClick={addComment} className="post-button">Post</button>
+            <button type="submit" className="post-button">
+              Post
+            </button>
           </div>
         </form>
         {setListData.comments.map((comment) => (

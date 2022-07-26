@@ -43,7 +43,13 @@ export const Header = () => {
           alt=""
         />
         <nav className="d-flex align-items-center">
-          <ul className="nav-list d-flex align-items-center">
+          <ul
+            className={
+              window.innerWidth < 700
+                ? "nav-list d-flex align-items-center closed"
+                : "nav-list d-flex align-items-center open"
+            }
+          >
             <li className="nav-link">
               <a href="/browse">Browse</a>
             </li>

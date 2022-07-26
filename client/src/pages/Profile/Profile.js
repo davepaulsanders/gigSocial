@@ -107,7 +107,7 @@ export const Profile = () => {
     <div className="d-flex flex-column justify-content-center">
       <Header />
       {/* ADD SETLIST MODAL */}
-      <div className="modal-container position-absolute">
+      <div className="modal-container modal-setlist-container position-absolute">
         <FORM className="add-setlist-form position-relative">
           <div className="d-flex justify-content-between w-100">
             <h2 className="setlist-modal-title">Name your new setlist!</h2>
@@ -137,10 +137,18 @@ export const Profile = () => {
           </div>
         </div>
         <div className="row my-2">
+          {/* If no setlists */}
+          {userProfile.setlists.length === 0 ||
+          userProfile.setlists === undefined ? (
+            <div className="my-5">
+              <h2 className="no-setlists">No setlists yet!</h2>
+            </div>
+          ) : null}
           {/* If there is only one setlist */}
           {userProfile.setlists.length === 1 ? (
             <div className="col" key={userProfile.setlists[0].setListName}>
               <Setlist
+                userId={userId}
                 username={userProfile.username}
                 setlist={userProfile.setlists[0]}
               />
@@ -149,7 +157,11 @@ export const Profile = () => {
             // if there are many setlists
             userProfile.setlists.map((set) => (
               <div className="col-md-6" key={set.setListName}>
-                <Setlist username={userProfile.username} setlist={set} />
+                <Setlist
+                  userId={userId}
+                  username={userProfile.username}
+                  setlist={set}
+                />
               </div>
             ))
           )}

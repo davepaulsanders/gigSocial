@@ -169,14 +169,14 @@ const resolvers = {
         return song;
       }
     },
-    deleteSetlist: async (parent, { _id, setListCreator }, context) => {
+    deleteSetlist: async (parent, { setListId, setListCreator }, context) => {
       if (context.user) {
         // delete the setlist
-        const setlist = await Setlist.findOneAndDelete({ _id });
+        const setlist = await Setlist.findOneAndDelete({ setListId });
         // also delete the record of the setlist in the user model
         await User.findOneAndUpdate(
           { username: setListCreator },
-          { $pull: { setlists: setlist._id } },
+          { $pull: { setlists: setlist.setListId } },
           { new: true }
         );
 

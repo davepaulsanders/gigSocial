@@ -64,6 +64,12 @@ export const CommentContainer = ({ username, setListId, setListData }) => {
             </button>
           </div>
         </form>
+        {/* if there are no comments */}
+        {setListData.comments.length === 0 && (
+          <div className="d-flex align-items-center justify-content-center my-5 w-100">
+            <h2 className="no-comments">No comments yet!</h2>
+          </div>
+        )}
         {setListData.comments.map((comment) => (
           <Comment
             key={comment._id}

@@ -10,7 +10,10 @@
     width: 1.25rem;
     height: 1.25rem;
 }
-
+.setlist-modal-title {
+    margin-top: 0!important;
+    padding-top: 0!important;
+}
 .like-count {
     margin: 0;
     padding-left: 0.1rem;
@@ -36,4 +39,36 @@
     flex-grow: 3;
     text-align: left;
     margin-left: 1rem;
+}
+
+.setlist-delete {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.delete-setlist-confirm-container {
+    right: -300px;
+    bottom: 1.2rem;
+    transition: right 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    background-color: #303030;
+}
+.delete-setlist-yes, .delete-setlist-no {
+    border-radius: 7px;
+    font-weight: 600!important;
+    padding: 0.25rem 1rem!important;
+    
+}
+
+.delete-setlist-yes {
+    background-color: red!important;
+}
+
+.delete-setlist-no {
+    background-color: darkgrey!important;
+    margin-left: 0.25rem;
+}
+
+.setlist-delete-appear {
+    right: 10px;
+    opacity: 1;
 }

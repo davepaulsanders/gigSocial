@@ -65,10 +65,21 @@ export const SetlistContainer = ({
         ) : null}
       </div>
       <div className="row">
+        {/* If there are no songs */}
+        {setListData.songs.length === 0 && (
+          <div>
+            <h2 className="no-songs">No songs yet!</h2>
+          </div>
+        )}
         {/* If there is only one song */}
         {setListData.songs.length === 1 ? (
-          <div className="col-12" key={setListData.song[0].artist}>
-            <Song bpm={bpm} setBpm={setBpm} song={setListData.songs[0]} />
+          <div className="col-12" key={setListData.songs[0].artist}>
+            <Song
+              songOrder={0}
+              bpm={bpm}
+              setBpm={setBpm}
+              song={setListData.songs[0]}
+            />
           </div>
         ) : (
           // if there are many songs

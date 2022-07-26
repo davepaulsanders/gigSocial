@@ -24,6 +24,7 @@ export const GET_ME = gql`
       email
       setlists {
         setListId
+        setListCreator
         setListName
         likes
         countSongs

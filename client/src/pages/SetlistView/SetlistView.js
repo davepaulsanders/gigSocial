@@ -42,7 +42,7 @@ export const SetlistView = () => {
       <Header />
       <SearchModal openModal={openModal} setOpenModal={setOpenModal} />
       {/* SONGS */}
-      <div className="mobile-desktop-flex d-flex flex-column container">
+      <div className="mobile-desktop-flex d-flex flex-column align-items-center justify-content-center container">
         <SetlistContainer
           setListId={setListId}
           username={username}

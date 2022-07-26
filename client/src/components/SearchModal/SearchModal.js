@@ -29,7 +29,9 @@ export const SearchModal = ({ openModal, setOpenModal }) => {
       // closing modal and removing extra height
       modal.classList.remove("open-modal");
       document.querySelector(".add-song-form").classList.remove("new-height");
-
+      document
+        .querySelector(".results-container")
+        .classList.remove("results-container-expand");
       // remove searchData from parent
       if (searchData) {
         setSearchData();
@@ -51,6 +53,9 @@ export const SearchModal = ({ openModal, setOpenModal }) => {
       .trim();
     songSearch(searchTerm);
     document.querySelector(".add-song-form").classList.add("new-height");
+    document
+      .querySelector(".results-container")
+      .classList.add("results-container-expand");
   };
 
   // fetch function for getting songs from genius

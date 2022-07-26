@@ -35,6 +35,14 @@ export const ADD_SETLIST = gql`
   }
 `;
 
+export const DELETE_SETLIST = gql`
+  mutation ($setListId: ID!, $setListCreator: String!) {
+    deleteSetlist(setListId: $setListId, setListCreator: $setListCreator){
+      setListName
+    }
+  }
+`;
+
 export const ADD_SONG = gql`
   mutation (
     $artist: String!
@@ -102,9 +110,9 @@ export const ADD_COMMENT = gql`
 `;
 
 export const DELETE_COMMENT = gql`
-mutation deleteComment ($_id: ID!) {
-  deleteComment(_id: $_id){
-    commentText
+  mutation deleteComment($_id: ID!) {
+    deleteComment(_id: $_id) {
+      commentText
+    }
   }
-}
 `;

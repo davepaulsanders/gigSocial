@@ -1,11 +1,12 @@
 
 .comments-container {
     width: 95%;
+    
 }
 
 .comments-width {
     width: 100%!important;
-    margin: 1rem 0;
+    margin: 2rem!important;
     overflow-y: auto;
     max-height: 30rem;
 }
@@ -51,6 +52,11 @@
 .post-appear {
     display: block;
 }
+
+.no-comments {
+    margin-left: 2rem;
+}
+
 @media only screen and (min-width: 1000px) {
 .comments-width {
     width: 50%!important;
@@ -60,8 +66,7 @@
     min-width: 27rem!important;
     margin-top: 1.5rem;
     }
-    .comments-width {
-        
+    .comments-width { 
         margin-top: 0;
     }
     

@@ -1,7 +1,3 @@
-.setlist-header {
-    margin-bottom: 1.5rem!important;
-  justify-content: center;
-}
 .setlist-container {
     width: 100%!important;
     align-self: flex-start;
@@ -27,7 +23,13 @@
     justify-content: right;
     
 }
+.no-songs {
+    font-weight: 700;
+}
 
+.no-comments {
+    font-weight: 700;
+}
 @media only screen and (min-width: 1000px) {
     .setlist-container {
         width: 50%!important;

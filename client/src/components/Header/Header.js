@@ -19,12 +19,12 @@ export const Header = () => {
   };
   window.addEventListener("resize", () => {
     const nav = document.querySelector(".nav-list");
-    if (window.innerWidth > 700 && nav.classList.contains("closed")) {
+    if (window.innerWidth > 700) {
       nav.classList.remove("closed");
       nav.classList.add("open");
       document.querySelector(".plus-menu-exit").style.display = "none";
     }
-    if (window.innerWidth < 700 && nav.classList.contains("open")) {
+    if (window.innerWidth < 700) {
       nav.classList.remove("open");
       nav.classList.add("closed");
     }
@@ -43,7 +43,7 @@ export const Header = () => {
           alt=""
         />
         <nav className="d-flex align-items-center">
-          <ul className="nav-list d-flex align-items-center closed">
+          <ul className="nav-list d-flex align-items-center">
             <li className="nav-link">
               <a href="/browse">Browse</a>
             </li>

@@ -59,8 +59,9 @@ ul {
 
 .plus-menu-exit {
     transform: rotate(45deg);
-    width: 1.5rem;
+    width: 2rem;
     cursor: pointer;
+    display: none;
 }
 
 .nav-link {

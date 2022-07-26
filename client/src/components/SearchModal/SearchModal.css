@@ -1,6 +1,7 @@
 .results-container {
     margin-top: 1rem!important;
     width: 100%;
+    margin-bottom: 10rem;
 }
 .setlist-add-modal {
     z-index: 2000!important;

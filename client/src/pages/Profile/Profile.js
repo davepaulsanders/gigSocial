@@ -84,7 +84,7 @@ export const Profile = () => {
     const clientInfo = client.data.getClient;
     const { id, secret } = clientInfo;
     console.log("fetching genius token...");
-    const body = `client_secret=${secret}&grant_type=authorization_code&code=${code}&client_id=${id}&redirect_uri=http://localhost:3000/setlists&response_type=code`;
+    const body = `client_secret=${secret}&grant_type=authorization_code&code=${code}&client_id=${id}&redirect_uri=https://gigsocial.herokuapp.com/setlists&response_type=code`;
     try {
       const token = await fetch("https://api.genius.com/oauth/token/", {
         method: "POST",

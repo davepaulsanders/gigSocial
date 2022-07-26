@@ -50,6 +50,8 @@
     font-weight: 600;
     padding: 0.25rem;
     margin-bottom: 0.5rem;
+    border: none;
+    color: black;
 }
 .delete-comment-confirm {
     background-color: red;

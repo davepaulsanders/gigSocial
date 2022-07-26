@@ -58,7 +58,7 @@ export const CommentContainer = ({ username, setListId, setListData }) => {
               onChange={addPostButton}
               onBlur={removePostButton}
             ></INPUT>
-            <button className="post-button">Post</button>
+            <button onClick={addComment} className="post-button">Post</button>
           </div>
         </form>
         {setListData.comments.map((comment) => (

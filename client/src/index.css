@@ -41,3 +41,5 @@ a {
 input {
   border-radius: 0;
 }
+
+input:focus { font-size: 16px!important}

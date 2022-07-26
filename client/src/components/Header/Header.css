@@ -8,9 +8,7 @@ ul {
     justify-content: center;
     align-items: center;
 }
-nav {
-    
-}
+
 .header-container {
     margin-top: 0.5rem;
     padding-bottom: 0.25rem;
@@ -46,7 +44,7 @@ nav {
     transition: transform 0.3s ease-out;
     height: 50px!important;
     z-index: 100;
-    
+    position: fixed;
 }
 
 .closed {

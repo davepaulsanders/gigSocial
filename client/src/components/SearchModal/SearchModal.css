@@ -9,12 +9,18 @@
 .setlist-add-title {
     font-size: 1.5rem;
     font-weight: 700;
-    
+    margin-top: 1rem;
 }
 
 .add-setlist-form {
     padding-top: 0!important;
     width: 100%;
+    top: 0;
+}
+
+.new-height {
+    height: 100vh!important;
+    overflow-y: hidden;
 }
 
 .modal-title {

@@ -52,7 +52,7 @@ export const Comment = ({
   };
 
   return (
-    <div className="comments d-flex justify-content-center position-relative overflow-hidden">
+    <div className="comments d-flex justify-content-start position-relative overflow-hidden">
       <div className="comment">
         <img className="user-avatar" alt="user-avatar" src={user} />
         <p className="comment-text">

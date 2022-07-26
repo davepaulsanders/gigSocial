@@ -1,7 +1,11 @@
 
+.comments-container {
+    width: 95%;
+}
+
 .comments-width {
     width: 100%!important;
-    margin: 1rem;
+    margin: 1rem 0;
     overflow-y: auto;
     max-height: 30rem;
 }
@@ -22,7 +26,7 @@
     margin-right: 0.25rem;
 }
 .add-comment-container {
-    width: 90%;
+    width: 100%;
 }
 .comment-input {
     margin-bottom: 1rem!important;

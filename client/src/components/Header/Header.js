@@ -46,8 +46,8 @@ export const Header = () => {
           <ul
             className={
               window.innerWidth < 700
-                ? "nav-list d-flex align-items-center closed"
-                : "nav-list d-flex align-items-center open"
+                ? "nav-list d-flex justify-content-center align-items-center closed"
+                : "nav-list d-flex justify-content-end align-items-center open"
             }
           >
             <li className="nav-link">

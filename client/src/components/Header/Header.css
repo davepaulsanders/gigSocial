@@ -24,6 +24,7 @@ ul {
     margin: 0 0 0 0.5rem;
     text-align: left;
     font-family: "Poppins"!important;
+    
 }
 
 .genius-prompt {
@@ -42,11 +43,13 @@ ul {
 
 .nav-list {
     transition: transform 0.3s ease-out;
-    height: 50px!important;
-    z-index: 100;
+    height: 59px!important;
     right: 0;
     top: 0;
-    position: sticky;
+    position: absolute;
+    width: 100vw;
+    display: flex;
+    z-index: 100;
 }
 
 .closed {
@@ -55,19 +58,21 @@ ul {
 }
 
 .open {
-    transform: translateX(0);
+    transform: translateX(0%);
 }
 
 .plus-menu-exit {
     transform: rotate(45deg);
     width: 2rem;
     cursor: pointer;
+    margin-right: 1rem;
     display: none;
 }
 
 .nav-link {
     font-weight: 700;
-    
+    margin: 0!important;
+    padding: 0.5rem;
 }
 
 .nav-log-out {
@@ -76,7 +81,7 @@ ul {
     color: black;
     font-weight: 700;
     white-space: nowrap;
-    margin: 0!important;
+    margin: 0rem!important;
 }
 .nav-log-out:hover {
     background-color: transparent;
@@ -89,5 +94,8 @@ ul {
 @media only screen and (min-width: 700px) {
     .hamburger {
         display: none;
+    }
+    .nav-list {
+        width: 85%;
     }
 }

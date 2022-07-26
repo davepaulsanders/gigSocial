@@ -49,7 +49,7 @@ export const CommentContainer = ({ username, setListId, setListData }) => {
         <h2 className="comment-title">Comments:</h2>
         <form
           method="POST"
-          className="d-flex align-items-center justify-content-center comment-form"
+          className="d-flex align-items-center justify-content-start comment-form"
           onSubmit={addComment}
         >
           <div className="add-comment-container d-flex align-items-center position-relative">

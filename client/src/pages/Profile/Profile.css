@@ -27,6 +27,7 @@
     font-size: 1.5rem;
     margin-bottom: 2rem;
     font-weight: 700;
+    padding-top: 1.5rem;
 }
 .plus-col {
     text-align: right;
@@ -72,7 +73,7 @@
 .close {
     width: 2rem;
     transform: rotate(45deg);
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 .open-modal {

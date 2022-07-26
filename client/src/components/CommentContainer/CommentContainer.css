@@ -2,6 +2,8 @@
 .comments-width {
     width: 100%!important;
     margin: 1rem;
+    overflow-y: auto;
+    max-height: 30rem;
 }
 .comment-title {
     text-align: left;
@@ -31,6 +33,7 @@
     flex-grow: 1;
 
 }
+
 .post-button {
     position: absolute;
     right: 0.25rem;
@@ -51,12 +54,10 @@
 
 .comments-container {
     min-width: 27rem!important;
-    
+    margin-top: 1.5rem;
     }
     .comments-width {
-        max-height: 30rem;
-
-        overflow-y: auto;
+        
         margin-top: 0;
     }
     

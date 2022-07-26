@@ -1,14 +1,16 @@
 ul {
-    margin: 0
+    margin: 0;
+    background-color: #52b788!important;
 }
-
 .profile-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
+nav {
+    
+}
 .header-container {
     margin-top: 0.5rem;
     padding-bottom: 0.25rem;
@@ -37,32 +39,28 @@ ul {
     right: 1.5rem;
     display: block;
     cursor: pointer;
+    z-index: 99;
 }
 
 .nav-list {
-    position: relative;
-    transition: right 0.3s ease-out;
-    background-color: #52b788;
-    width: 100%;
+    transition: transform 0.3s ease-out;
     height: 50px!important;
-    justify-content: flex-start;
+    z-index: 100;
     
 }
 
 .closed {
-    right: -600px;
+    transform: translateX(100%);
+    
 }
 
 .open {
-    right: 0px;
+    transform: translateX(0);
 }
 
 .plus-menu-exit {
     transform: rotate(45deg);
     width: 1.5rem;
-    position: absolute;
-    cursor: pointer;
-    right: 1.5rem;
 }
 
 .nav-link {
@@ -75,7 +73,8 @@ ul {
     border: none;
     color: black;
     font-weight: 700;
-    margin-right: 4rem!important;
+    white-space: nowrap;
+    margin: 0!important;
 }
 .nav-log-out:hover {
     background-color: transparent;

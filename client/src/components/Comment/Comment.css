@@ -59,7 +59,12 @@
     margin-left: 0.25rem;
     
 }
-
+.delete-comment-confirm:hover {
+    background-color: rgb(255, 100, 100);
+}
+.delete-comment-cancel:hover {
+    background-color: darkgrey;
+}
 .delete-container-appear {
     right: 0;
     opacity: 1;

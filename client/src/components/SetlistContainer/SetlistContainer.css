@@ -1,5 +1,6 @@
 .setlist-header {
-    margin-bottom: 0.5rem!important;
+    margin-bottom: 1.5rem!important;
+  justify-content: center;
 }
 .setlist-container {
     width: 100%!important;
@@ -8,6 +9,7 @@
 
 .setlists-title {
     margin-bottom: 0!important;
+
 }
 .setlist-likes {
     width: 2rem;
@@ -22,8 +24,8 @@
 
 .plus-col {
     display: flex;
-    justify-content: center;
-    padding: 0!important;
+    justify-content: right;
+    
 }
 
 .new-height {
@@ -31,8 +33,10 @@
 }
 
 @media only screen and (min-width: 1000px) {
-
-.setlist-container {
-    width: 50%!important;
-}
+    .setlist-container {
+        width: 50%!important;
+    }
+    .setlist-header {
+        justify-content: left;
+    }
 }

@@ -25,7 +25,9 @@
     bottom: 16px;
     background-color: #00e479!important;
 }
-
+.add-song:hover {
+    background-color: #7cfa7c!important;
+}
 .appear {
     display: flex;
     justify-content: center;
@@ -42,10 +44,16 @@
     margin-top: 0!important;
     
 }
-
+.add-cancel-button:hover {
+    background-color: #7cfa7c!important;
+}
 .cancel {
     background-color: #969696!important;
     margin-top: 0.25rem!important;
+}
+
+.cancel:hover {
+    background-color: darkgray!important;
 }
 
 .choose-bpm-title {

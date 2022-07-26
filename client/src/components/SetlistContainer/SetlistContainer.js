@@ -35,9 +35,9 @@ export const SetlistContainer = ({
   };
 
   return (
-    <APPEARDIV className="setlist-container w-50">
+    <APPEARDIV className="setlist-container">
       <div className="row">
-        <div className="col-6 setlist-header m-0 d-flex align-items-center">
+        <div className="col-12 col-md-6 setlist-header m-0 d-flex align-items-center">
           <img className="guitar-pick" src={pick} alt="guitar pick" />
           <h2 className="setlists-title">{setListData.setListName}</h2>
           <img
@@ -48,11 +48,11 @@ export const SetlistContainer = ({
           />
           <p className="setlist-likes-count">{setListData.likes}</p>
         </div>
-        <div className="col-4">
+        <div className="col-6 col-md-4 d-flex">
           <Metronome bpm={bpm} setBpm={setBpm} />
         </div>
         {username === setListData.setListCreator ? (
-          <div className="col-2 plus-col">
+          <div className="col-6 col-md-2 plus-col">
             <button className="add-setlist" type="button">
               <img
                 className="plus"

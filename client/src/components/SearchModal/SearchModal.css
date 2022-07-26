@@ -12,15 +12,15 @@
     margin-top: 1rem;
 }
 
-.add-setlist-form {
+.add-song-form {
     padding-top: 0!important;
     width: 100%;
-    top: 0;
+    top: 20%;
+    background-color: #52b788;
 }
 
 .new-height {
     height: 100vh!important;
-    overflow-y: hidden;
 }
 
 .modal-title {
@@ -38,5 +38,11 @@
 
 .search {
     position: relative;
-    top: 0.75rem;
+    top: 0.5rem;
+}
+
+@media only screen and (min-width: 700px) {
+    .add-song-form {
+        width: 26rem;
+    }
 }

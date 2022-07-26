@@ -29,6 +29,19 @@ export const Header = () => {
       nav.classList.add("closed");
     }
   });
+
+  document.body.addEventListener("scroll", () => {
+    if (document.body.scrollTop > 0) {
+      document.querySelector(".hamburger-container").style.display = "none";
+    } else {
+      if (
+        (document.querySelector(".hamburger-container").style.display = "none")
+      ) {
+        document.querySelector(".hamburger-container").style.display = "block";
+      }
+    }
+  });
+
   return (
     <header>
       <div className="header-container d-flex justify-content-between align-items-center">
@@ -36,12 +49,14 @@ export const Header = () => {
           <p className="header-title">GIG</p>
           <p className="header-title">SOCIAL</p>
         </a>
-        <img
-          className="hamburger"
-          onClick={toggleMenu}
-          src={hamburger}
-          alt=""
-        />
+        <div className="hamburger-container">
+          <img
+            className="hamburger"
+            onClick={toggleMenu}
+            src={hamburger}
+            alt=""
+          />
+        </div>
         <nav className="d-flex align-items-center">
           <ul
             className={

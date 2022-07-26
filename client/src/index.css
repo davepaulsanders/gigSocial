@@ -16,15 +16,17 @@
   background-color: #000;
 }
 
-html {
+html, body {
   height: 100%!important;
+  width: 100%!important;
+  overflow-x: hidden!important;
 }
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #52b788!important;
-  overflow-x: hidden!important;
+  
 }
 *::placeholder {
   color: #303030!important;

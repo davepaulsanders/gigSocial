@@ -82,6 +82,7 @@ const resolvers = {
         return { token, user };
       } catch (err) {
         if (err) {
+          console.log(err);
           return err;
         }
       }

@@ -20,7 +20,7 @@ const resolvers = {
           .populate("songs")
           .populate({
             path: "comments",
-            sort: { createdAt: 1 },
+            options: { sort: { createdAt: -1 } },
           });
         return setlist;
       }

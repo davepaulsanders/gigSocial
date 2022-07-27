@@ -1,6 +1,6 @@
 
 .comments-container {
-    width: 95%;
+    width: 100%;
     
 }
 
@@ -63,11 +63,11 @@
 }
 
 .comments-container {
-    min-width: 27rem!important;
+    min-width: 22rem!important;
     margin-top: 1.5rem;
     }
     .comments-width { 
-        margin-top: 0;
+        margin-top: 0!important;
     }
     
     .comment-title {

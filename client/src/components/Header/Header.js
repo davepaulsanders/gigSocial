@@ -61,7 +61,7 @@ export const Header = () => {
           <ul
             className={
               window.innerWidth < 700
-                ? "nav-list d-flex justify-content-center align-items-center closed"
+                ? "nav-list d-flex justify-content-end align-items-center closed"
                 : "nav-list d-flex justify-content-end align-items-center open"
             }
           >

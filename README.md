@@ -1,1 +1,46 @@
 # gigSocial
+
+gigSocial is an app inspired by the struggles of being a musician. The app helps musicians organize their setlists, lyrics, and tempos in one place. gigSocial allows users to create accounts, connect them to the Genius API, and build setlists of songs for live performances. Additionally, each song can have a set BPM (beats per minute). The included metronome pulses at the tempo of each song in the setlist to provide a visual cue for live performance.
+
+gigSocial also includes a small amount of social networking; other users of the app are able to view other setlists on the app and comment their own opinions.
+
+## Screenshots
+
+## Installation
+
+1. First, clone the repository
+
+2. Run `npm install` in the root directory
+
+3. You will have to sign up as a client for the Genius API in order to use their services. Information about this can be found [here](https://docs.genius.com/).
+
+4. A .env file is required, see the .ENV_EXAMPLE file in the server folder for reference. The app requires variables related to the GENIUS API client and also JSON web tokens, which are used for authentication/authorization.
+
+5. The redirect uri parameter in the variable body in Profile.js will have to be changed to `http://localhost:3000/setlists` for development.
+
+## Technologies
+
+1. MongoDB Atlas
+2. GraphQL API with Apollo
+3. Node
+4. Express
+5. React
+6. OAuth 2.0 for interacting with the Genius API
+7. JSON Web Token
+8. Styled Components
+9. Bootstrap CSS
+
+## Live site
+
+The live site is viewable [here](https://gigsocial.herokuapp.com/). It will require you to sign up for gigSocial account and a free Genius account in order to search the app.
+
+## Future Developments
+
+- Expand to React Native app to take advantage of mobile gestures and push notifications
+- Integrate the Spotify API
+- Add more social media features
+- Embedded lyrics
+
+Thanks for checking it out!
+
+- Dave

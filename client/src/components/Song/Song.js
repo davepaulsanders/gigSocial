@@ -73,7 +73,7 @@ export const Song = ({
   };
 
   return (
-    <SONG_CONTAINER className="song position-relative justify-content-center align-items-center">
+    <SONG_CONTAINER className="song position-relative">
       <p className="song-order position-absolute">{songOrder + 1}</p>
       <img className="album-art" src={image} alt="album art" />
       <div className="album-info-container">

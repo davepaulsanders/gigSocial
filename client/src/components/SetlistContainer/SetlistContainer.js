@@ -73,7 +73,7 @@ export const SetlistContainer = ({
         )}
         {/* If there is only one song */}
         {setListData.songs.length === 1 ? (
-          <div className="col-12" key={setListData.songs[0].artist}>
+          <div className="col-12 d-flex" key={setListData.songs[0].artist}>
             <Song
               songOrder={0}
               bpm={bpm}

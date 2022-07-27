@@ -89,7 +89,7 @@ export const SearchModal = ({ openModal, setOpenModal }) => {
         <BUTTON onClick={searchGenius}>Search Genius</BUTTON>
         {/* SEARCH DATA */}
         <div className="results-container">
-          {searchData !== undefined
+          {searchData
             ? searchData.map((song) => (
                 <APPEARDIV key={song.result.id}>
                   <SearchCard

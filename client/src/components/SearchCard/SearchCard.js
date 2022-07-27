@@ -10,12 +10,7 @@ import {
 import "./SearchCard.css";
 const plus = require("../../assets/plus.png");
 
-export const SearchCard = ({
-  song,
-  active,
-  setActive,
-  closeModal,
-}) => {
+export const SearchCard = ({ song, active, setActive, closeModal }) => {
   // variables used for queries and rendering
 
   const artist = song.primary_artist.name;
@@ -32,113 +27,135 @@ export const SearchCard = ({
     refetchQueries: [{ query: GET_SETLIST, variables: { setListId } }],
   });
 
-  // this variable is used for looping n number of times to create select options
-  const optionsElements = () => {
-    for (let i = 40; i <= 350; i + 10) {
-      return <option value={i}>{i}</option>;
-    }
+  // show that song is selected
+  const highlightSong = (e) => {
+    e.preventDefault();
+    const activeSongId = e.target.closest(".song-data").getAttribute("id");
+    setActive(activeSongId);
+  };
 
-    // show that song is selected
-    const highlightSong = (e) => {
-      e.preventDefault();
-      const activeSongId = e.target.closest(".song-data").getAttribute("id");
-      setActive(activeSongId);
-    };
+  // select song and render bpm select
+  const selectSong = (e) => {
+    e.preventDefault();
+    setSongChosen(true);
+  };
 
-    // select song and render bpm select
-    const selectSong = (e) => {
-      e.preventDefault();
-      setSongChosen(true);
-    };
-
-    // add song to setlist
-    const addToSetlist = async (e) => {
-      e.preventDefault();
-      // getting parent node and bpm from select
-      const activeSong = e.target.closest(".song-data");
-      const bpm = Number(activeSong.querySelector("#bpm-select").value);
-      try {
-        const songInfo = await addSong({
-          variables: {
-            lyrics: lyrics,
-            artist: artist,
-            bpm: bpm,
-            songTitle: songTitle,
-            image: image,
-          },
-        });
-        const { _id } = songInfo.data.addSong;
-        await addSongToSetList({
-          variables: { _id: _id, setListId: setListId },
-        });
-        closeModal(e);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    if (!songChosen) {
-      return (
-        <SONG_CONTAINER
-          className={
-            songId === active
-              ? "song-data chosen-song position-relative"
-              : "song-data position-relative"
-          }
-          id={song.id}
-          onClick={highlightSong}
-        >
-          <img className="album-art" src={image} alt="album art" />
-          <div className="d-flex flex-row justify-content-between">
-            <div className="info-album">
-              <p className="px-3 album-info song-name">{songTitle}</p>
-              <p className="px-3 album-info">{artist}</p>
-            </div>
-            <BUTTON
-              className={songId === active ? "add-song appear" : "add-song"}
-              onClick={selectSong}
-            >
-              Add
-            </BUTTON>
-          </div>
-        </SONG_CONTAINER>
-      );
-      // If there is an active song and it matches the songId of this song
-    } else if (songChosen && active === songId) {
-      return (
-        <SONG_CONTAINER
-          className={
-            songId === active
-              ? "song-data chosen-song width-increase"
-              : "song-data"
-          }
-          id={song.id}
-          onClick={highlightSong}
-        >
-          <img
-            className="album-art album-increase"
-            src={image}
-            alt="album art"
-          />
-          <div className="d-flex">
-            <div className="bpm-container d-flex flex-column justify-content-center">
-              <p className="choose-bpm-title my-0">Choose a bpm</p>
-              <select id="bpm-select">{optionsElements()}</select>
-            </div>
-            <div className="d-flex flex-column justify-content-center align-items-center">
-              <BUTTON className="add-cancel-button" onClick={addToSetlist}>
-                Add
-              </BUTTON>
-              <BUTTON
-                className="add-cancel-button cancel"
-                onClick={() => setSongChosen(false)}
-              >
-                Cancel
-              </BUTTON>
-            </div>
-          </div>
-        </SONG_CONTAINER>
-      );
+  // add song to setlist
+  const addToSetlist = async (e) => {
+    e.preventDefault();
+    // getting parent node and bpm from select
+    const activeSong = e.target.closest(".song-data");
+    const bpm = Number(activeSong.querySelector("#bpm-select").value);
+    try {
+      const songInfo = await addSong({
+        variables: {
+          lyrics: lyrics,
+          artist: artist,
+          bpm: bpm,
+          songTitle: songTitle,
+          image: image,
+        },
+      });
+      const { _id } = songInfo.data.addSong;
+      await addSongToSetList({
+        variables: { _id: _id, setListId: setListId },
+      });
+      closeModal(e);
+    } catch (err) {
+      console.log(err);
     }
   };
+
+  if (!songChosen) {
+    return (
+      <SONG_CONTAINER
+        className={
+          songId === active
+            ? "song-data chosen-song position-relative"
+            : "song-data position-relative"
+        }
+        id={song.id}
+        onClick={highlightSong}
+      >
+        <img className="album-art" src={image} alt="album art" />
+        <div className="d-flex flex-row justify-content-between">
+          <div className="info-album">
+            <p className="px-3 album-info song-name">{songTitle}</p>
+            <p className="px-3 album-info">{artist}</p>
+          </div>
+          <BUTTON
+            className={songId === active ? "add-song appear" : "add-song"}
+            onClick={selectSong}
+          >
+            Add
+          </BUTTON>
+        </div>
+      </SONG_CONTAINER>
+    );
+    // If there is an active song and it matches the songId of this song
+  } else if (songChosen && active === songId) {
+    return (
+      <SONG_CONTAINER
+        className={
+          songId === active
+            ? "song-data chosen-song width-increase"
+            : "song-data"
+        }
+        id={song.id}
+        onClick={highlightSong}
+      >
+        <img className="album-art album-increase" src={image} alt="album art" />
+        <div className="d-flex">
+          <div className="bpm-container d-flex flex-column justify-content-center">
+            <p className="choose-bpm-title my-0">Choose a bpm</p>
+            <select id="bpm-select">
+              <option value="40">40</option>
+              <option value="50">50</option>
+              <option value="60">60</option>
+              <option value="70">70</option>
+              <option value="80">80</option>
+              <option value="90">90</option>
+              <option value="100">100</option>
+              <option value="110">110</option>
+              <option value="120">120</option>
+              <option value="130">130</option>
+              <option value="140">140</option>
+              <option value="150">150</option>
+              <option value="160">160</option>
+              <option value="170">170</option>
+              <option value="180">180</option>
+              <option value="190">190</option>
+              <option value="200">200</option>
+              <option value="210">110</option>
+              <option value="220">120</option>
+              <option value="230">130</option>
+              <option value="240">140</option>
+              <option value="250">150</option>
+              <option value="260">160</option>
+              <option value="270">170</option>
+              <option value="280">180</option>
+              <option value="290">190</option>
+              <option value="300">200</option>
+              <option value="310">110</option>
+              <option value="320">120</option>
+              <option value="330">130</option>
+              <option value="340">140</option>
+              <option value="350">150</option>
+            </select>
+          </div>
+          <div className="d-flex flex-column justify-content-center align-items-center">
+            <BUTTON className="add-cancel-button" onClick={addToSetlist}>
+              Add
+            </BUTTON>
+            <BUTTON
+              className="add-cancel-button cancel"
+              onClick={() => setSongChosen(false)}
+            >
+              Cancel
+            </BUTTON>
+          </div>
+        </div>
+      </SONG_CONTAINER>
+    );
+  }
 };

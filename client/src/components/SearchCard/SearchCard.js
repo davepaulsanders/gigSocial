@@ -10,7 +10,12 @@ import {
 import "./SearchCard.css";
 const plus = require("../../assets/plus.png");
 
-export const SearchCard = ({ song, active, setActive, closeModal }) => {
+export const SearchCard = ({
+  song,
+  active,
+  setActive,
+  closeModal,
+}) => {
   // variables used for queries and rendering
 
   const artist = song.primary_artist.name;

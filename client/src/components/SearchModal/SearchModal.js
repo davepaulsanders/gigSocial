@@ -57,7 +57,6 @@ export const SearchModal = ({ openModal, setOpenModal }) => {
       .querySelector(".results-container")
       .classList.add("results-container-expand");
   };
-
   // fetch function for getting songs from genius
   const songSearch = async (searchTerm) => {
     const geniusToken = localStorage.getItem("genius_token");

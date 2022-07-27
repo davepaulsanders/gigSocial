@@ -10,6 +10,7 @@ import "./SetlistContainer.css";
 const plus = require("../../assets/plus.png");
 const pick = require("../../assets/guitar-pick.png");
 const blackHeart = require("../../assets/black-heart.png");
+const pinkHeart = require("../../assets/pink-heart.png");
 
 export const SetlistContainer = ({
   userId,
@@ -20,6 +21,8 @@ export const SetlistContainer = ({
 }) => {
   // variable for checking if the active delete menu is active in any song
   const [activeDelete, setActiveDelete] = useState(false);
+  const [likeCount, setLikeCount] = useState(setListData.likes);
+  const [imgSource, setImgSource] = useState(blackHeart);
   // keeping track of bpm
   let [bpm, setBpm] = useState(120);
 
@@ -27,11 +30,21 @@ export const SetlistContainer = ({
   const [addLike, { error }] = useMutation(ADD_LIKE, {
     refetchQueries: [{ query: GET_SETLIST, variables: { setListId } }],
   });
-
+  // Adding or removing like from setlist
   const likeSetlist = (e) => {
     e.preventDefault();
-
     addLike({ variables: { setListId, _id: userId } });
+
+    // this avoids adding  another query, keeping track of like count
+    // to color the like heart if the like count went up
+    const newLikeCount = Number(e.target.nextSibling.textContent);
+    if (newLikeCount < likeCount) {
+      setImgSource(pinkHeart);
+      document.querySelector('.setlist-likes').style.boxShadow = ""
+    } else {
+      setImgSource(blackHeart);
+    }
+    setLikeCount(newLikeCount);
   };
 
   return (
@@ -44,7 +57,7 @@ export const SetlistContainer = ({
             className="setlist-likes"
             alt="likes"
             onClick={likeSetlist}
-            src={blackHeart}
+            src={imgSource}
           />
           <p className="setlist-likes-count">{setListData.likes}</p>
         </div>

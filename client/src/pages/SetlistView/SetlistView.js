@@ -35,7 +35,11 @@ export const SetlistView = () => {
 
   // if no data yet
   if (loading) {
-    return "";
+    return (
+      <div className="loading-style">
+        <h2 className="">Loading..."</h2>
+      </div>
+    );
   }
   return (
     <div className="d-flex flex-column justify-content-center">

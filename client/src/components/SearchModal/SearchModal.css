@@ -4,9 +4,9 @@
 }
 .results-container-expand {
     margin-bottom: 20rem;
-
 }
 .setlist-add-modal {
+    
 }
 
 .setlist-add-title {
@@ -36,7 +36,7 @@
     margin-bottom: 0.5rem;
     justify-content: center;
     align-items: center;
-    z-index: 2000;
+    
 }
 
 .search {

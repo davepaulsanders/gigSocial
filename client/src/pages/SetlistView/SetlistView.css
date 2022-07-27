@@ -2,7 +2,7 @@
     margin-bottom: 1.5rem!important;
   justify-content: center;
 }
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 1080px) {
    
     .mobile-desktop-flex {
         flex-direction: row!important;

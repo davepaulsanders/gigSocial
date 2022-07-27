@@ -14,19 +14,19 @@ gigSocial also includes a small amount of social networking; other users of the 
 
 3. You will have to sign up as a client for the Genius API in order to use their services. Information about this can be found [here](https://docs.genius.com/).
 
-4. A .env file is required, see the .ENV_EXAMPLE file in the server folder for reference. The app requires variables related to the GENIUS API client and also JSON web tokens, which are used for authentication/authorization.
+4. A .env file is required, see the .ENV_EXAMPLE file in the server folder for reference. The app requires variables related to the GENIUS API client and also for JSON web tokens.
 
-5. The redirect uri parameter in the variable body in Profile.js will have to be changed to `http://localhost:3000/setlists` for development.
+5. The redirect uri parameter in the variable body in Profile.js will have to be changed to `http://localhost:3000/setlists` during development.
 
 ## Technologies
 
-1. MongoDB Atlas
+1. MongoDB Atlas with Mongoose
 2. GraphQL API with Apollo
 3. Node
 4. Express
 5. React
 6. OAuth 2.0 for interacting with the Genius API
-7. JSON Web Token
+7. JSON Web Tokens
 8. Styled Components
 9. Bootstrap CSS
 

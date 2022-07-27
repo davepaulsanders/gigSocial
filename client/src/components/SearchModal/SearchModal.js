@@ -94,6 +94,7 @@ export const SearchModal = ({ openModal, setOpenModal }) => {
             ? searchData.map((song) => (
                 <APPEARDIV key={song.result.id}>
                   <SearchCard
+                    closeModal={closeModal}
                     active={active}
                     setActive={setActive}
                     key={song.result.id}

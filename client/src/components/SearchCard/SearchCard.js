@@ -10,7 +10,7 @@ import {
 import "./SearchCard.css";
 const plus = require("../../assets/plus.png");
 
-export const SearchCard = ({ song, active, setActive, toggleModal }) => {
+export const SearchCard = ({ song, active, setActive, closeModal }) => {
   // variables used for queries and rendering
 
   const artist = song.primary_artist.name;
@@ -58,7 +58,7 @@ export const SearchCard = ({ song, active, setActive, toggleModal }) => {
       });
       const { _id } = songInfo.data.addSong;
       await addSongToSetList({ variables: { _id: _id, setListId: setListId } });
-      toggleModal(e);
+      closeModal(e);
     } catch (err) {
       console.log(err);
     }

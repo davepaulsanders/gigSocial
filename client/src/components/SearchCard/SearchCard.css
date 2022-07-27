@@ -1,5 +1,6 @@
 .song-data {
     cursor: pointer;
+    height: 5rem!important;
 }
 
 .choose {

@@ -4,7 +4,7 @@ gigSocial is an app inspired by the struggles of being a musician. The app helps
 
 gigSocial also includes a small amount of social networking; other users of the app are able to view other setlists on the app and comment their own opinions.
 
-## Screenshots
+<img src="./client/src/assets/site-recording.gif"/>
 
 ## Installation
 
@@ -25,10 +25,11 @@ gigSocial also includes a small amount of social networking; other users of the 
 3. Node
 4. Express
 5. React
-6. OAuth 2.0 for interacting with the Genius API
-7. JSON Web Tokens
-8. Styled Components
-9. Bootstrap CSS
+6. Genius API
+7. OAuth 2.0 for interacting with the Genius API
+8. JSON Web Tokens
+9. Styled Components
+10. Bootstrap CSS
 
 ## Live site
 

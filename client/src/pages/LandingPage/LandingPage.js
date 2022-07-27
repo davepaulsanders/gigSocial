@@ -51,7 +51,8 @@ export const LandingPage = () => {
     e.preventDefault();
     try {
       const { data } = await signUpData({ variables: { ...signUpFormState } });
-      Auth.login(data.login.token);
+      console.log(data);
+      Auth.login(data.addUser.token);
     } catch (err) {
       if (err) {
         signupError.style.backgroundColor = "#000";

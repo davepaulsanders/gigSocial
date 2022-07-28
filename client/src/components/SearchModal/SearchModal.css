@@ -28,6 +28,10 @@
     height: 16rem!important;
 }
 
+.new-height {
+    height: 20rem!important;
+}
+
 .modal-title {
     background-color: #52b788;
     box-sizing: border-box;

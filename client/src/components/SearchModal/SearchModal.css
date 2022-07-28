@@ -35,7 +35,6 @@
 .modal-title {
     background-color: #52b788;
     box-sizing: border-box;
-    position: sticky;
     top: 0;
     display: flex;
     padding: 0.25rem 0 0 0;

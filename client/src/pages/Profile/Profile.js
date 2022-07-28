@@ -158,7 +158,7 @@ export const Profile = () => {
             </button>
           </div>
         </div>
-        <div className="row w-100 my-2">
+        <div className="row my-2">
           {/* If no setlists */}
           {userProfile.setlists.length === 0 ||
           userProfile.setlists === undefined ? (

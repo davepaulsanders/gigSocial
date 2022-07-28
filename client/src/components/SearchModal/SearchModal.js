@@ -91,7 +91,7 @@ export const SearchModal = ({ openModal, setOpenModal }) => {
             <img className="close search" src={plus} alt="add playlist" />
           </button>
         </div>
-        <p className="genius-search-errors text-danger">Test</p>
+        <p className="genius-search-errors text-danger"></p>
         <INPUT
           type="text"
           placeholder="Type to search genius for a song"

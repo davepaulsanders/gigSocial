@@ -9,6 +9,7 @@
     margin: 2rem!important;
     overflow-y: auto;
     max-height: 30rem;
+    align-self: flex-start!important;
 }
 .comment-title {
     text-align: left;

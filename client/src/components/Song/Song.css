@@ -17,8 +17,9 @@
     justify-content: center;
     flex-grow: 3;
     text-align: left;
-    margin-left: 1rem;
+    margin: 0.15rem -0.15rem 0.15rem 0.75rem;
     overflow: hidden;
+    
 }
 .song {
     margin-right: 0!important;
@@ -28,7 +29,11 @@
     height: 100%;
     transition: width 0.3s ease-in-out;
 }
-
+.song-name, .album-info {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .song-name {
     font-weight: bold;
 }

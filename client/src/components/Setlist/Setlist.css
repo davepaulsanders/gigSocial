@@ -20,6 +20,7 @@
 }
 .song-number {
     margin-right: 1rem;
+    white-space: nowrap;
 }
 .likes-songs-container{
     display: flex;
@@ -28,6 +29,7 @@
     align-items: center;
     margin-right: 1rem;
     margin-top: 0.8rem;
+    
 }
 .album-info {
     margin: 0;

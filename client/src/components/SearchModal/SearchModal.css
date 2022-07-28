@@ -5,21 +5,27 @@
 .results-container-expand {
     margin-bottom: 20rem;
 }
-.setlist-add-modal {
-    
+.genius-search-errors {
+    padding: 0.25rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
 }
-
+.genius-search-button {
+    margin-top: 0;
+}
 .setlist-add-title {
     font-size: 1.5rem;
     font-weight: 700;
-    margin-top: 1rem;
+    padding-top: 1rem;
 }
 
 .add-song-form {
     padding-top: 0!important;
+    padding-bottom: 0!important;
     width: 100%;
     top: 20%;
     background-color: #52b788;
+    height: 16rem!important;
 }
 
 .new-height {

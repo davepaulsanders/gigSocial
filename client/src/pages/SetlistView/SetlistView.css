@@ -2,6 +2,11 @@
     margin-top: 20rem!important;
 }
 
+.close {
+    width: 2rem;
+    transform: rotate(45deg);
+    margin-bottom: 0.5rem;
+}
 
 .setlist-header {
     margin-bottom: 1.5rem!important;

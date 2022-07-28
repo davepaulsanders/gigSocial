@@ -26,7 +26,10 @@ export const SearchModal = ({ openModal, setOpenModal }) => {
       // Setting scroll to top again
       document.querySelector(".add-song-form").scrollTop = 0;
 
-      // closing modal and removing extra height
+      // closing modal and removing extra height and form errors
+      document.querySelector(".genius-search-errors").style.backgroundColor =
+        "transparent";
+      document.querySelector(".genius-search-errors").textContent = "";
       modal.classList.remove("open-modal");
       document.querySelector(".add-song-form").classList.remove("new-height");
       document
@@ -51,6 +54,13 @@ export const SearchModal = ({ openModal, setOpenModal }) => {
       .querySelector("#song-search")
       .value.replace(" ", "%20")
       .trim();
+    if (!searchTerm) {
+      document.querySelector(".genius-search-errors").style.backgroundColor =
+        "#000";
+      document.querySelector(".genius-search-errors").textContent =
+        "Please fill out the form";
+      return;
+    }
     songSearch(searchTerm);
     document.querySelector(".add-song-form").classList.add("new-height");
     document
@@ -81,12 +91,21 @@ export const SearchModal = ({ openModal, setOpenModal }) => {
             <img className="close search" src={plus} alt="add playlist" />
           </button>
         </div>
+        <p className="genius-search-errors text-danger">Test</p>
         <INPUT
           type="text"
           placeholder="Type to search genius for a song"
           id="song-search"
+          onFocus={() => {
+            document.querySelector(
+              ".genius-search-errors"
+            ).style.backgroundColor = "transparent";
+            document.querySelector(".genius-search-errors").textContent = "";
+          }}
         ></INPUT>
-        <BUTTON onClick={searchGenius}>Search Genius</BUTTON>
+        <BUTTON className="genius-search-button" onClick={searchGenius}>
+          Search Genius
+        </BUTTON>
         {/* SEARCH DATA */}
         <div className="results-container">
           {searchData

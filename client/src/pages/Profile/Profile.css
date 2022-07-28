@@ -5,6 +5,10 @@
     max-width: 900px;
 
 }
+.setlist-info-container {
+    overflow: hidden;
+    flex-grow: 3;
+}
 .setlist-row {
     padding-left: 0!important;
     margin: 0!important;
@@ -27,9 +31,13 @@
 }
 .setlist-modal-title {
     font-size: 1.5rem;
-    margin-bottom: 2rem;
     font-weight: 700;
     padding-top: 1.5rem;
+    
+}
+.profile-title-container {
+    height: 2.5rem!important;
+    padding: 0!important;
 }
 .plus-col {
     text-align: right;
@@ -52,7 +60,9 @@
     padding: 0;
     margin: 0;
 }
-
+.add-setlist-button {
+    margin-top: 0!important;
+}
 .add-setlist:hover {
     background-color: transparent;
 }
@@ -71,12 +81,17 @@
     background-color: #52b788!important;
     position: relative;
     top: -90px;
+    height: 13rem!important;
 }
-
-.close {
+.profile-modal-close {
     width: 2rem;
     transform: rotate(45deg);
-    margin-bottom: 0.5rem;
+    margin-bottom: 2rem;
+}
+.profile-errors {
+    padding: 0.25rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
 }
 
 .open-modal {

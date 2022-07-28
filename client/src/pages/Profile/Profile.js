@@ -58,6 +58,13 @@ export const Profile = () => {
   const addSetlist = (e) => {
     e.preventDefault();
     const setListName = document.querySelector("#setListName").value;
+    // if the form is blank
+    if (!setListName) {
+      document.querySelector(".profile-errors").style.backgroundColor = "#000";
+      document.querySelector(".profile-errors").textContent =
+        "Please fill out the form";
+      return;
+    }
     const setListInfo = { setListName, setListCreator: userProfile.username };
     createSetlist({ variables: { ...setListInfo } });
     toggleModal(e);
@@ -69,6 +76,9 @@ export const Profile = () => {
     e.preventDefault();
     const modal = document.querySelector(".modal-container");
     if (modal.classList.contains("open-modal")) {
+      document.querySelector(".profile-errors").style.backgroundColor =
+        "transparent";
+      document.querySelector(".profile-errors").textContent = "";
       modal.classList.remove("open-modal");
     } else {
       modal.classList.add("open-modal");
@@ -84,7 +94,7 @@ export const Profile = () => {
     const clientInfo = client.data.getClient;
     const { id, secret } = clientInfo;
     console.log("fetching genius token...");
-    const body = `client_secret=${secret}&grant_type=authorization_code&code=${code}&client_id=${id}&redirect_uri=https://gigsocial.herokuapp.com/setlists&response_type=code`;
+    const body = `client_secret=${secret}&grant_type=authorization_code&code=${code}&client_id=${id}&redirect_uri=http://localhost:3000/setlists&response_type=code`;
     try {
       const token = await fetch("https://api.genius.com/oauth/token/", {
         method: "POST",
@@ -109,18 +119,30 @@ export const Profile = () => {
       {/* ADD SETLIST MODAL */}
       <div className="modal-container modal-setlist-container position-absolute">
         <FORM className="add-setlist-form position-relative">
-          <div className="d-flex justify-content-between w-100">
+          <div className="profile-title-container d-flex justify-content-between w-100">
             <h2 className="setlist-modal-title">Name your new setlist!</h2>
             <button className="add-setlist" type="button" onClick={toggleModal}>
-              <img className="close" src={plus} alt="add playlist" />
+              <img
+                className="profile-modal-close"
+                src={plus}
+                alt="add playlist"
+              />
             </button>
           </div>
+          <p className="profile-errors text-danger"></p>
           <INPUT
             type="text"
             placeholder="Name your setlist"
             id="setListName"
+            onFocus={() => {
+              document.querySelector(".profile-errors").style.backgroundColor =
+                "transparent";
+              document.querySelector(".profile-errors").textContent = "";
+            }}
           ></INPUT>
-          <BUTTON onClick={addSetlist}>Save setlist</BUTTON>
+          <BUTTON className="add-setlist-button" onClick={addSetlist}>
+            Save setlist
+          </BUTTON>
         </FORM>
       </div>
       {/* SETLISTS */}

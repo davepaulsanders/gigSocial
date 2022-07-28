@@ -158,7 +158,7 @@ export const Profile = () => {
             </button>
           </div>
         </div>
-        <div className="row my-2">
+        <div className="row w-100 my-2">
           {/* If no setlists */}
           {userProfile.setlists.length === 0 ||
           userProfile.setlists === undefined ? (
@@ -178,7 +178,7 @@ export const Profile = () => {
           ) : (
             // if there are many setlists
             userProfile.setlists.map((set) => (
-              <div className="col-md-6" key={set.setListName}>
+              <div className="col col-md-6 col-lg-12" key={set.setListName}>
                 <Setlist
                   userId={userId}
                   username={userProfile.username}

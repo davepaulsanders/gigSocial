@@ -84,7 +84,7 @@ export const SearchModal = ({ openModal, setOpenModal }) => {
           : "setlist-add-modal modal-container position-absolute"
       }
     >
-      <FORM className="add-song-form position-fixed">
+      <FORM className="add-song-form">
         <div className="modal-title d-flex justify-content-between w-100">
           <h2 className="setlist-add-title">Search for a song</h2>
           <button className="add-setlist" type="button" onClick={closeModal}>

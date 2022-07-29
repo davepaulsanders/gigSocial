@@ -31,16 +31,15 @@ export const Setlist = ({ userId, username, setlist }) => {
   // open delete setlist menu
   const deleteSetlistMenu = (e) => {
     e.preventDefault();
-    document
-      .querySelector(".delete-setlist-confirm-container")
-      .classList.add("setlist-delete-appear");
+
+    const container = e.target.nextSibling;
+    container.classList.add("setlist-delete-appear");
   };
   // cancel delete setlist menu
   const cancelDeleteSetlist = (e) => {
     e.preventDefault();
-    document
-      .querySelector(".delete-setlist-confirm-container")
-      .classList.remove("setlist-delete-appear");
+    const container = e.target.parentElement;
+    container.classList.remove("setlist-delete-appear");
   };
   // confirm delete of setlist
   const confirmDeleteSetlist = (e) => {

@@ -21,7 +21,7 @@ db.once("open", async () => {
 
     const setListInfo1 = await Setlist.create({
       setListName: "Setlist 1",
-      setListCreator: "davepsandy",
+      setListCreator: "margenice",
       likes: 0,
     });
     const setListInfo2 = await Setlist.create({

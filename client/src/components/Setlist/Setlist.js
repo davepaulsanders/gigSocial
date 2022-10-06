@@ -66,7 +66,9 @@ export const Setlist = ({ userId, username, setlist }) => {
               <img className="likes" src={heart} alt="likes" />
               <p className="like-count">{likes}</p>
             </div>
-            <p className="song-number">{countSongs} songs</p>
+            <p className="song-number">
+              {countSongs > 1`${countSongs} songs`}: {`${countSongs} song`}
+            </p>
           </div>
           <img
             className="setlist-delete ms-5 me-3"

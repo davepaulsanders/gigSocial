@@ -67,7 +67,7 @@ export const Setlist = ({ userId, username, setlist }) => {
               <p className="like-count">{likes}</p>
             </div>
             <p className="song-number">
-              {countSongs > 1`${countSongs} songs`}: {`${countSongs} song`}
+              {countSongs} {countSongs > 1 || countSongs === 0 ? "songs" : "song"}
             </p>
           </div>
           <img

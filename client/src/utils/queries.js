@@ -66,6 +66,7 @@ export const GET_ALL_SETLISTS = gql`
       setListCreator
       setListId
       likes
+      songs
     }
   }
 `;

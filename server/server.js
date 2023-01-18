@@ -1,7 +1,7 @@
 // express set up
 const express = require("express");
 const PORT = process.env.PORT || 3001;
-
+const cors = require("cors");
 // mongoDB connection
 const db = require("./config/connection");
 const path = require("path");
@@ -19,7 +19,7 @@ const server = new ApolloServer({
 
 // express set up
 const app = express();
-
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 

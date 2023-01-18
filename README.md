@@ -30,10 +30,12 @@ gigSocial also includes a small amount of social networking; other users of the 
 8. JSON Web Tokens
 9. Styled Components
 10. Bootstrap CSS
+11. Netlify
+12. Render
 
 ## Live site
 
-The live site is viewable [here](https://gigsocial.herokuapp.com/). It will require you to sign up for gigSocial account and a free Genius account in order to search the app.
+The live site is viewable [here](https://gigsocial.netlify.app/). It will require you to sign up for gigSocial account and a free Genius account in order to search the app.  The front end is hosted on Netlify and the back end is hosted on Render.
 
 ## Future Developments
 

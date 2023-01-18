@@ -13,7 +13,7 @@ import { SetlistView } from "./pages/SetlistView/SetlistView";
 import { NothingHere } from "./pages/NothingHere/NothingHere";
 import { Browse } from "./pages/Browse/Browse";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-const history = require("./utils/history");
+
 
 //link to graphql server
 const httpLink = createHttpLink({
@@ -39,7 +39,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router history={history}>
+      <Router>
         <div className="App">
           <Routes>
             <Route path="/" element={<LandingPage />} />

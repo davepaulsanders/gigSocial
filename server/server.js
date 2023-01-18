@@ -4,8 +4,6 @@ const PORT = process.env.PORT || 3001;
 const cors = require("cors");
 // mongoDB connection
 const db = require("./config/connection");
-const path = require("path");
-
 // Apollo set up
 const { ApolloServer } = require("apollo-server-express");
 const { typeDefs, resolvers } = require("./schemas");

@@ -4,7 +4,7 @@ import {
   InMemoryCache,
   createHttpLink,
 } from "@apollo/client";
-import { createBrowserHistory } from "history";
+const history = require("./utils/history");
 import { setContext } from "@apollo/client/link/context";
 import "./App.css";
 import { LandingPage } from "./pages/LandingPage/LandingPage.js";
@@ -14,8 +14,6 @@ import { SetlistView } from "./pages/SetlistView/SetlistView";
 import { NothingHere } from "./pages/NothingHere/NothingHere";
 import { Browse } from "./pages/Browse/Browse";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-createBrowserHistory({ basename: "https://gig-social-front-end.onrender.com" });
 
 //link to graphql server
 const httpLink = createHttpLink({

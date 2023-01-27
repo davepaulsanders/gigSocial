@@ -14,10 +14,9 @@ import { NothingHere } from "./pages/NothingHere/NothingHere";
 import { Browse } from "./pages/Browse/Browse";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-
 //link to graphql server
 const httpLink = createHttpLink({
-  uri: "https://gig-social-api.onrender.com/graphql",
+  uri: "https://gigsocial-production.up.railway.app",
 });
 
 const authLink = setContext((_, { headers }) => {

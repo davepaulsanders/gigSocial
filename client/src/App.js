@@ -16,7 +16,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // link to graphql server
 const httpLink = createHttpLink({
-  uri: "http://gig-social.vercel.app:3001",
+  uri: "gigsocial-production.up.railway.app/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {

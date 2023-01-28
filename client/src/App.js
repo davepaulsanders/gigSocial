@@ -13,7 +13,7 @@ import { SetlistView } from "./pages/SetlistView/SetlistView";
 import { NothingHere } from "./pages/NothingHere/NothingHere";
 import { Browse } from "./pages/Browse/Browse";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-require("dotenv").config();
+
 // link to graphql server
 const httpLink = createHttpLink({
   uri: "http://localhost:3001",

@@ -16,7 +16,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 require("dotenv").config();
 // link to graphql server
 const httpLink = createHttpLink({
-  uri: `http://localhost:${PORT}`,
+  uri: "http://localhost:3001",
 });
 
 const authLink = setContext((_, { headers }) => {

@@ -35,7 +35,7 @@ gigSocial also includes a small amount of social networking; other users of the 
 
 ## Live site
 
-The live site is viewable [here](https://gigsocial.netlify.app/). It will require you to sign up for gigSocial account and a free Genius account in order to search the app.  The front end is hosted on Netlify and the back end is hosted on Render.
+The live site is viewable [here](https://gigsocial-production.up.railway.app/). It will require you to sign up for gigSocial account and a free Genius account in order to search the app.  The front end is hosted on Netlify and the back end is hosted on Render.
 
 ## Future Developments
 
